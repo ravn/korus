@@ -1,0 +1,3 @@
+This page provides you a step-by-step to get started with korus
+
+= Building the product =
