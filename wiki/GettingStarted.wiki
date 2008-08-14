@@ -1,4 +1,7 @@
 #labels Phase-Deploy,Featured
 This page provides you a step-by-step to get started with korus
 
-= Building the product =
+= Checkout korus =
+svn checkout 
+= build =
+= look into examples =
