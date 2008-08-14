@@ -19,7 +19,7 @@ As we can see that at any given time only one core is utilized properly and rest
 
 [http://code.google.com/ http://korus.googlecode.com/files/pipeline_parallel.JPG]
 
- Each pipelined operation is termed as a Task. A task is nothing but performing the entire operation into chunks. For example, instead of reading a complete file and then applying transformation to it. We will read a chunk of data and then apply transformation to that chunk and similarly write that chunk back to the disk. Once a chunk is been processed, its placed into an intermediate queue so that it can be now accessed by the consecutive tasks.
+Each pipelined operation is termed as a Task. A task is nothing but performing the entire operation into chunks. For example, instead of reading a complete file and then applying transformation to it. We will read a chunk of data and then apply transformation to that chunk and similarly write that chunk back to the disk. Once a chunk is been processed, its placed into an intermediate queue so that it can be now accessed by the consecutive tasks.
 
 For achieving the above functionality, we need to define three Tasks extending !PipelineTask.
 
