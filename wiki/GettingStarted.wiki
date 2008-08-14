@@ -2,6 +2,20 @@
 This page provides you a step-by-step to get started with korus
 
 = Checkout korus =
-svn checkout 
+Use an SVN client 
+{{{
+  $ svn checkout http://korus.googlecode.com/svn/trunk/ korus-read-only
+}}}
+
 = build =
+{{{
+ $ cd build
+ $ ./ant.sh clean
+ $ ./ant.sh recompile
+ $ ./ant.sh jar
+}}}
+
 = look into examples =
+== Factorial =
+== FFT ==
+== .... ==
