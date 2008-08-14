@@ -1,6 +1,6 @@
 Describes the usage and definition of ParallelFor construct
 ==Introduction ==
-Parallel For is a parallel version of a for loop which executes the loop parallely and tries to utilize more number of cores for lower turnaround time. A parallel for loop takes in a range which determines
+Parallel For is a parallel version of a for loop which executes the loop parallely and tries to utilize more number of cores for lower turnaround time. A parallel for loop takes in a range which determines the number of times the for loop needs to run and the grainsize (which determines the number of threads korus will allocate).
 
 == Example : Factorial ==
 Suppose we want to calculate a factorial of a very big number. Using parallel for will not be as simple as to just replacing the for construct by a parallelFor. But its not that difficult too. Just by tweak the program a little bit here and there, we will have parallelFor working. Lets suppose that we want to calculate a factorial of a very big number. A simple program calculate a factorial could go like this :
