@@ -1,3 +1,29 @@
-Performance Benchmark of korus
+=Performance Benchmark of Korus=
 
-TOBE DONE by saurabh.dutta
+==1. Parallelized Factorial Program==
+Java code to calculate factorial of a large number (10000!). Compared the serial as well as parallel version.
+
+Testing Parallel For Construct Performance on Azul Machine
+
+*ParallelFactorial(of 40000)*
+
+||S.No.||GrainSize||Time in millisec||
+||1.||40000||39380||
+||2.||20000||13540||	
+||3.||10000||6590|| 
+||4.||8000||5826||
+||5.||5000||5024||
+||6.||4000||7717||
+||7.||2500||7694|| 
+||8.||2000||7535||
+
+----
+
+==2. Parallelized Text Transformer Program==
+
+This involved writing an application which reads a Text file, transforms and writes it into another file. A serial as well as a parallel version were written. The parallel version utilized 3 cores for each of the reading, transforming and writing tasks. The parallel version was written using octopus.
+
+*Testing Pipeline Construct – File Size 2.5MB (approx)*
+||S.No.||Program||Dual Core||Single Core||Azul||
+||1.||SerialReadTransformWrite||1000ms||406ms||1747ms||
+||2.||ParallelReadTransformWrite||105ms||16ms||75ms||
