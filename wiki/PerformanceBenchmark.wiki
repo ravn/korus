@@ -5,9 +5,9 @@ Java code to calculate factorial of a large number (10000!). Compared the serial
 
 Testing Parallel For Construct Performance on Azul Machine
 
-*ParallelFactorial(of 40000)*
+*Parallel Factorial(of 40000)*
 
-||S.No.||GrainSize||Time in millisec||
+||S.No.||Grain Size||Time in milliseconds||
 ||1.||40000||39380||
 ||2.||20000||13540||	
 ||3.||10000||6590|| 
