@@ -1,6 +1,6 @@
 =Performance Benchmark of Korus=
 
-==1. Parallelized Factorial Program==
+==1. Parallel Factorial Program==
 Java code to calculate factorial of a large number (10000!). Compared the serial as well as parallel version.
 
 Testing Parallel For Construct Performance on Azul Machine
@@ -19,7 +19,7 @@ Testing Parallel For Construct Performance on Azul Machine
 
 ----
 
-==2. Parallelized Text Transformer Program==
+==2. Parallel Text Transformer Program==
 
 This involved writing an application which reads a Text file, transforms and writes it into another file. A serial as well as a parallel version were written. The parallel version utilized 3 cores for each of the reading, transforming and writing tasks. The parallel version was written using octopus.
 
@@ -27,3 +27,32 @@ This involved writing an application which reads a Text file, transforms and wri
 ||S.No.||Program||Dual Core||Single Core||Azul||
 ||1.||SerialReadTransformWrite||1000ms||406ms||1747ms||
 ||2.||ParallelReadTransformWrite||105ms||16ms||75ms||
+
+==3. Area Under Curve==
+The trapezoidal rule is a numerical integration method to be used to approximate the integral or the area under a curve. This is often useful when an exact integral does not exist, can not easily be obtained, or is mathematically too time consuming for repetitious automated calculations.
+
+One approach to obtain a numerical solution of an integral is to approximate the function with an nth order polynomial, since these are relatively simple to integrate. The choice of the order of the polynomial depends on the required accuracy (higher order generally results in a higher precision), and the number data points over the selected interval (higher order requires more data points).
+
+Consider the function f(x). We want to calculate the area under the curve over the interval a ≤ x ≤ b:
+{{{
+         b
+     I = ∫ y(x)dx
+         a
+}}}
+
+
+==4. Spearman's rank correlation coefficient==
+
+Spearman's rank correlation coefficient measure of the strength of the associations between two variables, without making any assumptions about the frequency distribution of the variables.
+
+In principle, ρ is simply a special case of the Pearson product-moment coefficient in which two sets of data Xi and Yi are converted to rankings xi and yi before calculating the coefficient. But practically a simpler procedure is adoped and used to calculate ρ. Ranks are calcuated based on available data, and the differences di between the ranks of each observation on the two variables are calculated.
+
+Therefore ρ is given by:
+
+	ρ
+
+where:
+
+    di = xi − yi = the difference between the ranks of corresponding values Xi and Yi, and
+
+    n = the number of values in each data set (same for both sets). 
