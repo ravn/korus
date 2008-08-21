@@ -1,13 +1,46 @@
 #labels Phase-Deploy,Featured
 This page provides you a step-by-step to get started with korus
 
-= Checkout korus =
+= Getting Korus =
+
+== Binary Edition ==
+
+The latest stable version of Korus is available from the Korus web page http://code.google.com/p/korus/source/checkout 
+
+You can then either put the JARs of Korus to your preferred directory or put the jars on the system classpath. 
+
+For the current version of Korus, you will also need a JDK installed on your system, version 1.5 or later required, 1.5 or later strongly recommended. 
+
+== Source Edition ==
+
+If you prefer the source edition, you can download the source for the latest Korus release from http://code.google.com/p/korus/source/checkout. You can access the code using SVN. The Korus website has details on accessing SVN. 
+
+See the section Building Korus on how to build Korus from the source code.
+
+The binary distribution of  consists of the following directory layout:
+{{{
+  Korus
+   +--- README, LICENSE, other text files. //basic information
+   +--- bin  // contains launcher scripts
+   |
+   +--- lib  // contains jars plus necessary dependencies
+   |
+   +--- docs // contains documentation
+   |      |
+   |      +--- images  // various logos for html documentation
+   |      |
+   |      +--- manual  // Documentation (a must read ;-)
+   |
+   +--- etc 
+}}}
+
+== Checkout Korus ==
 Use an SVN client 
 {{{
   $ svn checkout http://korus.googlecode.com/svn/trunk/ korus-read-only
 }}}
 
-= build =
+==Building Korus==
 {{{
  $ cd build
  $ ./ant.sh clean
@@ -15,7 +48,5 @@ Use an SVN client
  $ ./ant.sh jar
 }}}
 
-= look into examples =
-== Factorial =
-== FFT ==
-== .... ==
+= Using Korus =
+<TODO>
