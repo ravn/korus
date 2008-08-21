@@ -20,6 +20,7 @@ Testing Parallel For Construct Performance on Azul Machine
 ----
 
 ==2. Area Under Curve==
+
 The trapezoidal rule is a numerical integration method to be used to approximate the integral or the area under a curve. This is often useful when an exact integral does not exist, can not easily be obtained, or is mathematically too time consuming for repetitious automated calculations.
 
 One approach to obtain a numerical solution of an integral is to approximate the function with an nth order polynomial, since these are relatively simple to integrate. The choice of the order of the polynomial depends on the required accuracy (higher order generally results in a higher precision), and the number data points over the selected interval (higher order requires more data points).
@@ -82,6 +83,40 @@ where:
     di = xi − yi = the difference between the ranks of corresponding values Xi and Yi, and
 
     n = the number of values in each data set (same for both sets). 
+
+===3.1 Results on Dual Core===
+
+==== 3.1.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 1000000) ====
+
+||S.No||Number of Threads|| Time in milliseconds||
+||1.||1||234||
+
+====3.1.2 Program to Spearman's rank correlation coefficient using Parallel Library (Data Size - 1000000)====
+
+||S.No||Number of Threads|| Time in milliseconds||
+||1.||1||250||
+||2.||2||171||
+
+
+===3.2 Results on Azul Machine===
+
+====3.2.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
+
+||S.No||Number of Threads|| Time in milliseconds||
+||1.||1||892||
+
+====3.2.2 Program to Calculate Area under Curve using Parallel Library====
+
+||S.No||Number of Threads|| Time in milliseconds||
+||1.||1||1067||
+||2.||2||659||
+||3.||4||463||
+||4.||8||357||
+||5.||16||313||
+||6.||20||307^*^||
+||7.||24||310||
+
+^*^ Optimized Performance
 
 ----
 
