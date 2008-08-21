@@ -19,16 +19,7 @@ Testing Parallel For Construct Performance on Azul Machine
 
 ----
 
-==2. Parallel Text Transformer Program==
-
-This involved writing an application which reads a Text file, transforms and writes it into another file. A serial as well as a parallel version were written. The parallel version utilized 3 cores for each of the reading, transforming and writing tasks. The parallel version was written using octopus.
-
-*Testing Pipeline Construct – File Size 2.5MB (approx)*
-||S.No.||Program||Dual Core||Single Core||Azul||
-||1.||SerialReadTransformWrite||1000ms||406ms||1747ms||
-||2.||ParallelReadTransformWrite||105ms||16ms||75ms||
-
-==3. Area Under Curve==
+==2. Area Under Curve==
 The trapezoidal rule is a numerical integration method to be used to approximate the integral or the area under a curve. This is often useful when an exact integral does not exist, can not easily be obtained, or is mathematically too time consuming for repetitious automated calculations.
 
 One approach to obtain a numerical solution of an integral is to approximate the function with an nth order polynomial, since these are relatively simple to integrate. The choice of the order of the polynomial depends on the required accuracy (higher order generally results in a higher precision), and the number data points over the selected interval (higher order requires more data points).
@@ -40,19 +31,66 @@ Consider the function f(x). We want to calculate the area under the curve over t
          a
 }}}
 
+===2.1 Results on Dual Core===
 
-==4. Spearman's rank correlation coefficient==
+====2.1.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
+
+||S.No||Number of Threads|| Time in milliseconds||
+||1.||1||1407||
+
+====2.1.2 Program to Calculate Area under Curve using Parallel Library====
+
+||S.No||Number of Threads|| Time in milliseconds||
+||1.||1||1407||
+||2.||2||766||
+
+
+===2.2 Results on Azul Machine===
+
+====2.2.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
+
+||S.No||Number of Threads|| Time in milliseconds||
+||1.||1||18571||
+
+====2.2.2 Program to Calculate Area under Curve using Parallel Library====
+
+||S.No||Number of Threads|| Time in milliseconds||
+||1.||1||16492||
+||2.||2||8370||
+||3.||4||4310||
+||4.||8||2262||
+||5.||16||1259||
+||6.||20||1050^*^||
+||7.||24||1533||
+
+^*^ Optimized Performance
+
+----
+
+==3. Spearman's rank correlation coefficient==
 
 Spearman's rank correlation coefficient measure of the strength of the associations between two variables, without making any assumptions about the frequency distribution of the variables.
 
-In principle, ρ is simply a special case of the Pearson product-moment coefficient in which two sets of data Xi and Yi are converted to rankings xi and yi before calculating the coefficient. But practically a simpler procedure is adoped and used to calculate ρ. Ranks are calcuated based on available data, and the differences di between the ranks of each observation on the two variables are calculated.
+In principle, ρ is simply a special case of the Pearson product-moment coefficient in which two sets of data Xi and Yi are converted to rankings xi and yi before calculating the coefficient. But practically a simpler procedure is adopted and used to calculate ρ. Ranks are calculated based on available data, and the differences di between the ranks of each observation on the two variables are calculated.
 
 Therefore ρ is given by:
 
-	ρ
+	[http://code.google.com/ http://korus.googlecode.com/files/rho.JPG]
 
 where:
 
     di = xi − yi = the difference between the ranks of corresponding values Xi and Yi, and
 
     n = the number of values in each data set (same for both sets). 
+
+----
+
+
+==4. Parallel Text Transformer Program==
+
+This involved writing an application which reads a Text file, transforms and writes it into another file. A serial as well as a parallel version were written. The parallel version utilized 3 cores for each of the reading, transforming and writing tasks. The parallel version was written using octopus.
+
+*Testing Pipeline Construct – File Size 2.5MB (approx)*
+||S.No.||Program||Dual Core||Single Core||Azul||
+||1.||SerialReadTransformWrite||1000ms||406ms||1747ms||
+||2.||ParallelReadTransformWrite||105ms||16ms||75ms||
