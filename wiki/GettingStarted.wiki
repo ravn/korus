@@ -51,7 +51,7 @@ Use an SVN client
 = Using Korus =
 ==Parallel For Concepts==
 
-===BlockedRange===
+=== !BlockedRange ===
 
 It is a single unit of block that can be executed in a single iteration. Suppose, we have an iteration space from 0 to n. Then, an object of blocked range will be constructed whose first argument will be the start of the iteration and second argument will be end of the iteration. A third argument _ grainSize _ will also have to be specified which breaks these _ BlockedRanges _ into units which can be executed by a single core or processor.
 {{{
@@ -60,9 +60,9 @@ BlockedRange range= new BlockedRange(1,10000,1250);
 
 will finally construct  10000/1250 = 8 _ BlockedRanges _
 
-===GrainSize===
+=== !GrainSize ===
 
 The _grainSize_ enables you to decide the degree of parallelization you want achieve while running your program. It helps in dividing the task into subranges. Every subrange has some cost associated to it. A smaller _grainsize_ may also result in excessive overhead and may hinder useful work. So, the size of the _grainsize_ has to be chosen very carefully. 
 
-=== ParallelTask ===
+=== !ParallelTask ===
 In order to write a parallel function in a class, it has to implement a _ ParallelTask _. A _ ParallelTask _ bounds the user to implement a _service()_ and a _summarize()_ method. The code written inside the for block of a serial function comes in the for block of the _service()_ method. A _summarize()_ block is written in order to summarize all the intermediate results. A demonstration is provided [http://code.google.com/p/korus/wiki/ParallelFor here].
