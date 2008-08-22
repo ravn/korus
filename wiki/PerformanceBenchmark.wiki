@@ -129,3 +129,5 @@ This involved writing an application which reads a Text file, transforms and wri
 ||S.No.||Program||Dual Core||Single Core||Azul||
 ||1.||SerialReadTransformWrite||1000ms||406ms||1747ms||
 ||2.||ParallelReadTransformWrite||105ms||16ms||75ms||
+
+^*^ _Time denoted here is the response time and not the execution time._
