@@ -76,6 +76,7 @@ A sample implementation of ParallelFor can be found [http://code.google.com/p/ko
 
 === 2.2.1 Pipeline ===
 The term pipeline refers to the fact that each step is carrying data at once (like water), and each step is connected to the next (like the links of a pipe.)
+
 - Wikipedia
 
 The idea of a pipeline is to split the processing of data into number of steps. Each of these steps will run independently, process data and put the data in its _ outputQueue _. The _ outputQueue _ of the first step will be the _ inputQueue _ for the consecutive step. The first step will have no _ inputQueue _ and the last step will have no _ outputQueue _. 
