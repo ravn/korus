@@ -88,7 +88,7 @@ where:
 
 ==== 3.1.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 1000000) ====
 
-||S.No||Number of Threads|| Time in milliseconds||
+|| S.No || Number of Threads || Time in milliseconds ||
 ||1.||1||234||
 
 ====3.1.2 Program to Spearman's rank correlation coefficient using Parallel Library (Data Size - 1000000)====
@@ -128,6 +128,6 @@ This involved writing an application which reads a Text file, transforms and wri
 *Testing Pipeline Construct – File Size 2.5MB (approx)*
 ||S.No.||Program||Dual Core||Single Core||Azul||
 ||1.||SerialReadTransformWrite||1000ms||406ms||1747ms||
-||2.||ParallelReadTransformWrite||105ms||16ms||75ms||
+||2.||ParallelReadTransformWrite||105ms^*^||16ms^*^||75ms^*^||
 
 ^*^ _Time denoted here is the response time and not the execution time._
