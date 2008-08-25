@@ -3,35 +3,39 @@ This page provides you a step-by-step to get started with korus
 
 = 1. Getting Korus =
 
-== 1.1 Binary Edition ==
-
 The latest stable version of Korus is available from the Korus web page http://code.google.com/p/korus/source/checkout 
-
-You can then either put the JARs of Korus to your preferred directory or put the jars on the system classpath. 
 
 For the current version of Korus, you will also need a JDK installed on your system, version 1.5 or later required, 1.5 or later strongly recommended. 
 
-== 1.2 Source Edition ==
-
-If you prefer the source edition, you can download the source for the latest Korus release from http://code.google.com/p/korus/source/checkout. You can access the code using SVN. The Korus website has details on accessing SVN. 
-
-See the section Building Korus on how to build Korus from the source code.
-
 The binary distribution of  consists of the following directory layout:
 {{{
-  Korus
-   +--- README, LICENSE, other text files. //basic information
-   +--- bin  // contains launcher scripts
+ Korus
+   +--- Plan
    |
-   +--- lib  // contains jars plus necessary dependencies
-   |
-   +--- docs // contains documentation
+   +--- Product // contains API Files
    |      |
-   |      +--- images  // various logos for html documentation
-   |      |
-   |      +--- manual  // Documentation (a must read ;-)
+   |      +--- octopus
+   |              |
+   |              +--- bin        // Compiled Code
+   |              +--- build      // Build Scripts
+   |              +--- dst        
+   |              +--- jar        // Compiled Jar
+   |              +--- javadoc    // Java Documentation
+   |              +--- src        // Source Files
    |
-   +--- etc 
+   +--- Support  // Contains the supporting files
+   |      |
+   |      +--- ant
+   |      +--- legal
+   |      +--- userdocs
+   |
+   +--- Test // contains Test Classes
+          |
+          +--- bin        // Compiled Code of Test Classes
+          +--- lib        // Libraries needed by Test Classes
+          +--- report
+          +--- src        // Source Files for Test Classes
+   
 }}}
 
 == 1.3 Checkout Korus ==
@@ -41,12 +45,58 @@ Use an SVN client
 }}}
 
 == 1.4 Building Korus==
+
+=== 1.4.1 Windows ===
+
+Go to the Korus --> Product --> octopus Folder
+
+{{{
+ > cd build
+ > ant clean
+ > ant recompile
+ > ant jar
+}}}
+
+This will generate the jar in your Korus --> Product --> octopus --> jar Folder. You can then either put the JAR of Korus to your preferred directory or put the jars on the system CLASSPATH. 
+
+If you prefer to the source edition, you can find it in the Korus --> Product --> octopus --> src Folder. 
+
+{{{
+ > cd build
+ > ant clean
+ > ant compile
+ > ant jar
+}}}
+
+This will compile the Java classes and into the Korus --> Product --> octopus --> classes Folder.
+
+Compile it using the java compile commands and you can start using it in your Project.
+
+=== 1.4.2 Unix ===
+
+Go to the Korus --> Product --> octopus Folder
+
 {{{
  $ cd build
  $ ./ant.sh clean
  $ ./ant.sh recompile
  $ ./ant.sh jar
 }}}
+
+This will generate the jar in your Korus --> Product --> octopus --> jar Folder. You can then either put the JAR of Korus to your preferred directory or put the jars on the system CLASSPATH. 
+
+If you prefer to the source edition, you can find it in the Korus --> Product --> octopus --> src Folder. 
+
+{{{
+ $ cd build
+ $ ./ant.sh clean
+ $ ./ant.sh compile
+ $ ./ant.sh jar
+}}}
+
+This will compile the Java classes and into the Korus --> Product --> octopus --> classes Folder.
+
+Compile it using the java compile commands and you can start using it in your Project.
 
 ----
 
