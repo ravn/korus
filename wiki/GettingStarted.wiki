@@ -53,7 +53,7 @@ Go to the Korus --> Product --> octopus Folder
 {{{
  > cd build
  > ant clean
- > ant recompile
+ > ant compile
  > ant jar
 }}}
 
