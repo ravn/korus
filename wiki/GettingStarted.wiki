@@ -61,11 +61,12 @@ This will generate the jar in your Korus --> Product --> octopus --> jar Folder.
 
 If you prefer to the source edition, you can find it in the Korus --> Product --> octopus --> src Folder. 
 
+For only using the compiled classes you need to :
+
 {{{
  > cd build
  > ant clean
  > ant compile
- > ant jar
 }}}
 
 This will compile the Java classes and into the Korus --> Product --> octopus --> classes Folder.
@@ -87,11 +88,12 @@ This will generate the jar in your Korus --> Product --> octopus --> jar Folder.
 
 If you prefer to the source edition, you can find it in the Korus --> Product --> octopus --> src Folder. 
 
+For only using the compiled classes you need to :
+
 {{{
  $ cd build
  $ ./ant.sh clean
  $ ./ant.sh compile
- $ ./ant.sh jar
 }}}
 
 This will compile the Java classes and into the Korus --> Product --> octopus --> classes Folder.
