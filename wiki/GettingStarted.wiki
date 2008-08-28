@@ -46,13 +46,14 @@ Use an SVN client and checkout korus
   $ svn checkout http://korus.googlecode.com/svn/trunk/ korus-read-only
 }}}
 
-=== 1.3.2. ===
+=== 1.4 Install Ant ===
+
 Install ant from [http://ant.apache.org/ here]
 
 
-== 1.4 Building Korus ==
+== 1.5 Building Korus ==
 
-=== 1.4.1 Windows ===
+=== 1.5.1 Windows ===
 
 Go to the Korus --> Product --> octopus Folder
 
@@ -79,7 +80,7 @@ This will compile the Java classes and into the Korus --> Product --> octopus --
 
 Compile it using the java compile commands and you can start using it in your Project.
 
-=== 1.4.2 Unix ===
+=== 1.5.2 Unix ===
 
 Go to the Korus --> Product --> octopus Folder
 
