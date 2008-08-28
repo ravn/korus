@@ -39,12 +39,18 @@ The binary distribution of  consists of the following directory layout:
 }}}
 
 == 1.3 Checkout Korus ==
-Use an SVN client 
+===1.3.1 ===
+
+Use an SVN client and checkout korus
 {{{
   $ svn checkout http://korus.googlecode.com/svn/trunk/ korus-read-only
 }}}
 
-== 1.4 Building Korus==
+=== 1.3.2. ===
+Install ant from [http://ant.apache.org/ here]
+
+
+== 1.4 Building Korus ==
 
 === 1.4.1 Windows ===
 
