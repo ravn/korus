@@ -46,7 +46,7 @@ Use an SVN client and checkout korus
   $ svn checkout http://korus.googlecode.com/svn/trunk/ korus-read-only
 }}}
 
-=== 1.4 Install Ant ===
+== 1.4 Install Ant ==
 
 Install ant from [http://ant.apache.org/ here]
 
