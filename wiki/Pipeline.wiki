@@ -3,7 +3,7 @@ Describes the usage and functionality of Pipeline construct
 == Introduction ==
 Pipeline allows you to model your sequential independent task parallely. For example, a file transformation job can be modeled as 3 tasks of reading ,transforming and writing the file. The tasks communicate to each other via one-way intermediate queues.
 
-== Example : !FileTransformationPipeline ==
+== Example : FileTransformationPipeline ==
 
 Pipelining is very useful when the output of one task serves as an input to the succeeding task. Lets, understand this with help of an example. Suppose, we want to:
 
@@ -23,7 +23,7 @@ Each pipelined operation is termed as a Task. A task is nothing but performing t
 
 For achieving the above functionality, we need to define three Tasks extending !PipelineTask.
 
- # !ReadTask
+====1. ReadTask====
 {{{
 // Extend the PipelineTask
 public class ReadTask extends PipelineTask {
@@ -59,7 +59,7 @@ public ReadTask() {
    }
 }
 }}}
- # !TransformTask
+==== 2. TransformTask====
 {{{
 public class TransformTask extends PipelineTask {
 
@@ -113,7 +113,7 @@ public class TransformTask extends PipelineTask {
    }
 }
 }}}
- # WriteTask
+==== 3. WriteTask====
 {{{
 public class WriteTask extends PipelineTask {
 
