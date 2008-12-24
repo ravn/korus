@@ -8,8 +8,8 @@ Pipeline allows you to model your sequential independent task parallely. For exa
 Pipelining is very useful when the output of one task serves as an input to the succeeding task. Lets, understand this with help of an example. Suppose, we want to:
 
  # Read a file form the disk.
- # Transform the data in the file (Say, convert all the characters to uppercase).
- # Write the file back to the disk .
+ ## Transform the data in the file (Say, convert all the characters to uppercase).
+ ## Write the file back to the disk .
 
 In normal circumstances this will be performed sequentially. Lets understand this better with the help of a graphics.
 
