@@ -1,21 +1,39 @@
 ==Performance Benchmark of Korus==
 
-===1. Parallel Factorial Program===
-Java code to calculate factorial of a large number (10000!). Compared the serial as well as parallel version.
+===1. Factorial Program===
+Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
-Testing Parallel For Construct Performance on Azul Machine
+====1.1 Testing Parallel For Construct Performance on Dual Core Machine====
 
-*Parallel Factorial(of 40000)*
+=====1.1.1 Program to Calculate Factorial Program using Serial Single Thread Execution=====
 
-||S.No.||Grain Size||Time in milliseconds||
-||1.||40000||39380||
-||2.||20000||13540||	
-||3.||10000||6590|| 
-||4.||8000||5826||
-||5.||5000||5024||
-||6.||4000||7717||
-||7.||2500||7694|| 
-||8.||2000||7535||
+||S.No.||No. of Threads||Time in milliseconds||
+||1.||1||10316||
+
+=====1.1.2 Program to Calculate Parallel Factorial Program using Korus Library=====
+
+||S.No.||Grain Size||No. of Threads||Time in milliseconds||
+||1.||40000||1||10300||
+||2.||20000||2||4532||
+
+====1.2 Testing Parallel For Construct Performance on Azul Machine====
+
+=====1.2.1 Program to Calculate Factorial Program using Serial Single Thread Execution=====
+
+||S.No.||No. of Threads||Time in milliseconds||
+||1.||1||39380||
+
+=====1.2.2 Program to Calculate Parallel Factorial Program using Korus Library=====
+
+||S.No.||Grain Size||No. of Threads||Time in milliseconds||
+||1.||40000||1||39380||
+||2.||20000||2||13540||	
+||3.||10000||4||6590|| 
+||4.||8000||5||5826||
+||5.||5000||8||5024||
+||6.||4000||10||7717||
+||7.||2500||16||7694|| 
+||8.||2000||20||7535||
 
 ----
 
