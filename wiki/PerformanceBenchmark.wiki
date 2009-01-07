@@ -1,29 +1,29 @@
-==Performance Benchmark of Korus==
+=Performance Benchmark of Korus=
 
-===1. Factorial Program===
+==1. Factorial Program==
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
-====1.1 Testing Parallel For Construct Performance on Dual Core Machine====
+===1.1 Testing Parallel For Construct Performance on Dual Core Machine===
 
-=====1.1.1 Program to Calculate Factorial Program using Serial Single Thread Execution=====
+====1.1.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
 
 ||S.No.||No. of Threads||Time in milliseconds||
 ||1.||1||10316||
 
-=====1.1.2 Program to Calculate Parallel Factorial Program using Korus Library=====
+====1.1.2 Program to Calculate Parallel Factorial Program using Korus Library====
 
 ||S.No.||Grain Size||No. of Threads||Time in milliseconds||
 ||1.||40000||1||10300||
 ||2.||20000||2||4532||
 
-====1.2 Testing Parallel For Construct Performance on Azul Machine====
+===1.2 Testing Parallel For Construct Performance on Azul Machine===
 
-=====1.2.1 Program to Calculate Factorial Program using Serial Single Thread Execution=====
+====1.2.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
 
 ||S.No.||No. of Threads||Time in milliseconds||
 ||1.||1||39380||
 
-=====1.2.2 Program to Calculate Parallel Factorial Program using Korus Library=====
+====1.2.2 Program to Calculate Parallel Factorial Program using Korus Library====
 
 ||S.No.||Grain Size||No. of Threads||Time in milliseconds||
 ||1.||40000||1||39380||
@@ -37,7 +37,7 @@ Java code to calculate factorial of a large number (40000!). Compared the serial
 
 ----
 
-===2. Area Under Curve===
+==2. Area Under Curve==
 
 The trapezoidal rule is a numerical integration method to be used to approximate the integral or the area under a curve. This is often useful when an exact integral does not exist, can not easily be obtained, or is mathematically too time consuming for repetitious automated calculations.
 
@@ -50,28 +50,28 @@ Consider the function f(x). We want to calculate the area under the curve over t
          a
 }}}
 
-====2.1 Results on Dual Core====
+===2.1 Results on Dual Core===
 
-=====2.1.1 Program to Calculate Area under Curve using Serial Single Thread Execution=====
+====2.1.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||1407||
 
-=====2.1.2 Program to Calculate Area under Curve using Korus Library=====
+====2.1.2 Program to Calculate Area under Curve using Korus Library====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||1407||
 ||2.||2||766||
 
 
-====2.2 Results on Azul Machine====
+===2.2 Results on Azul Machine===
 
-=====2.2.1 Program to Calculate Area under Curve using Serial Single Thread Execution=====
+====2.2.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||18571||
 
-=====2.2.2 Program to Calculate Area under Curve using Korus Library=====
+====2.2.2 Program to Calculate Area under Curve using Korus Library====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||16492||
@@ -86,7 +86,7 @@ Consider the function f(x). We want to calculate the area under the curve over t
 
 ----
 
-===3. Spearman's rank correlation coefficient===
+==3. Spearman's rank correlation coefficient==
 
 Spearman's rank correlation coefficient measure of the strength of the associations between two variables, without making any assumptions about the frequency distribution of the variables.
 
@@ -102,28 +102,28 @@ where:
 
     n = the number of values in each data set (same for both sets). 
 
-====3.1 Results on Dual Core====
+===3.1 Results on Dual Core===
 
-===== 3.1.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 1000000) =====
+==== 3.1.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 1000000) ====
 
 || S.No || Number of Threads || Time in milliseconds ||
 ||1.||1||234||
 
-=====3.1.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 1000000)=====
+====3.1.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 1000000)====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||250||
 ||2.||2||171||
 
 
-====3.2 Results on Azul Machine====
+===3.2 Results on Azul Machine===
 
-=====3.2.1 Program to Calculate Area under Curve using Serial Single Thread Execution=====
+====3.2.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||892||
 
-=====3.2.2 Program to Calculate Area under Curve using Korus Library=====
+====3.2.2 Program to Calculate Area under Curve using Korus Library====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||1067||
@@ -139,7 +139,7 @@ where:
 ----
 
 
-===4. Parallel Text Transformer Program===
+==4. Parallel Text Transformer Program==
 
 This involved writing an application which reads a Text file, transforms and writes it into another file. A serial as well as a parallel version were written. The parallel version utilized 3 cores for each of the reading, transforming and writing tasks. The parallel version was written using Korus.
 
