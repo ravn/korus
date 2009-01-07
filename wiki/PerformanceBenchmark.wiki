@@ -118,12 +118,12 @@ where:
 
 ===3.2 Results on Azul Machine===
 
-====3.2.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
+====3.2.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 1000000)====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||892||
 
-====3.2.2 Program to Calculate Area under Curve using Korus Library====
+====3.2.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 1000000)====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||1067||
