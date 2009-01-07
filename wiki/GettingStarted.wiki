@@ -14,7 +14,7 @@ The binary distribution of  consists of the following directory layout:
    |
    +--- Product // contains API Files
    |      |
-   |      +--- octopus
+   |      +--- korus
    |              |
    |              +--- bin        // Compiled Code
    |              +--- build      // Build Scripts
