@@ -3,7 +3,7 @@
 ==1. Factorial Program==
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
-===1.1 Testing Parallel For Construct Performance on Dual Core Machine===
+===1.1 Testing ParallelFor Construct Performance on Dual Core Machine===
 
 ====1.1.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
 
@@ -16,7 +16,7 @@ Java code to calculate factorial of a large number (40000!). Compared the serial
 ||1.||40000||1||10300||
 ||2.||20000||2||4532||
 
-===1.2 Testing Parallel For Construct Performance on Azul Machine===
+===1.2 Testing ParallelFor Construct Performance on Azul Machine===
 
 ====1.2.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
 
