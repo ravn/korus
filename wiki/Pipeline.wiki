@@ -1,7 +1,7 @@
 Describes the usage and functionality of Pipeline construct
 
 == Introduction ==
-Pipeline allows you to model your sequential independent task parallely. For example, a file transformation job can be modeled as 3 tasks of reading ,transforming and writing the file. The tasks communicate to each other via one-way intermediate queues.
+Pipeline allows you to model your sequential independent task parallely. For example, a file transformation job can be modeled as 3 tasks of reading, transforming and writing the file. The tasks communicate to each other via one-way intermediate queues.
 
 == Example : FileTransformationPipeline ==
 
