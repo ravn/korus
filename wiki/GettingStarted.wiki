@@ -118,7 +118,7 @@ Compile it using the java compile commands and you can start using it in your Pr
 
 == 2. Using Korus ==
 
-=== 2.1 Parallel For Concepts ===
+=== 2.1 ParallelFor Concepts ===
 
 [http://code.google.com/p/korus/wiki/ParallelFor Click Here] for a sample implementation of _ ParallelFor _.
 
