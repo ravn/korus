@@ -15,7 +15,7 @@ In normal circumstances this will be performed sequentially. Lets understand thi
 
 [http://code.google.com/ http://korus.googlecode.com/files/pipeline_seq.JPG]
 
-As we can see that at any given time only one core is utilized properly and rest of the CPUs are idle. The performance of such programs can be substantially improved by using a Parallel Pipeline. The functionality of a Parallel Pipeline is illustrated below.
+As we can see that at any given time only one core is utilized properly and rest of the CPUs are idle. The performance of such programs can be substantially improved by using a Pipeline. The functionality of a Pipeline is illustrated below.
 
 [http://code.google.com/ http://korus.googlecode.com/files/pipeline_parallel.JPG]
 
