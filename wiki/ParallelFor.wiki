@@ -86,6 +86,14 @@ public class ParallelFactorial extends ParallelTask {
 If we add the logic inside the loop and the necessary imports. The code will look like this:
 
 {{{
+import java.math.BigInteger;
+import java.util.Iterator;
+import java.util.List;
+
+import com.impetus.korus.BlockedRange;
+import com.impetus.korus.Parallel;
+import com.impetus.korus.ParallelTask;
+
 public class ParallelFactorial extends ParallelTask {
 
 private static BigInteger finalfact = BigInteger.ONE;
@@ -152,6 +160,8 @@ Object obj = parallel.getResult();
 If we add the logic inside the loop and the necessary imports. The code will look like this:
 
 {{{
+import java.math.BigInteger;
+
 import com.impetus.korus.BlockedRange;
 import com.impetus.korus.Parallel;
 
