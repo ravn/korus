@@ -45,14 +45,14 @@ This program will run sequentially and only a single core will be utilized no ma
 
  # Create a class containing this logic which:
  * extends ParallelTask,
- * overrides a service() and summarize() methods
+ * overrides a execute() and summarize() methods
  * iterate the loop from begin of the range through end of the range and set the result
 
 {{{
 public class ParallelFactorial extends ParallelTask {
 
-   // implement a service method
-   public void service() 
+   // implement a execute method
+   public void execute() 
    {
       // iterate the loop from begin to end over a given range 
       for (int i = this.getRange().getBegin(); i <= this.getRange().getEnd(); i++) 
@@ -63,7 +63,7 @@ public class ParallelFactorial extends ParallelTask {
 
       // set the intermediate result in a variable to be returned 
       // for each iteration
-      this.setResult(fact);
+      parallel.setResult(this,fact);
    }
 
    // implement a summarize method.
@@ -88,16 +88,15 @@ If we add the logic inside the loop and the necessary imports. The code will loo
 {{{
 public class ParallelFactorial extends ParallelTask {
 
-
 private static BigInteger finalfact = BigInteger.ONE;
    // implement a constructor.
-   public ParallelFactorial(BlockedRange range)
-   {
-      super(range);
-   }
+  public ParallelFactorial(Parallel parallel, BlockedRange range)
+  {
+		super(parallel, range);
+  }
 
-   // implement a service method
-   public void service() 
+   // implement a execute method
+   public void execute() 
    {
       // Set the fact variable to 1 initially.
       BigInteger fact =  BigInteger.ONE;
@@ -111,7 +110,7 @@ private static BigInteger finalfact = BigInteger.ONE;
 
       // set the intermediate result in a variable to be returned 
       // for each iteration
-      this.setResult(fact); 
+      parallel.setResult(this,fact); 
    }
 
    // implement a summarize method.
@@ -141,17 +140,20 @@ Parallel parallel = new Parallel();
 BlockedRange range= new BlockedRange(1,10000,1250);
 
 // Create an object of a class extending ParallelTask Class
-ParallelFactorial pf = new ParallelFactorial(range);
+ParallelFactorial pf = new ParallelFactorial(parallel,range);
 
 // pass the object to the parallelFor construct
-Object obj = parallel.parallelFor(pf);
+parallel.parallelFor(pf);
+
+// get the final result
+Object obj = parallel.getResult();
 }}}
 
 If we add the logic inside the loop and the necessary imports. The code will look like this:
 
 {{{
-import com.impetus.octopus.BlockedRange;
-import com.impetus.octopus.Parallel;
+import com.impetus.korus.BlockedRange;
+import com.impetus.korus.Parallel;
 
 public class ParallelFactorialTest 
 {
@@ -166,13 +168,14 @@ public class ParallelFactorialTest
       BlockedRange range= new BlockedRange(1,10000,1250);
 
       // Create an object of a class extending ParallelTask Class
-      ParallelFactorial pf = new ParallelFactorial(range);
+      ParallelFactorial pf = new ParallelFactorial(parallel,range);
 
       try
       {
-
          // pass the object to the parallelFor construct
-         Object obj = parallel.parallelFor(pf);
+         parallel.parallelFor(pf);
+         // get the final result
+         Object obj = parallel.getResult();
       }
       catch (CloneNotSupportedException e)
       {
