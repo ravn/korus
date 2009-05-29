@@ -164,8 +164,22 @@ public class WriteTask extends LastPipelineTask {
          }
       }
       // to end the execution of pipeline.
-      summarize(this.getOutputQueue());
+      summarize();
    }
+
+    // Overide the service method present in LastPipelineTask
+    @Override
+    public void summarize()
+    {
+        try 
+        {
+	   this.getOutputQueue().put("Result");
+	}
+        catch (InterruptedException e) 
+        {
+	   e.printStackTrace();
+	}
+    }
 }
 }}}
 
