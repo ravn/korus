@@ -119,7 +119,7 @@ public class WriteTask extends PipelineTask {
 
 	public static final String END_OF_TASK = "~_~END_OF_Line~_~";
 
-	// No argument constructor of the WriteTask
+	// constructor of the WriteTask with Message
 	public WriteTask(Message msg) {
 
 	}
@@ -137,10 +137,10 @@ public class WriteTask extends PipelineTask {
 
 			// output file
 			out = new BufferedWriter(new FileWriter("C:\\writeFile.txt"));
-
+                        // get data from the queue.
 			String str = (String) inputQ.take();
 			do {
-
+                               //write the data to file.
 				out.write(str + "\r" + "\n");
 				str = (String) inputQ.take();
 			} while (str != END_OF_TASK);
