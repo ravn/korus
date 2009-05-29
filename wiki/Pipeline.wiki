@@ -37,7 +37,7 @@ public class ReadTask extends PipelineTask {
    }
 
    // Overide the service method present in PipelineTask
-   public void service() 
+   public void service(Message message) 
    {
       // Point the file to be read 
       File f = new File("c:/testFile.txt");
@@ -79,7 +79,7 @@ public class TransformTask extends PipelineTask {
    }
    
    // Overide the service method present in PipelineTask
-   public void service() 
+   public void service(Message message) 
    {
       // This task has both a preceding task and a succeeding task hence
       // it will have an inputQueue as well as an outputQueue. InputQueue
@@ -125,7 +125,7 @@ public class WriteTask extends PipelineTask {
 	}
 
 	// Overide the service method present in PipelineTask
-	public void service() {
+	public void service(Message message) {
 
 		// get the input and output Queues
 		KorusQueue<Object> inputQ = this.getInputQueue();
