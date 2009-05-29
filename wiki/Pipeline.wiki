@@ -115,71 +115,51 @@ public class TransformTask extends PipelineTask {
 }}}
 ==== 3. WriteTask====
 {{{
-public class WriteTask extends LastPipelineTask {
+public class WriteTask extends PipelineTask {
 
-   // Used to specify the end condition of execution
-   public static final String END_OF_TASK = "~_~END_OF_Line~_~";
+	public static final String END_OF_TASK = "~_~END_OF_Line~_~";
 
-   // constructor of the WriteTask with Message 
-   public WriteTask(Message message) 
-   {
-   }
-   
-   // Overide the service method present in PipelineTask
-   public void service() 
-   {
-      // Since this is the last Task to be executed, it will just have
-      // one inputQueue and no outputQueue.
-      KorusQueue<Object> inputQ = this.getInputQueue();
-      BufferedWriter out = null;
-      try 
-      {
-         // output file
-         out = new BufferedWriter(new FileWriter("C:\\writeFile.txt"));
-         // read data from the Queue
-         String str = (String)inputQ.take();
-	
-	do{
-              // write it using the BufferedWriter
-              out.write(str + "\r" + "\n");
-              // read data from the Queue again
-	      str = (String)inputQ.take();
-          }while(str!= END_OF_TASK );
-         
-            
-      } 
-      catch (Exception e) 
-      {
-         e.printStackTrace();
-      } 
-      finally 
-      {
-         try 
-         {
-            out.close();
-         } 
-         catch (IOException e) 
-         {
-            e.printStackTrace();
-         }
-      }
-      // to end the execution of pipeline.
-      summarize();
-   }
+	// No argument constructor of the WriteTask
+	public WriteTask(Message msg) {
 
-    // Overide the service method present in LastPipelineTask
-    @Override
-    public void summarize()
-    {
-        try 
-        {
-	   this.getOutputQueue().put("Result");
 	}
-        catch (InterruptedException e) 
-        {
-	   e.printStackTrace();
+
+	// Overide the service method present in PipelineTask
+	public void service(Message msg) {
+
+		// get the input and output Queues
+		KorusQueue<Object> inputQ = this.getInputQueue();
+		KorusQueue<Object> outputQ = this.getOutputQueue();
+
+		BufferedWriter out = null;
+
+		try {
+
+			// output file
+			out = new BufferedWriter(new FileWriter("C:\\writeFile.txt"));
+
+			String str = (String) inputQ.take();
+			do {
+
+				out.write(str + "\r" + "\n");
+				str = (String) inputQ.take();
+			} while (str != END_OF_TASK);
+
+			// Put the End Result in the Queue (if Any)
+			outputQ.put("Execution Result");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
-    }
+
 }
 }}}
 
