@@ -92,6 +92,14 @@ public class ParallelFactorial extends ParallelTask {
 If we add the logic inside the loop and the necessary imports. The code will look like this:
 
 {{{
+import java.math.BigInteger;
+import java.util.Iterator;
+import java.util.List;
+
+import com.impetus.korus.BlockedRange;
+import com.impetus.korus.Parallel;
+import com.impetus.korus.ParallelTask;
+
 public class ParallelFactorial extends ParallelTask
 {
 	private static BigInteger finalfact = BigInteger.ONE;
@@ -144,7 +152,7 @@ Parallel parallel = new Parallel();
 BlockedRange range= new BlockedRange(1,10000,1250);
 
 // Create an object of a class extending ParallelTask Class
-ParallelFactorial pf = new ParallelFactorial(range);
+ParallelFactorial af = new ParallelFactorial(parallel, range);   
 
 // pass the object to the parallelFor construct
 Object obj = parallel.parallelFor(pf);
@@ -169,22 +177,11 @@ public class ParallelFactorialTest
       BlockedRange range= new BlockedRange(1,10000,1250);
 
       // Create an object of a class extending ParallelTask Class
-      ParallelFactorial pf = new ParallelFactorial(range);
+     ParallelFactorial af = new ParallelFactorial(parallel, range);
 
-      try
-      {
-
-         // pass the object to the parallelFor construct
-         Object obj = parallel.parallelFor(pf);
-      }
-      catch (CloneNotSupportedException e)
-      {
-         e.printStackTrace();
-      }
-      catch (Exception e)
-      {
-         e.printStackTrace();
-      } 
+     // pass the object to the parallelFor construct
+     Object obj = parallel.parallelFor(pf);
+     
    }
 } 
 }}}
