@@ -28,9 +28,14 @@ For achieving the above functionality, we need to define three Tasks extending !
 // Extend the PipelineTask
 public class ReadTask extends PipelineTask {
 
-// No argument constructor of the ReadTask
-public ReadTask() {
-}
+   // Used to specify the end condition of execution
+   public static final String END_OF_TASK = "~_~END_OF_Line~_~";
+
+   // constructor of the ReadTask with Messgage
+   public ReadTask(Message message) 
+   {
+   }
+
    // Overide the service method present in PipelineTask
    public void service() 
    {
@@ -39,7 +44,7 @@ public ReadTask() {
      
       // Since this is the first Task to be executed, it will just have
       // one outputQueue and no inputQueue.
-      OctopusQueue<Object> outputQ = this.getOutputQueue();
+      KorusQueue<Object> outputQ = this.getOutputQueue();
       try 
       {
          BufferedReader reader = new BufferedReader(new FileReader(f));
@@ -49,6 +54,8 @@ public ReadTask() {
             // read lines and add it to the Queue
             outputQ.add(line);
          }
+         // to specify end condition of the execution.
+         outputQ.add(END_OF_TASK);
       } catch (FileNotFoundException e) 
       {
          e.printStackTrace();
@@ -63,8 +70,11 @@ public ReadTask() {
 {{{
 public class TransformTask extends PipelineTask {
 
-   // No argument constructor of the TransformTask 
-   public TransformTask() 
+   // Used to specify the end condition of execution
+   public static final String END_OF_TASK = "~_~END_OF_Line~_~";
+
+   // constructor of the TransformTask with Message
+   public TransformTask(Message message) 
    {
    }
    
@@ -75,50 +85,43 @@ public class TransformTask extends PipelineTask {
       // it will have an inputQueue as well as an outputQueue. InputQueue
       // of this task is outPutQueue of the preceding task and outputQueue
       // of this task is the inputQueue for the succeeding
-      OctopusQueue<Object> inputQ = this.getInputQueue();
-      OctopusQueue<Object> outputQ = this.getOutputQueue();
+      KorusQueue<Object> inputQ = this.getInputQueue();
+      KorusQueue<Object> outputQ = this.getOutputQueue();
       
       try 
       {
-         // the previous task should be started
-         this.getPreviousTask().hasStarted();
-         
-         // Condition 1: input queue is not empty 
-         while (inputQ.isEmpty() == false) 
+         // remove the element from the Queue
+         String str = (String)inputQ.take();
+         do(inputQ.isEmpty() == false) 
          {
-            // remove the element from the Queue
-            String str = (String) inputQ.remove();
-            // Do the transformation
-            str = str.toUpperCase();
-            // Put it back in the outputQueue
-            outputQ.put(str);
-         }
+           // Do the transformation
+           str = str.toUpperCase();				
+           // Put it back in the outputQueue
+           outputQ.put(str);
+           // remove the element from the Queue again
+           str = (String)inputQ.take();
+          
+         }while(str!=END_OF_TASK)
          
-         // Condition 2: previous task should not be over
-         while (this.getPreviousTask().isDone() == false
-                                || inputQ.isEmpty() == false) 
-         {
-            if (inputQ.isEmpty() == false) 
-            {
-               String str = (String) inputQ.take();
-               str = str.toUpperCase();
-               outputQ.put(str);
-            }
-         }
       } 
       catch (Exception e) 
       {
          e.printStackTrace();
       }
+      // to specify end condition of the execution.
+      outputQ.add(END_OF_TASK);
    }
 }
 }}}
 ==== 3. WriteTask====
 {{{
-public class WriteTask extends PipelineTask {
+public class WriteTask extends PipelineLastTask {
 
-   // No argument constructor of the WriteTask 
-   public WriteTask() 
+   // Used to specify the end condition of execution
+   public static final String END_OF_TASK = "~_~END_OF_Line~_~";
+
+   // constructor of the WriteTask with Message 
+   public WriteTask(Message message) 
    {
    }
    
@@ -127,36 +130,23 @@ public class WriteTask extends PipelineTask {
    {
       // Since this is the last Task to be executed, it will just have
       // one inputQueue and no outputQueue.
-      OctopusQueue<Object> inputQ = this.getInputQueue();
+      KorusQueue<Object> inputQ = this.getInputQueue();
       BufferedWriter out = null;
       try 
       {
          // output file
          out = new BufferedWriter(new FileWriter("C:\\writeFile.txt"));
-         // the previous task should be started
-         this.getPreviousTask().hasStarted();
+         // read data from the Queue
+         String str = (String)inputQ.take();
+	
+	do{
+              // write it using the BufferedWriter
+              out.write(str + "\r" + "\n");
+              // read data from the Queue again
+	      str = (String)inputQ.take();
+          }while(str!= END_OF_TASK );
          
-         // Condition 1: input queue is not empty
-         while (inputQ.isEmpty() == false) 
-         {
-            // read date from the Queue
-            String str = (String) inputQ.remove();
-            // write it using the BufferedWriter
-            out.write(str + "\r" + "\n");
-         }
-         // Condition 2: previous task should not be over
-         while (this.getPreviousTask().isDone() == false
-                              || inputQ.isEmpty() == false) 
-         {
-            String str = null;
-            if (inputQ.isEmpty() == false) 
-            {
-               // read date from the Queue
-               str = (String) inputQ.remove();
-               // write it using the BufferedWriter
-               out.write(str + "\r" + "\n");
-            }
-         }
+            
       } 
       catch (Exception e) 
       {
@@ -173,6 +163,8 @@ public class WriteTask extends PipelineTask {
             e.printStackTrace();
          }
       }
+      // to end the execution of pipeline.
+      summarize(this.getOutputQueue());
    }
 }
 }}}
@@ -183,10 +175,13 @@ And finally invoke these Tasks one by one:
 // Create a Pipeline
 Pipeline pipeline = new Pipeline("Pipeline Test");
 
+Message message = new Message();
+message.put("pipelinetask", "pipelinetask");
+
 // Create objects Tasks which extend PipelineTasks
-ReadTask readTask = new ReadTask();
-TransformTask transformTask = new TransformTask();
-WriteTask writeTask = new WriteTask();
+ReadTask readTask = new ReadTask(message);
+TransformTask transformTask = new TransformTask(message);
+WriteTask writeTask = new WriteTask(message);
 
 // Add these tasks to the pipeline
 pipeline.add(readTask);
@@ -200,7 +195,7 @@ pipeline.join(transformTask, writeTask);
 // Execute the Pipeline
 pipeline.execute();
 
-// Clean up the Pipeline
-pipeline.cleanup(); 
+// To wait till execution lasts.
+pipeline.getResult();
 
 }}}
