@@ -51,7 +51,7 @@ This program will run sequentially and only a single core will be utilized no ma
 
 {{{
 public class ParallelFactorial extends ParallelTask {
-   //
+   // implement the constructor.
    public ParallelFactorial(Parallel parallel, BlockedRange range)
 	{
 		super(parallel, range);
@@ -69,7 +69,7 @@ public class ParallelFactorial extends ParallelTask {
 
       // set the intermediate result in a variable to be returned 
       // for each iteration
-      parallel.setResult(fact);
+      parallel.setResult(this,fact);
    }
 
    // implement a summarize method.
@@ -109,7 +109,7 @@ public class ParallelFactorial extends ParallelTask
 		super(parallel, range);
 	}
 
-	
+	// implement a service method.
 	@Override
 	public void service(BlockedRange range)
 	{
@@ -125,7 +125,7 @@ public class ParallelFactorial extends ParallelTask
 
 	}
 	
-	// Implement a summarize method.
+	// implement a summarize method.
 	@Override
 	public Object summarize(List<Object> intermediateResults)
 	{
@@ -152,10 +152,13 @@ Parallel parallel = new Parallel();
 BlockedRange range= new BlockedRange(1,10000,1250);
 
 // Create an object of a class extending ParallelTask Class
-ParallelFactorial af = new ParallelFactorial(parallel, range);   
+ParallelFactorial pf = new ParallelFactorial(parallel, range);   
 
 // pass the object to the parallelFor construct
-Object obj = parallel.parallelFor(pf);
+parallel.parallelFor(pf);
+
+//Get the finalResult of execution
+Object obj = parallel.getResult();
 }}}
 
 If we add the logic inside the loop and the necessary imports. The code will look like this:
@@ -177,10 +180,13 @@ public class ParallelFactorialTest
       BlockedRange range= new BlockedRange(1,10000,1250);
 
       // Create an object of a class extending ParallelTask Class
-     ParallelFactorial af = new ParallelFactorial(parallel, range);
+     ParallelFactorial pf = new ParallelFactorial(parallel, range);
 
      // pass the object to the parallelFor construct
-     Object obj = parallel.parallelFor(pf);
+     parallel.parallelFor(pf);
+     
+     //Get the finalResult of execution
+     Object obj = parallel.getResult();
      
    }
 } 
