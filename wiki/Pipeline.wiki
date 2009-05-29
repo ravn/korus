@@ -115,7 +115,7 @@ public class TransformTask extends PipelineTask {
 }}}
 ==== 3. WriteTask====
 {{{
-public class WriteTask extends PipelineLastTask {
+public class WriteTask extends LastPipelineTask {
 
    // Used to specify the end condition of execution
    public static final String END_OF_TASK = "~_~END_OF_Line~_~";
