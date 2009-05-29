@@ -120,12 +120,12 @@ public class WriteTask extends PipelineTask {
 	public static final String END_OF_TASK = "~_~END_OF_Line~_~";
 
 	// constructor of the WriteTask with Message
-	public WriteTask(Message msg) {
+	public WriteTask(Message messsage) {
 
 	}
 
 	// Overide the service method present in PipelineTask
-	public void service(Message msg) {
+	public void service() {
 
 		// get the input and output Queues
 		KorusQueue<Object> inputQ = this.getInputQueue();
