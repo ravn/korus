@@ -36,7 +36,7 @@ public class ReadTask extends PipelineTask {
    {
    }
 
-   // Overide the service method present in PipelineTask
+   // Override the service method present in PipelineTask
    public void service(Message message) 
    {
       // Point the file to be read 
@@ -78,7 +78,7 @@ public class TransformTask extends PipelineTask {
    {
    }
    
-   // Overide the service method present in PipelineTask
+   // Override the service method present in PipelineTask
    public void service(Message message) 
    {
       // This task has both a preceding task and a succeeding task hence
@@ -124,7 +124,7 @@ public class WriteTask extends PipelineTask {
 
 	}
 
-	// Overide the service method present in PipelineTask
+	// Override the service method present in PipelineTask
 	public void service(Message message) {
 
 		// get the input and output Queues
