@@ -92,7 +92,7 @@ public class TransformTask extends PipelineTask {
       {
          // remove the element from the Queue
          String str = (String)inputQ.take();
-         do(inputQ.isEmpty() == false) 
+         do
          {
            // Do the transformation
            str = str.toUpperCase();				
