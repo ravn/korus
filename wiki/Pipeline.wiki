@@ -169,6 +169,7 @@ And finally invoke these Tasks one by one:
 // Create a Pipeline
 Pipeline pipeline = new Pipeline("Pipeline Test");
 
+// Message put to prevent from the null check in executer
 Message message = new Message();
 message.put("pipelinetask", "pipelinetask");
 
@@ -178,9 +179,9 @@ TransformTask transformTask = new TransformTask(message);
 WriteTask writeTask = new WriteTask(message);
 
 // Add these tasks to the pipeline
-pipeline.add(readTask);
-pipeline.add(transformTask);
-pipeline.add(writeTask);
+pipeline.add("readTask", readTask);
+pipeline.add("transformTask", transformTask);
+pipeline.add("writeTask", writeTask);
 
 // Join these tasks in order to know the order of execution of the tasks
 pipeline.join(readTask, transformTask);
@@ -189,7 +190,7 @@ pipeline.join(transformTask, writeTask);
 // Execute the Pipeline
 pipeline.execute();
 
-// To wait till execution lasts.
+// To wait till execution lasts. Skip this line if you do not want to wait for the execution of pipeline to finish.
 pipeline.getResult();
 
 }}}
