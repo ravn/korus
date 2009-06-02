@@ -8,32 +8,35 @@ Java code to calculate factorial of a large number (40000!). Compared the serial
 ====1.1.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
 
 ||S.No.||No. of Threads||Time in milliseconds||
-||1.||1||10316||
+||1.||1||13050||
 
 ====1.1.2 Program to Calculate Parallel Factorial Program using Korus Library====
 
-||S.No.||Grain Size||No. of Threads||Time in milliseconds||
-||1.||40000||1||10300||
-||2.||20000||2||4532||
+||S.No.||Grain Size||No. of Processes||Time in milliseconds||
+||1.||40000||1||13019||
+||2.||20000||2||7690||
+||3.||10000||4||5126||
+||4.||5000||8||4059||
+||5.||2500||16||3626||
+||6.||1000||40||3423||
 
-===1.2 Testing ParallelFor Construct Performance on Azul Machine===
+===1.2 Testing ParallelFor Construct Performance on QuadCore Machine===
 
 ====1.2.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
 
 ||S.No.||No. of Threads||Time in milliseconds||
-||1.||1||39380||
+||1.||1||8688||
 
 ====1.2.2 Program to Calculate Parallel Factorial Program using Korus Library====
 
-||S.No.||Grain Size||No. of Threads||Time in milliseconds||
-||1.||40000||1||39380||
-||2.||20000||2||13540||	
-||3.||10000||4||6590|| 
-||4.||8000||5||5826||
-||5.||5000||8||5024||
-||6.||4000||10||7717||
-||7.||2500||16||7694|| 
-||8.||2000||20||7535||
+||S.No.||Grain Size||No. of Processes||Time in milliseconds||
+||1.||40000||1||8688||
+||2.||20000||2||4765||	
+||3.||10000||4||3101|| 
+||4.||5000||8||2797||
+||5.||2500||16||2578||
+||6.||1000||40||2516|| 
+
 
 ----
 
@@ -55,34 +58,33 @@ Consider the function f(x). We want to calculate the area under the curve over t
 ====2.1.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
 
 ||S.No||Number of Threads|| Time in milliseconds||
-||1.||1||1407||
+||1.||1||17323||
 
 ====2.1.2 Program to Calculate Area under Curve using Korus Library====
 
-||S.No||Number of Threads|| Time in milliseconds||
-||1.||1||1407||
-||2.||2||766||
+||S.No||Number of Processes|| Time in milliseconds||
+||1.||1||17363||
+||2.||2||8870||
+||3.||4||8074||
+||4.||8||7861||
+||5.||16||7736||
 
 
-===2.2 Results on Azul Machine===
+===2.2 Results on QuadCore Machine===
 
 ====2.2.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
 
 ||S.No||Number of Threads|| Time in milliseconds||
-||1.||1||18571||
+||1.||1||26735||
 
 ====2.2.2 Program to Calculate Area under Curve using Korus Library====
 
-||S.No||Number of Threads|| Time in milliseconds||
-||1.||1||16492||
-||2.||2||8370||
-||3.||4||4310||
-||4.||8||2262||
-||5.||16||1259||
-||6.||20||1050^*^||
-||7.||24||1533||
-
-^*^ Optimized Performance
+||S.No||Number of Processes|| Time in milliseconds||
+||1.||1||26728||
+||2.||2||13562||
+||3.||4||7266||
+||4.||8||7172||
+||5.||16||7125||
 
 ----
 
@@ -118,12 +120,12 @@ where:
 
 ===3.2 Results on Azul Machine===
 
-====3.2.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 1000000)====
+====3.2.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 10000000)====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||892||
 
-====3.2.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 1000000)====
+====3.2.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 10000000)====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||1067||
