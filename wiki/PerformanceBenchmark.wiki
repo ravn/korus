@@ -106,37 +106,34 @@ where:
 
 ===3.1 Results on Dual Core===
 
-==== 3.1.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 1000000) ====
+==== 3.1.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 10000000) ====
 
 || S.No || Number of Threads || Time in milliseconds ||
-||1.||1||234||
+||1.||1||2982||
 
-====3.1.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 1000000)====
+====3.1.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 10000000)====
 
-||S.No||Number of Threads|| Time in milliseconds||
-||1.||1||250||
-||2.||2||171||
+||S.No||Number of Processes|| Time in milliseconds||
+||1.||1||2985||
+||2.||2||1626||
+||2.||4||1579||
 
 
-===3.2 Results on Azul Machine===
+===3.2 Results on QuadCore Machine===
 
 ====3.2.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 10000000)====
 
 ||S.No||Number of Threads|| Time in milliseconds||
-||1.||1||892||
+||1.||1||2593||
 
 ====3.2.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 10000000)====
 
-||S.No||Number of Threads|| Time in milliseconds||
-||1.||1||1067||
-||2.||2||659||
-||3.||4||463||
-||4.||8||357||
-||5.||16||313||
-||6.||20||307^*^||
-||7.||24||310||
+||S.No||Number of Processes|| Time in milliseconds||
+||1.||1||2446||
+||2.||2||1341||
+||3.||4||798||
 
-^*^ Optimized Performance
+
 
 ----
 
