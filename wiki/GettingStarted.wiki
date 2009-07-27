@@ -94,7 +94,7 @@ Go to the Korus --> Product --> korus Folder
 {{{
  $ cd build
  $ ./ant.sh clean
- $ ./ant.sh recompile
+ $ ./ant.sh compile
  $ ./ant.sh jar
 }}}
 
