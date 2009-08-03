@@ -39,7 +39,7 @@ public class ReadTask extends PipelineTask {
      
       // Since this is the first Task to be executed, it will just have
       // one outputQueue and no inputQueue.
-      KorusQueue<Object> outputQ = this.getOutputQueue();
+      PipelineQueue<Object> outputQ = this.getOutputQueue();
       try 
       {
          BufferedReader reader = new BufferedReader(new FileReader(f));
@@ -75,8 +75,8 @@ public class TransformTask extends PipelineTask {
       // it will have an inputQueue as well as an outputQueue. InputQueue
       // of this task is outPutQueue of the preceding task and outputQueue
       // of this task is the inputQueue for the succeeding
-      KorusQueue<Object> inputQ = this.getInputQueue();
-      KorusQueue<Object> outputQ = this.getOutputQueue();
+      PipelineQueue<Object> inputQ = this.getInputQueue();
+      PipelineQueue<Object> outputQ = this.getOutputQueue();
       
       try 
       {
@@ -113,8 +113,8 @@ public class WriteTask extends PipelineTask {
 	public void service(Message message) {
 
 		// get the input and output Queues
-		KorusQueue<Object> inputQ = this.getInputQueue();
-		KorusQueue<Object> outputQ = this.getOutputQueue();
+		PipelineQueue<Object> inputQ = this.getInputQueue();
+		PipelineQueue<Object> outputQ = this.getOutputQueue();
 
 		BufferedWriter out = null;
 
