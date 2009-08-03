@@ -78,7 +78,7 @@ For only using the compiled classes you need to :
  > ant compile
 }}}
 
-This will compile the Java classes and into the Korus --> Product --> korus --> classes Folder.
+This will compile the Java classes and into the Korus --> Product --> korus --> bin Folder.
 
 For compiling test classes.
 
@@ -88,6 +88,9 @@ For compiling test classes.
 }}}
 
 Compile it using the java compile commands and you can start using it in your Project.
+
+Or else you can also use java command-line options
+*Example:* java -classpath C:\korus0.1\Test\bin;C:\korus0\Product\korus\jar\korus.jar com.impetus.labs.korus.test.pipeline.PipelineTest
 
 ==== 1.3.2 Unix ====
 
@@ -112,7 +115,7 @@ For only using the compiled classes you need to :
  $ ./ant.sh compile
 }}}
 
-This will compile the Java classes and into the Korus --> Product --> korus --> classes Folder.
+This will compile the Java classes and into the Korus --> Product --> korus --> bin Folder.
 
 For compiling test classes.
 
@@ -123,8 +126,9 @@ For compiling test classes.
 
 Compile it using the java compile commands and you can start using it in your Project.
 
-Or else you can also use java comman-line options
-Example: java -cp '/home/user/svn_repo/korus0.1/Test/bin:/home/user/svn_repo/korus0.1/Product/korus/jar/korus.jar' com.impetus.labs.korus.test.pipeline.PipelineTest
+Or else you can also use java command-line options
+*Example:* java -cp '/home/user/svn_repo/korus0.1/Test/bin:/home/user/svn_repo/korus0.1/Product/korus/jar/korus.jar' com.impetus.labs.korus.test.pipeline.PipelineTest
+
 ----
 
 == 2. Configuring Korus ==
