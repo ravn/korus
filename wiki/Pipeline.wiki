@@ -31,16 +31,11 @@ public class ReadTask extends PipelineTask {
    // Used to specify the end condition of execution
    public static final String END_OF_TASK = "~_~END_OF_Line~_~";
 
-   // constructor of the ReadTask with Messgage
-   public ReadTask(Message message) 
-   {
-   }
-
    // Override the service method present in PipelineTask
    public void service(Message message) 
    {
       // Point the file to be read 
-      File f = new File("c:/testFile.txt");
+      File f = new File("../files/testFile.txt");
      
       // Since this is the first Task to be executed, it will just have
       // one outputQueue and no inputQueue.
@@ -72,11 +67,6 @@ public class TransformTask extends PipelineTask {
 
    // Used to specify the end condition of execution
    public static final String END_OF_TASK = "~_~END_OF_Line~_~";
-
-   // constructor of the TransformTask with Message
-   public TransformTask(Message message) 
-   {
-   }
    
    // Override the service method present in PipelineTask
    public void service(Message message) 
@@ -119,11 +109,6 @@ public class WriteTask extends PipelineTask {
 
 	public static final String END_OF_TASK = "~_~END_OF_Line~_~";
 
-	// constructor of the WriteTask with Message
-	public WriteTask(Message messsage) {
-
-	}
-
 	// Override the service method present in PipelineTask
 	public void service(Message message) {
 
@@ -136,7 +121,7 @@ public class WriteTask extends PipelineTask {
 		try {
 
 			// output file
-			out = new BufferedWriter(new FileWriter("C:\\writeFile.txt"));
+		        out = new BufferedWriter(new FileWriter("../files/writeFile.txt"));
                         // get data from the queue.
 			String str = (String) inputQ.take();
 			do {
@@ -169,14 +154,10 @@ And finally invoke these Tasks one by one:
 // Create a Pipeline
 Pipeline pipeline = new Pipeline("Pipeline Test");
 
-// Message put to prevent from the null check in executer
-Message message = new Message();
-message.put("pipelinetask", "pipelinetask");
-
 // Create objects Tasks which extend PipelineTasks
-ReadTask readTask = new ReadTask(message);
-TransformTask transformTask = new TransformTask(message);
-WriteTask writeTask = new WriteTask(message);
+ReadTask readTask = new ReadTask();
+TransformTask transformTask = new TransformTask();
+WriteTask writeTask = new WriteTask();
 
 // Add these tasks to the pipeline
 pipeline.add("readTask", readTask);
