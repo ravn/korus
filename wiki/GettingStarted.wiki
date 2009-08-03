@@ -114,6 +114,13 @@ For only using the compiled classes you need to :
 
 This will compile the Java classes and into the Korus --> Product --> korus --> classes Folder.
 
+For compiling test classes.
+
+{{{
+ > cd build
+ > ant test_compile
+}}}
+
 Compile it using the java compile commands and you can start using it in your Project.
 
 ----
