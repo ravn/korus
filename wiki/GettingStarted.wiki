@@ -123,7 +123,7 @@ Compile it using the java compile commands and you can start using it in your Pr
 *Step 1.* Set the enviorment variable KORUS_HOME pointing to the korus installation directory. 
 Example: KORUS_HOME=Plan/Product/korus
 
-*Step 2.* In the KORUS_HOME/properties edit the config file korus.properties. Change the properties to fine tune the korus runtime as per the system configuration
+*Step 2. (Optional)* In the KORUS_HOME/properties edit the config file korus.properties. Change the properties to fine tune the korus runtime as per the system configuration
 
 *If the properties file is not configured korus runs with default properties.*
 
