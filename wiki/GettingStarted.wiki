@@ -22,6 +22,7 @@ The binary distribution of  consists of the following directory layout:
    |              +--- jar        // Compiled Jar
    |              +--- javadoc    // Java Documentation
    |              +--- src        // Source Files
+   |              +--- properties // Property Files
    |
    +--- Support  // Contains the supporting files
    |      |
@@ -35,6 +36,7 @@ The binary distribution of  consists of the following directory layout:
           +--- lib        // Libraries needed by Test Classes
           +--- report
           +--- src        // Source Files for Test Classes
+          +--- files      // Files needed by the Test Classes
    
 }}}
 
@@ -116,13 +118,22 @@ Compile it using the java compile commands and you can start using it in your Pr
 
 ----
 
-== 2. Using Korus ==
+== 2. Configuring Korus (Optional)==
 
-=== 2.1 ParallelFor Concepts ===
+
+Step 1. Create the directory ../properties w.r.t. the /lib or /bin of the project. When you check out the project, it is by default found at the desired location.
+
+Step 2. Edit the config file properties/korus.properties Change the properties to fine tune the korus runtime as per the system configuration
+
+*If the properties file is not configured korus runs with default properties.*
+
+== 3. Using Korus ==
+
+=== 3.1 ParallelFor Concepts ===
 
 [http://code.google.com/p/korus/wiki/ParallelFor Click Here] for a sample implementation of _ ParallelFor _.
 
-==== 2.1.1 BlockedRange ====
+==== 3.1.1 BlockedRange ====
 <TODO> DEFINE PROPERLY <TODO>
 It is a single unit of block that can be executed in a single iteration. Suppose, we have an iteration space from 0 to n. Then, an object of blocked range will be constructed whose first argument will be the start of the iteration and second argument will be end of the iteration. A third argument _ grainSize _ will also have to be specified which breaks these _ BlockedRanges _ into units which can be executed by a single core or processor.
 {{{
@@ -131,27 +142,27 @@ BlockedRange range= new BlockedRange(1,10000,1250);
 
 will finally construct  10000/1250 = 8 _ BlockedRanges _
 
-==== 2.1.2 GrainSize ====
+==== 3.1.2 GrainSize ====
 
 The _grainSize_ enables you to decide the degree of parallelism you want achieve while running your program. It helps in dividing the task into sub-ranges. Every sub-range has some cost associated to it. A smaller _grainsize_ may also result in excessive overhead and may hinder useful work. So, the size of the _grainsize_ has to be chosen very carefully. 
 
-==== 2.1.3 ParallelTask ====
+==== 3.1.3 ParallelTask ====
 In order to write a parallel function in a class, it has to extend a _ ParallelTask _. A _ ParallelTask _ bounds the user to implement a _execute()_ and a _summarize()_ method. The code written inside the for block of a serial function comes in the for block of the _execute()_ method. A _summarize()_ block is written in order to summarize all the intermediate results. 
 
 [http://code.google.com/p/korus/wiki/ParallelFor Click Here] for a sample implementation of _ ParallelFor _. 
 
-=== 2.2 Pipeline Concepts ===
+=== 3.2 Pipeline Concepts ===
 
 [http://code.google.com/p/korus/wiki/Pipeline Click Here] for a sample implementation of _ Pipeline _.
 
-==== 2.2.1 Pipeline ====
+==== 3.2.1 Pipeline ====
 The term pipeline refers to the fact that each step is carrying data at once (like water), and each step is connected to the next (like the links of a pipe)
 
 - Wikipedia
 
 The idea of a pipeline is to split the processing of data into number of steps. Each of these steps will run independently, process data and put the data in its _ outputQueue _. The _ outputQueue _ of the first step will be the _ inputQueue _ for the consecutive step. The first step will have no _ inputQueue _ and the last step will have no _ outputQueue _. 
 
-==== 2.2.2 PipelineTask  ====
+==== 3.2.2 PipelineTask  ====
 
 In order to implement pipeline, stages or pipeline tasks need to be written. These tasks are written by extending a _ PipelineTask _ and overriding its _ execute() _ method.
 
