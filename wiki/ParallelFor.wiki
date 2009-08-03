@@ -96,9 +96,9 @@ import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.List;
 
-import com.impetus.korus.BlockedRange;
-import com.impetus.korus.Parallel;
-import com.impetus.korus.ParallelTask;
+import com.impetus.labs.korus.constructs.parallelFor.Parallel;
+import com.impetus.labs.korus.constructs.parallelFor.ParallelTask;
+import com.impetus.labs.korus.util.BlockedRange;
 
 public class ParallelFactorial extends ParallelTask
 {
@@ -162,8 +162,8 @@ Object obj = parallel.getResult();
 If we add the logic inside the loop and the necessary imports. The code will look like this:
 
 {{{
-import com.impetus.octopus.BlockedRange;
-import com.impetus.octopus.Parallel;
+import com.impetus.labs.korus.constructs.parallelFor.Parallel;
+import com.impetus.labs.korus.util.BlockedRange;
 
 public class ParallelFactorialTest 
 {
