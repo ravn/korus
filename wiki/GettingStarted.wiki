@@ -133,7 +133,7 @@ Example: KORUS_HOME=Plan/Product/korus
 *Step 2. (Optional)* In the KORUS_HOME/properties edit the config file korus.properties. Change the properties to fine tune the korus runtime as per the system configuration
 
 *If the properties file is not configured korus runs with default properties.*
-
+----
 == 3. Using Korus ==
 
 === 3.1 ParallelFor Concepts ===
