@@ -1,4 +1,4 @@
-#labels Phase-Deploy,Featured
+#labels Featured
 This page provides you a step-by-step to get started with korus
 
 == 1. Getting Korus ==
@@ -118,12 +118,12 @@ Compile it using the java compile commands and you can start using it in your Pr
 
 ----
 
-== 2. Configuring Korus (Optional)==
+== 2. Configuring Korus ==
 
+*Step 1.* Set the enviorment variable KORUS_HOME pointing to the korus installation directory. 
+Example: KORUS_HOME=Plan/Product/korus
 
-*Step 1.* Create the directory ../properties w.r.t. the /lib or /bin of the project. When you check out the project, it is by default found at the desired location.
-
-*Step 2.* Edit the config file properties/korus.properties Change the properties to fine tune the korus runtime as per the system configuration
+*Step 2.* In the KORUS_HOME/properties edit the config file korus.properties. Change the properties to fine tune the korus runtime as per the system configuration
 
 *If the properties file is not configured korus runs with default properties.*
 
