@@ -118,17 +118,19 @@ For compiling test classes.
 
 {{{
  > cd build
- > ant test_compile
+ > ./ant.sh test_compile
 }}}
 
 Compile it using the java compile commands and you can start using it in your Project.
 
+Or else you can also use java comman-line options
+Example: java -cp '/home/user/svn_repo/korus0.1/Test/bin:/home/user/svn_repo/korus0.1/Product/korus/jar/korus.jar' com.impetus.labs.korus.test.pipeline.PipelineTest
 ----
 
 == 2. Configuring Korus ==
 
 *Step 1.* Set the enviorment variable KORUS_HOME pointing to the korus installation directory. 
-Example: KORUS_HOME=Plan/Product/korus
+Example: KORUS_HOME=Product/korus
 
 *Step 2. (Optional)* In the KORUS_HOME/properties edit the config file korus.properties. Change the properties to fine tune the korus runtime as per the system configuration
 
