@@ -121,9 +121,9 @@ Compile it using the java compile commands and you can start using it in your Pr
 == 2. Configuring Korus (Optional)==
 
 
-Step 1. Create the directory ../properties w.r.t. the /lib or /bin of the project. When you check out the project, it is by default found at the desired location.
+*Step 1.* Create the directory ../properties w.r.t. the /lib or /bin of the project. When you check out the project, it is by default found at the desired location.
 
-Step 2. Edit the config file properties/korus.properties Change the properties to fine tune the korus runtime as per the system configuration
+*Step 2.* Edit the config file properties/korus.properties Change the properties to fine tune the korus runtime as per the system configuration
 
 *If the properties file is not configured korus runs with default properties.*
 
@@ -134,7 +134,7 @@ Step 2. Edit the config file properties/korus.properties Change the properties t
 [http://code.google.com/p/korus/wiki/ParallelFor Click Here] for a sample implementation of _ ParallelFor _.
 
 ==== 3.1.1 BlockedRange ====
-<TODO> DEFINE PROPERLY <TODO>
+
 It is a single unit of block that can be executed in a single iteration. Suppose, we have an iteration space from 0 to n. Then, an object of blocked range will be constructed whose first argument will be the start of the iteration and second argument will be end of the iteration. A third argument _ grainSize _ will also have to be specified which breaks these _ BlockedRanges _ into units which can be executed by a single core or processor.
 {{{
 BlockedRange range= new BlockedRange(1,10000,1250);
