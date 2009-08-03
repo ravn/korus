@@ -69,7 +69,7 @@ public class ParallelFactorial extends ParallelTask {
 
       // set the intermediate result in a variable to be returned 
       // for each iteration
-      parallel.setResult(this,fact);
+      getParallel().setResult(this,fact);
    }
 
    // implement a summarize method.
@@ -110,7 +110,6 @@ public class ParallelFactorial extends ParallelTask
 	}
 
 	// implement a service method.
-	@Override
 	public void service(BlockedRange range)
 	{
 		BigInteger fact = BigInteger.ONE;
@@ -121,12 +120,11 @@ public class ParallelFactorial extends ParallelTask
 			fact = fact.multiply(BigInteger.valueOf(i));
 		}
 		
-		parallel.setResult(this,fact);
+		getParallel().setResult(this,fact);
 
 	}
 	
 	// implement a summarize method.
-	@Override
 	public Object summarize(List<Object> intermediateResults)
 	{
 		BigInteger factorial = BigInteger.ONE;
