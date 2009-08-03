@@ -151,7 +151,7 @@ This involved writing an application which reads a Text file, transforms and wri
 *Testing Pipeline Construct – File Size 9.3MB (approx)*
 ||S.No.||Program||Execution Time||Response Time||
 ||1.||SerialReadTransformWrite||1032ms||1032ms||
-||2.||ParallelReadTransformWrite||1484ms||32ms^*^||
+||2.||ParallelReadTransformWrite||1025ms||32ms^*^||
 
 
 ^*^ _Time denoted here is the response time and not the execution time._
