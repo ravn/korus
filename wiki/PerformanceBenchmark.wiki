@@ -144,8 +144,8 @@ This involved writing an application which reads a Text file, transforms and wri
 ===4.1 Results on Dual Core Machine===
 *Testing Pipeline Construct – File Size 9.3MB (approx)*
 ||S.No.||Program||Execution Time||Response Time||
-||1.||SerialReadTransformWrite||1820ms||1820ms||
-||2.||ParallelReadTransformWrite||2407ms||47ms^*^||
+||1.||SerialReadTransformWrite||1720ms||1720ms||
+||2.||ParallelReadTransformWrite||1625ms||47ms^*^||
 
 ===4.2 Results on Quad Core Machine===
 *Testing Pipeline Construct – File Size 9.3MB (approx)*
