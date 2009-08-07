@@ -1,0 +1,61 @@
+ 
+			 ===================
+
+			   Octopus _RELEASE_
+
+			 ===================
+
+This is "Octopus", a java library with parallel constructs which harnesses the paralellization of multicores.
+
+Why use Octopus?
+--------------
+
+Because Octopus allows you to use its parallel constructs to write highly concurrent applications to fully 
+harness the parallelization of multicore systems.
+
+Which all platforms is Octopus supported on?
+--------------------------------------------
+
+Since it is a pure java library this is supported on all platforms on which java is supported
+<TBD>Add section for native code for CPU affinity</TBD>
+
+Who can use Octopus?
+------------------
+
+Octopus is distributed under the GPL (GNU Public License).  Please
+read the license to make sure it's okay to use it in your circumstances.
+
+Where do I find new copies of Kaffe?
+------------------------------------
+
+Kaffe is available from impetus sites.  The primary site is:
+
+        http://www.impetus.com/octopus/
+
+
+How do I report bugs and problems?
+----------------------------------
+
+Go the website http://www.kaffe.org/ and you'll find information on how to
+report bugs.
+
+What software do I need to install Kaffe?
+-----------------------------------------
+
+You will need ant 1.5.4 and higher to compile octopus and ant should be in your PATH. An already compiled jar is available if you 
+simply want to start using it.
+
+How do I compile and install kaffe?
+-----------------------------------
+
+For UNIX it couldn't be simpler:
+
+  $ cd build 
+  $ ant clean
+  $ ant compile
+  $ ant jar
+
+Running Kaffe
+=============
+
+* Just include the octopus.jar in your classpath of your application
