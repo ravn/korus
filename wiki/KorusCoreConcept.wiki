@@ -16,7 +16,7 @@ Whenever a request is being received it is served using a thread (most probably 
 
 Korus-process - Single Unit of Code Execution which is stateless in nature. Extremely light weight as compared to threads.
 
-The sub-tasks of a Standard Execution can be transformed into Korus Processes which can now execute independently. Here, we have one(or very few) threads serving the requests. Korus Process are asynchronous in nature and here context switching happens between different pieces of code instead of Thread context switching. 
+The sub-tasks of a Standard Execution can be transformed into Korus Processes which can now execute independently. Here, we have one(or very few) threads serving the requests. Context switching happens between different pieces of code instead of Thread context switching. We all are familiar that context switching threads is a heavy operation and this overhead is completely eliminated in this case.
 
 
 
