@@ -1,0 +1,17 @@
+#summary One-sentence summary of this page.
+
+= Korus Core Concept =
+
+[http://img180.imageshack.us/img180/7681/korus.jpg]
+
+The figure above is divided into two parts. The first part shows the Standard Web Execution and the second part shows a Korus execution. Let us first take the first part and see how a standard request is being typically served.
+
+=== 1. Standard Execution ===
+
+Whenever a request is being received it is served using a thread (most probably from a Threadpool). A sequence of tasks are being performed to serve a complete request and response is generated.
+
+=== 2. Korus Execution ===
+
+The Subtasks of a Standard Execution can be written as Processes which can now execute independently. These are asynchronous in nature and 
+
+
