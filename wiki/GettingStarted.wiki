@@ -179,5 +179,6 @@ public class BuyProcess1 extends Process {
 			ProcessManager.send("BuyProcess2", requestMessage);
 		}
 	}
+}
 
 }}}
