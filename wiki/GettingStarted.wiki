@@ -179,6 +179,16 @@ public class BuyProcess1 extends Process {
 			ProcessManager.send("BuyProcess2", requestMessage);
 		}
 	}
+        /**
+	 * Fetches the Details of an item
+	 * @param itemName Name of the Item whose details have to be fetched
+	 * @return ItemBean Object
+	 */
+	private ItemBean fetchDetails(String itemName) {
+
+        // Method Implementation ...
+
+        }
 }
 
 }}}
