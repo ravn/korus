@@ -140,45 +140,44 @@ Example: KORUS_HOME=Product/korus
 
 *If the properties file is not configured korus runs with default properties.*
 ----
+
 == 3. Using Korus ==
 
-=== 3.1 ParallelFor Concepts ===
+=== 3.1 Code Structure ===
 
-[http://code.google.com/p/korus/wiki/ParallelFor Click Here] for a sample implementation of _ ParallelFor _.
+The structure below shows, how a use case will look when it is broken up into processes. Suppose we have a Buy UseCase in which a number of tasks are performed one after the other serially. Typically, we will use methods to maintain modularity. These methods can very well be candidates for processes. Therfore, a big UseCase now becomes a set of smaller processes. Here, we can see BuyProcess1, BuyProcess2 and BuyProcess3 which are nothing but pieces of the bigger BuyProcess.
 
-==== 3.1.1 BlockedRange ====
+[http://img41.imageshack.us/img41/4347/packagekorus.jpg]
 
-It is a single unit of block that can be executed in a single iteration. Suppose, we have an iteration space from 0 to n. Then, an object of blocked range will be constructed whose first argument will be the start of the iteration and second argument will be end of the iteration. A third argument _ grainSize _ will also have to be specified which breaks these _ BlockedRanges _ into units which can be executed by a single core or processor.
+=== 3.2 Sample Implementation ===
+
 {{{
-BlockedRange range= new BlockedRange(1,10000,1250);
+
+package buy;
+
+import com.impetus.korus.Message;
+import com.impetus.korus.Process;
+import com.impetus.korus.ProcessManager;
+// Import other necessary Business Logic Packages and Classes
+
+/**
+ * BuyProcess1 Extends Abstract Process Class
+ */
+public class BuyProcess1 extends Process {
+	// Overide the service Method
+	public void service(Message requestMessage) {
+		// Get item name from the Message Object
+		String itemName = (String) requestMessage.get("itemName");
+
+		// Rest of the Business Logic
+		ItemBean item = fetchDetails(itemName);
+		if (item != null) {
+			// Put the intermediate result in the Message Object for next 
+			// process
+			requestMessage.put("itemBean", item);
+			// Send Message Asynchronously to the next Process
+			ProcessManager.send("BuyProcess2", requestMessage);
+		}
+	}
+
 }}}
-
-will finally construct  10000/1250 = 8 _ BlockedRanges _
-
-==== 3.1.2 GrainSize ====
-
-The _grainSize_ enables you to decide the degree of parallelism you want achieve while running your program. It helps in dividing the task into sub-ranges. Every sub-range has some cost associated to it. A smaller _grainsize_ may also result in excessive overhead and may hinder useful work. So, the size of the _grainsize_ has to be chosen very carefully. 
-
-==== 3.1.3 ParallelTask ====
-In order to write a parallel function in a class, it has to extend a _ ParallelTask _. A _ ParallelTask _ bounds the user to implement a _execute()_ and a _summarize()_ method. The code written inside the for block of a serial function comes in the for block of the _execute()_ method. A _summarize()_ block is written in order to summarize all the intermediate results. 
-
-[http://code.google.com/p/korus/wiki/ParallelFor Click Here] for a sample implementation of _ ParallelFor _. 
-
-=== 3.2 Pipeline Concepts ===
-
-[http://code.google.com/p/korus/wiki/Pipeline Click Here] for a sample implementation of _ Pipeline _.
-
-==== 3.2.1 Pipeline ====
-The term pipeline refers to the fact that each step is carrying data at once (like water), and each step is connected to the next (like the links of a pipe)
-
-- Wikipedia
-
-The idea of a pipeline is to split the processing of data into number of steps. Each of these steps will run independently, process data and put the data in its _ outputQueue _. The _ outputQueue _ of the first step will be the _ inputQueue _ for the consecutive step. The first step will have no _ inputQueue _ and the last step will have no _ outputQueue _. 
-
-==== 3.2.2 PipelineTask  ====
-
-In order to implement pipeline, stages or pipeline tasks need to be written. These tasks are written by extending a _ PipelineTask _ and overriding its _ execute() _ method.
-
-These tasks are then added to the pipeline, paired (in order to decide the order of tasks) and executed. A pipeline task just has a _ execute() _ method and no _ summarize() _ method. 
-
-[http://code.google.com/p/korus/wiki/Pipeline Click Here] for a sample implementation of a _ Pipeline _.
