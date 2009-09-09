@@ -151,6 +151,8 @@ The structure below shows, how a use case will look when it is broken up into pr
 
 === 3.2 Sample Implementation ===
 
+<TODO>
+
 {{{
 
 package buy;
