@@ -1,7 +1,22 @@
 =Performance Benchmark of Korus=
 
-=<TODO> =
-Put Latest Numbers HERE
+== 1. Traditional Application (3 node Tomcat cluster)==
+
+||Users||	Number of Requests||	Average Response Time (in milliseconds)||
+||400||	100000||	1073||
+||800||	94000||	2201||
+
+== 2. Using Korus (custom korus grid deployment) ==
+
+||Users||	Number of Requests||	Average Response Time (in milliseconds)||
+||400||	127000||	651 ||
+||800||	130000||	1108 ||
+||1200||	133000||	1312 ||
+||1600||	131000||	1512 ||
+||2000||	134000||	1744 ||
+
+
+=Performance Benchmark of Korus Constructs=
  
 ==1. Factorial Program==
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
