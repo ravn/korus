@@ -2,19 +2,33 @@
 This page provides you a step-by-step to get started with korus
 
 == Getting Started Quickly ==
-STEP 1 : Checkout the korus.jar from HERE
+STEP 1 : Checkout the korus.jar from HERE <TODO: Create Link when code is up>
 
 STEP 2 : Download the Sample Code
-         File1
-         File2
-         File3
 
-STEP 3: Set Environment Variable
+         File1 <TODO: Create Link when code is up>
+
+         File2 <TODO: Create Link when code is up>
+
+         File3 <TODO: Create Link when code is up>
+
+STEP 3: Set Environment Variable/ Set Classpath
 Set the enviorment variable KORUS_HOME pointing to the korus installation directory. 
 Example: KORUS_HOME=Product/korus
 
 
 STEP 4: Compile and Run
+
+There are number of ways of compiling a java file. Listing one possible way.
+List all of the source file names in a file named _sourcefiles_. This file might look like: 
+
+
+     `BuyProcess1.java`
+     `BuyProcess2.java`
+     `TestProcess.java`
+
+`>javac @sourcefiles`
+
 
 
 == Getting Started Slowly ==
