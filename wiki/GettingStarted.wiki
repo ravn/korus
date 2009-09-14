@@ -1,8 +1,12 @@
 #labels Featured
 This page provides you a step-by-step to get started with korus
 
+== OS Platform ==
+
+Korus is Tested on Windows XP and Linux Platforms. Since, it is a purely java based framework it should run on all the platforms supporting java.
+
 == Prerequisites ==
-Java 1.5 and above
+JDK 1.5 and above
 
 == Getting Started Quickly ==
 Download Sample.zip from HERE<TODO Link to .zip file>.
