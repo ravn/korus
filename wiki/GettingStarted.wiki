@@ -1,6 +1,9 @@
 #labels Featured
 This page provides you a step-by-step to get started with korus
 
+== Prerequisites ==
+Java 1.5 and above
+
 == Getting Started Quickly ==
 Download Sample.zip from HERE<TODO Link to .zip file>.
 This will contain
