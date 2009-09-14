@@ -22,10 +22,9 @@ STEP 4: Compile and Run
 There are number of ways of compiling a java file. Listing one possible way.
 List all of the source file names in a file named _sourcefiles_. This file might look like: 
 
+`BuyProcess1.java`<br/>`BuyProcess2.java`<br/>`TestProcess.java` 
 
-     `BuyProcess1.java`
-     `BuyProcess2.java`
-     `TestProcess.java`
+Compile Using the command
 
 `>javac @sourcefiles`
 
