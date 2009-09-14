@@ -1,6 +1,24 @@
 #labels Featured
 This page provides you a step-by-step to get started with korus
 
+== Getting Started Quickly ==
+STEP 1 : Checkout the korus.jar from HERE
+
+STEP 2 : Download the Sample Code
+         File1
+         File2
+         File3
+
+STEP 3: Set Environment Variable
+Set the enviorment variable KORUS_HOME pointing to the korus installation directory. 
+Example: KORUS_HOME=Product/korus
+
+
+STEP 4: Compile and Run
+
+
+== Getting Started Slowly ==
+
 == 1. Getting Korus ==
 
 The latest stable version of Korus is available from the Korus web page http://code.google.com/p/korus/source/checkout 
