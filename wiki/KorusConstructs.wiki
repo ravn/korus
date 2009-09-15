@@ -3,9 +3,10 @@
 ==ParallelFor ==
 ParallelFor is a parallel version of a for loop which executes the loop parallely and tries to utilize more number of cores for lower turnaround time. A ParallelFor loop takes in a range which determines the number of times the for loop needs to run and the grainsize (which determines the number of threads Korus will allocate).
 
-<TODO Sample Code>
+A Sample example of using Korus ParallelFor Construct can be found [http://code.google.com/p/korus/wiki/ParallelFor HERE]
+
 
 == Pipeline==
 Pipeline allows you to model your sequential independent task parallely. For example, a file transformation job can be modeled as 3 tasks of reading, transforming and writing the file. The tasks communicate to each other via one-way intermediate queues.
 
-<TODO Sample Code>
+A Sample example of using Korus Pipeline Construct can be found [http://code.google.com/p/korus/wiki/Pipeline HERE]
