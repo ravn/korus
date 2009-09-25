@@ -9,7 +9,7 @@ Korus is Tested on Windows XP and Linux Platforms. Since, it is a purely java ba
 JDK 1.5 and above
 
 == Getting Started Quickly ==
-Download Sample.zip from HERE<TODO Link to .zip file>.
+Download Sample.zip from [http://korus.googlecode.com/svn/trunk/Product/korus/example/Sample.zip HERE]
 This will contain
 
   # korus.jar
