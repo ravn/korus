@@ -20,7 +20,7 @@ This will contain
   # run.bat (Windows environment)
   # run.sh (linux/unix environment)
 
-To test run the batch file _run.bat_
+To test run the batch file _run.bat_ or _run.sh_
 
 == Getting Started Slowly ==
 
