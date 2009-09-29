@@ -502,9 +502,9 @@ public class KorusRuntime
 
 		catch (IOException e)
 		{
-			System.out.println(e.getMessage());
-			throw new KorusException(
-					"Properties File not found!\nStarting with default configuration");
+			System.out.println("Properties File not found!\nStarting with default configuration");
+			//throw new KorusException(
+			//		"Properties File not found!\nStarting with default configuration");
 
 		}
 	}
