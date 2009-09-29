@@ -17,7 +17,8 @@ This will contain
   # BuyProcess2.java
   # TestProcess.java
   # sourcefiles
-  # run.bat
+  # run.bat (Windows environment)
+  # run.sh (linux/unix environment)
 
 To test run the batch file _run.bat_
 
