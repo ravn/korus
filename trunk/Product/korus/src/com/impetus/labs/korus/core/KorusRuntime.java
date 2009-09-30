@@ -401,7 +401,7 @@ public class KorusRuntime
 		{
 			String korusHome = System.getenv("KORUS_HOME");
 
-			File propertiesFile = new File(korusHome+ "/properties/korus1.properties");
+			File propertiesFile = new File(korusHome+ "/properties/korus.properties");
 
 			Properties properties = new Properties();
 			FileInputStream fileInputStream = new FileInputStream(propertiesFile);
