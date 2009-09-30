@@ -13,7 +13,7 @@
 <property name="test.classes" value="${test}/bin"/>
 <property name="test.out" value="${test}/report"/>
 <property name="test.lib" value="${test}/lib"/>
-<property name="readme" value="${support}/userdocs/README"/>
+<property name="readme" value="../../../README"/>
 <property name="build" value="${home}/build"/>
 <property name="version" value="${VERSION}"/>
 
@@ -74,7 +74,7 @@
 
 <target name="dst" depends="clean,jar,javadoc" description="Creates the distributable zip">
 	<copy todir="${dst}" file="${readme}"/>
-	<copy todir="${dst}" file="${support}/legal/GPL_LICENSE.txt"/>
+	<copy todir="${dst}" file="../../../GPL_LICENSE.txt"/>
     <copy todir="${dst}/src">
 		<fileset dir="${src}"/>
 	</copy> 
