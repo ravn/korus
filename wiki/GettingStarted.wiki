@@ -174,9 +174,10 @@ Example: KORUS_HOME=Product/korus
 ----
 
 == 3. Using Korus ==
-Korus can be used in 4 ways.
+Korus can be used in following 4 ways.
 
-  # Normal
-  # Construct
-  # External language
-  # In web app env.
+  # Asynchronous & distributed programming model.
+    * Details can be found [here]
+  # Parallel programming constructs.
+  # External language connectivity.
+  # In Web application execution environment.
