@@ -1,4 +1,5 @@
-= Thread less Concurrency =
+Describes the technical overview of the Korus below
+== Thread less Concurrency ==
 
 [http://korus.googlecode.com/svn/trunk/Support/images/korus.jpg]
 
@@ -30,11 +31,12 @@ The sub-tasks of a Standard Execution can be transformed into Korus Processes wh
 <br/>
 ----
 <br/><br/>
-= Logical View =
+== Logical View ==
 
 
 [http://korus.googlecode.com/svn/trunk/Support/images/logical.jpg]
 
+*Figure: Displaying logical view of Korus *
 
 In the Figure above, you can see two Korus Nodes each of which is having an instance of a JVM and a Korus Runtime. Each run-time can execute Processes asynchronously. On top of Korus nodes we have a grid manager to manage a Korus grid. We can also create customized constructs as per our requirements using Korus.
 
