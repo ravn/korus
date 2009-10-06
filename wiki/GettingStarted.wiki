@@ -55,17 +55,21 @@ The binary distribution of  consists of the following directory layout:
    +--- Support  // Contains the supporting files
    |      |
    |      +--- ant
-   |      +--- legal
-   |      +--- userdocs
-   |
+   |      
    +--- Test // contains Test Classes
-          |
-          +--- bin        // Compiled Code of Test Classes
-          +--- lib        // Libraries needed by Test Classes
-          +--- report
-          +--- src        // Source Files for Test Classes
-          +--- files      // Files needed by the Test Classes
-   
+   |      |
+   |      +--- bin        // Compiled Code of Test Classes
+   |      +--- lib        // Libraries needed by Test Classes
+   |      +--- report
+   |      +--- src        // Source Files for Test Classes
+   |      +--- files      // Files needed by the Test Classes
+   |
+   +--- Copyright.txt 
+   |
+   +--- GPL_LICENSE.txt
+   |
+   +--- README.txt 
+
 }}}
 
 === 1.1 Checkout Korus ===
