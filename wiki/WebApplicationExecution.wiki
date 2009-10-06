@@ -1,6 +1,6 @@
 = Korus Deployment in an Web Application Execution Environment =
 
-[http://img178.imageshack.us/img178/5665/koruscustom.jpg]
+[http://korus.googlecode.com/svn/trunk/Support/images/customDeployment.jpg]
 
 Here a Sample Scenario has been shown of how Korus can be used in an HTTP environment. 
 Korus Processes are Replicated and Deployed on three nodes which are managed by a Distribution Manager. A Web Server is placed in front of the Distribution Manager to accept HTTP Requests.
