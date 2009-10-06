@@ -27,7 +27,9 @@ The sub-tasks of a Standard Execution can be transformed into Korus Processes wh
 || Memory consumption increases with the number of HTTP connections || Reduces the context switching overhead ||
 || Problems with deadlock, starvation, race condition etc|| No deadlocks and thread related issues ||
 
-<br/><br/><br/><br/>
+<br/>
+----
+<br/><br/>
 = Logical View =
 
 
