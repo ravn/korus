@@ -12,7 +12,7 @@ Korus is Tested on Windows XP and Linux Platforms. Since, it is a purely java ba
 JDK 1.5 and above
 
 == Getting Started Quickly ==
-Download Sample.zip from [http://korus.googlecode.com/svn/trunk/Product/korus/example/Sample.zip HERE]
+This is a quick start step. Helps to understand the very basic way to get a simple program running using korus. You can also see how the code is organized and how to write a korus enabled program. You can easily change the code and see how korus works. the intent is to provide a first step instant learning. It is good to start with this and then go to the details as mentioned below. Download Sample.zip from [http://korus.googlecode.com/svn/trunk/Product/korus/example/Sample.zip HERE]
 This will contain
 
   # korus.jar
@@ -26,6 +26,7 @@ This will contain
 Execute the file _run.bat_ or _run.sh_ depending on your OS
 
 == Getting Started in Detail ==
+these are detail set of instructions. It is recommended to go through this before writing "real" programs with korus.
 
 == 1. Getting Korus ==
 
