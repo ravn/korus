@@ -73,14 +73,6 @@ You will also need a JDK installed on your system, version 1.5 or later required
 
 }}}
 
-=== 1.1 Checkout Korus ===
-==== 1.1.1 ====
-
-Use an SVN client and checkout korus
-{{{
-  $ svn checkout http://korus.googlecode.com/svn/trunk/ korus-read-only
-}}}
-
 === 1.2 Install Ant ===
 
 Install ant from [http://ant.apache.org/ here]
