@@ -1,7 +1,0 @@
-Describes the steps involved in writing new Parallel construct.
-
-== Introduction ==
-Description for writing customized Parallel constructs like parallelFor and parallelPipeline.
-
-
-*Details will be posted soon.*
