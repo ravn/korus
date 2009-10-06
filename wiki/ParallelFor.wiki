@@ -1,9 +1,9 @@
-Describes the usage and definition of ParallelFor construct
+Describes the usage and definition of `ParallelFor` construct
 ==Introduction ==
-ParallelFor is a parallel version of a for loop which executes the loop parallely and tries to utilize more number of cores for lower turnaround time. A ParallelFor loop takes in a range which determines the number of times the for loop needs to run and the grainsize (which determines the number of threads Korus will allocate).
+`ParallelFor` is a parallel version of a for loop which executes the loop parallely and tries to utilize more number of cores for lower turnaround time. A `ParallelFor` loop takes in a range which determines the number of times the for loop needs to run and the grainsize (which determines the number of threads Korus will allocate).
 
 == Example : Factorial ==
-Suppose we want to calculate a factorial of a very big number. Using ParallelFor will not be as simple as to just replacing the for construct by a parallelFor. But its not that difficult too. Just by tweak the program a little bit here and there, we will have parallelFor working. A simple program calculate a factorial could go like this :
+Suppose we want to calculate a factorial of a very big number. Using `ParallelFor` will not be as simple as to just replacing the for construct by a `parallelFor`. But its not that difficult too. Just by tweak the program a little bit here and there, we will have `parallelFor` working. A simple program calculate a factorial could go like this :
 
 {{{
   public class SerialFactorial 
@@ -44,7 +44,7 @@ public class SerialFactorial
 This program will run sequentially and only a single core will be utilized no matter how many core machine we put in to improve the performance . Suppose we want to run this program so that it utilize all the cores, we need to perform certain changes.
 
  # Create a class containing this logic which:
- * extends ParallelTask,
+ * extends `ParallelTask`,
  * implement the constructor
  * overrides a service() and summarize() methods
  * iterate the loop from begin of the range through end of the range and set the result
