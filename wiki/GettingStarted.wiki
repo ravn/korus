@@ -32,7 +32,7 @@ These are detailed set of instructions as well as internal aspects. It is recomm
 
 The latest stable version of Korus is available from the Korus web page http://code.google.com/p/korus/source/checkout 
 
-For the current version of Korus, you will also need a JDK installed on your system, version 1.5 or later required, 1.5 or later strongly recommended. 
+For the current version of Korus, you will also need a JDK installed on your system, version 1.5 or later required. 
 
 The binary distribution of  consists of the following directory layout:
 {{{
