@@ -8,9 +8,42 @@ Currently only Erlang Adapter is supported.
 Below is an example to show how Erlang Adapter can be used.
 
 ===Sample Implementation===
-Here is the code using Korus
-{{{
+This example will send the request message containing details of an item to Korus node and it will process the request and responds back to the erlang client.
 
+Here is the erlang code to use Korus for execution purpose
+{{{
+-module(test).
+-export([go/0,callback/0]).
+
+go()->
+        % Address of the Korus Run-time node
+        Host = "localhost",
+	Pid = spawn(test,callback, []),	
+	register(callback, Pid),
+        % Connect to the Korus node
+	korusAdapter:connect(Host),
+
+	D = dict:new(),
+	D1 = dict:append("itemName", "phone", D),
+        % Send the request to the Korus node
+	KorusAdapter:send("buyProcess1",D1),
+	ok.	
+	
+callback()->
+	receive
+		{response,ResponseObj} ->
+			unregister(callback),
+			D = dict:fetch(response,ResponseObj),
+			io:format("Response Data ~p",[D]),
+                        % Disconnect when task is complete
+			korusAdapter:disconnect()
+	end,
+	callback().
+
+}}}
+
+Here is the Test code to start Korus-Runtime
+{{{
 import com.impetus.labs.korus.core.KorusRuntime;
 import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 
@@ -40,7 +73,7 @@ public class TestProcess
 }
 
 }}}
-
+Sample code to create process BuyProcess1.java
 {{{
 import com.impetus.labs.korus.core.KorusRuntime;
 import com.impetus.labs.korus.core.Message;
@@ -89,6 +122,7 @@ public class BuyProcess1 extends Process {
 }
 
 }}}
+Sample code to create process BuyProcess2.java
 {{{
 import com.impetus.labs.korus.core.KorusRuntime;
 import com.impetus.labs.korus.core.Message;
@@ -119,7 +153,7 @@ public class BuyProcess2 extends Process
 		msg.put("response", itemRating);
            
                 // Code to send response back to Erlang node
-		KorusRuntime.sendToErlang("192.168.41.111", "callback", msg);
+		KorusRuntime.sendToErlang("localhost", "callback", msg);
 
 	}
 
@@ -143,31 +177,5 @@ public class BuyProcess2 extends Process
 	}
 }
 }}}
-Here is the erlang code to use Korus for execution
-{{{
--module(test).
--export([go/0,callback/0]).
 
-go()->
-        Host = "localhost",
-	Pid = spawn(test,callback, []),	
-	register(callback, Pid),
-	korusAdapter:connect(Host),
-
-	D = dict:new(),
-	D1 = dict:append("itemName", "phone", D),
-	KorusAdapter:send("buyProcess1",D1),
-	ok.	
-	
-callback()->
-	receive
-		{response,ResponseObj} ->
-			unregister(callback),
-			D = dict:fetch(response,ResponseObj),
-			io:format("Response Data ~p",[D]),
-			korusAdapter:disconnect()
-	end,
-	callback().
-
-}}}
  
