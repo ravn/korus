@@ -34,9 +34,9 @@ The latest stable version of Korus is available from the Korus web page http://c
 
 For the current version of Korus, you will also need a JDK installed on your system, version 1.5 or later required. 
 
-The binary distribution of  consists of the following directory layout:
+The svn trunk consists of the following directory layout:
 {{{
- Korus
+
    +--- Plan
    |
    +--- Product // contains API Files
