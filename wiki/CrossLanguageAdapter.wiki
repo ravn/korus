@@ -5,6 +5,8 @@ Currently only Erlang Adapter is supported.
 
 ==How to use==
 
+Below is an example to show Erlang Adapter can be used.
+
 ===Sample implementation===
 Here is the code using Korus
 {{{
