@@ -1,5 +1,10 @@
 #labels Featured
-This page provides you a step-by-step to get started with korus
+This page provides you a step-by-step to get started with Korus
+
+  # ==== [http://code.google.com/p/korus/wiki/GettingStarted#OS_Platform OS Platform] ====
+  # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Prerequisites Prerequisites] ====
+  # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Getting_Started_Quickly Getting Started Quickly] ====
+  # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Getting_Started_in_Detail Getting Started in Detail] ====
 
 == OS Platform ==
 
@@ -22,7 +27,7 @@ This will contain
 
 To test run the batch file _run.bat_ or _run.sh_
 
-== Getting Started Slowly ==
+== Getting Started in Detail ==
 
 == 1. Getting Korus ==
 
@@ -80,7 +85,7 @@ Install ant from [http://ant.apache.org/ here]
 
 ==== 1.3.1 Windows ====
 
-Go to the Korus --> Product --> korus Folder
+Go to the Product --> korus Folder
 
 {{{
  > cd build
@@ -89,9 +94,9 @@ Go to the Korus --> Product --> korus Folder
  > ant jar
 }}}
 
-This will generate the jar in your Korus --> Product --> korus --> jar Folder. You can then either put the JAR of Korus to your preferred directory or put the jars on the system CLASSPATH. 
+This will generate the jar in your Product --> korus --> jar Folder. You can then either put the JAR of Korus to your preferred directory or put the jars on the system CLASSPATH. 
 
-If you prefer to the source edition, you can find it in the Korus --> Product --> korus --> src Folder. 
+If you prefer to the source edition, you can find it in the Product --> korus --> src Folder. 
 
 For only using the compiled classes you need to :
 
@@ -101,7 +106,7 @@ For only using the compiled classes you need to :
  > ant compile
 }}}
 
-This will compile the Java classes and into the Korus --> Product --> korus --> bin Folder.
+This will compile the Java classes and into the Product --> korus --> bin Folder.
 
 For compiling test classes.
 
@@ -117,7 +122,7 @@ Or else you can also use java command-line options
 
 ==== 1.3.2 Unix ====
 
-Go to the Korus --> Product --> korus Folder
+Go to the Product --> korus Folder
 
 {{{
  $ cd build
@@ -126,9 +131,9 @@ Go to the Korus --> Product --> korus Folder
  $ ./ant.sh jar
 }}}
 
-This will generate the jar in your Korus --> Product --> korus --> jar Folder. You can then either put the JAR of Korus to your preferred directory or put the jars on the system CLASSPATH. 
+This will generate the jar in your Product --> korus --> jar Folder. You can then either put the JAR of Korus to your preferred directory or put the jars on the system CLASSPATH. 
 
-If you prefer to the source edition, you can find it in the Korus --> Product --> korus --> src Folder. 
+If you prefer to the source edition, you can find it in the Product --> korus --> src Folder. 
 
 For only using the compiled classes you need to :
 
@@ -138,7 +143,7 @@ For only using the compiled classes you need to :
  $ ./ant.sh compile
 }}}
 
-This will compile the Java classes and into the Korus --> Product --> korus --> bin Folder.
+This will compile the Java classes and into the Product --> korus --> bin Folder.
 
 For compiling test classes.
 
@@ -156,165 +161,18 @@ Or else you can also use java command-line options
 
 == 2. Configuring Korus ==
 
-*Step 1.* Set the enviorment variable KORUS_HOME pointing to the korus installation directory. 
+*Step 1.* Set the enviorment variable KORUS_HOME pointing to the Korus installation directory. 
 Example: KORUS_HOME=Product/korus
 
-*Step 2. (Optional)* In the KORUS_HOME/properties edit the config file korus.properties. Change the properties to fine tune the korus runtime as per the system configuration
+*Step 2. (Optional)* In the KORUS_HOME/properties edit the config file korus.properties. Change the properties to fine tune the Korus runtime as per the system configuration
 
-*If the properties file is not configured korus runs with default properties.*
+*If the properties file is not configured Korus runs with default properties.*
 ----
 
 == 3. Using Korus ==
+Korus can be used in 4 ways.
 
-=== 3.1 Code Structure ===
-
-The structure below shows, how a use case will look when it is broken up into processes. Suppose we have a Buy UseCase in which a number of tasks are performed one after the other serially. Typically, we will use methods to maintain modularity. These methods can very well be candidates for processes. Therfore, a big UseCase now becomes a set of smaller processes. Here, we can see BuyProcess1, BuyProcess2 and BuyProcess3 which are nothing but pieces of the bigger BuyProcess.
-
-[http://img41.imageshack.us/img41/4347/packagekorus.jpg]
-
-=== 3.2 Sample Implementation ===
-
-{{{
-
-import com.impetus.labs.korus.core.KorusRuntime;
-import com.impetus.labs.korus.core.Message;
-import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
-
-/**
- * Tests message Passing Between Processes
- *
- */
-public class TestProcess {
-	
-	public static void main(String args[])
-	{
-	
-	// Create two Processes
-	BuyProcess1 buyProcess1 = new BuyProcess1();
-	BuyProcess2 buyProcess2 = new BuyProcess2();
-	
-	// Register them with the Korus Runtime
-	try
-	{
-		KorusRuntime.registerProcess("buyProcess1", buyProcess1);
-		KorusRuntime.registerProcess("buyProcess2", buyProcess2);
-	} catch (ProcessAlreadyExistsException e)
-	{			
-		e.printStackTrace();
-	}
-	
-	Message msg = new Message();
-	String itemName = "Calculator";
-	msg.put("itemName", itemName);
-	KorusRuntime.send("buyProcess1", msg);
-	
-	}
-}
-
-}}}
-
-Create Two Processes Called BuyProcess1 and BuyProcess2. Below, is the Code for BuyProcess1:
-
-{{{
-import com.impetus.labs.korus.core.KorusRuntime;
-import com.impetus.labs.korus.core.Message;
-import com.impetus.labs.korus.core.Process;
-
-
-// Import other necessary Business Logic Packages and Classes
-
-/**
- * BuyProcess1 Extends Abstract Process Class
- */
-public class BuyProcess1 extends Process {
-
-	// Overide the service Method
-	
-	public void service(Message requestMessage) {
-		// Get item name from the Message Object
-		String itemName = (String) requestMessage.get("itemName");
-		System.out.println("Name of the Item: " + itemName);
-		
-		// Rest of the Business Logic
-		int priceOfItem = fetchDetails(itemName);
-
-		// Put the intermediate result in the Message Object for next 
-		// process
-		requestMessage.put("priceOfItem", priceOfItem);
-
-		// Send Message Asynchronously to the next Process on Local Node
-		KorusRuntime.send("buyProcess2", requestMessage);
-		
-		// Send Message Asynchronously to the next Process on Remote Node
-		// Set only String Objects in the Message in case of Remote Calls
-		//KorusRuntime.send("hostname", "buyProcess2", requestMessage)
-	}
-
-	/**
-	 * Method to Fetch Details of an item. To keep it simple just returning
-	 * an integer called price
-	 * @param itemName Name of the Item
-	 * @return price of the Item
-	 */
-	private int fetchDetails(String itemName) {
-		// Some dummy code
-		// Method Implementation ...
-		int price = 20;
-		return price;
-		
-
-	}
-}
-}}}
-
-Code for BuyProcess2:
-{{{
-
-import com.impetus.labs.korus.core.KorusRuntime;
-import com.impetus.labs.korus.core.Message;
-import com.impetus.labs.korus.core.Process;
-
-// Import other necessary Business Logic Packages and Classes
-
-/**
- * BuyProcess2 Extends Abstract Process Class
- */
-public class BuyProcess2 extends Process {
-
-	// Overide the service Method
-
-	public void service(Message requestMessage) {
-		// Get item name from the Message Object
-		int priceOfItem = ((Integer) requestMessage.get("priceOfItem"))
-				.intValue();
-
-		// Rest of the Business Logic
-		String itemRating = rateItem(priceOfItem);
-
-		System.out.println("Rating of an Item: " + itemRating);
-		
-		// Forcefully Shutting the Korus Runtime if not needed
-		System.exit(0);
-
-	}
-
-	/**
-	 * Rates an item on basis of its cost
-	 * @param priceOfItem price of the Item to be rated
-	 * @return Rating of an Item
-	 */
-	private String rateItem(int priceOfItem) {
-		// Some dummy code
-		// Method Implementation ...
-		String itemRating = "";
-		if (priceOfItem > 50)
-			itemRating = "Item is Expensive";
-		else
-			itemRating = "Item is Affordable";
-
-		return itemRating;
-
-	}
-}
-
-}}}
+  # Normal
+  # Construct
+  # External language
+  # In web app env.
