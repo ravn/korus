@@ -1,5 +1,5 @@
 ==Introduction ==
-Korus run-time can be utilized for execution purpose from other languages also. There is an in-built support in Korus run-time which let it to take processing request from other languages and give response back. Currently only Erlang Adapter is provided, the rest are coming soon.
+Cross Language Adapter is a communication bridge between other languages and Korus Runtime. Using Cross Language Adapters a Korus run-time can be utilized for execution purpose from other languages also. There is an in-built support in Korus run-time which let it to take processing request from other languages and give response back. Currently only Erlang Adapter is provided, the rest are coming soon.
 
 ==How to use==
 
