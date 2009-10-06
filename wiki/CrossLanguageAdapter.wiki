@@ -86,11 +86,13 @@ import com.impetus.labs.korus.core.Process;
 /**
  * BuyProcess1 Extends Abstract Process Class
  */
-public class BuyProcess1 extends Process {
+public class BuyProcess1 extends Process 
+{
 
 	// Overide the service Method
 
-	public void service(Message requestMessage) {
+	public void service(Message requestMessage) 
+        {
 		// Get item name from the Message Object
 		String itemName = (String) requestMessage.get("itemName");
 		System.out.println("Name of the Item: " + itemName);
@@ -113,7 +115,8 @@ public class BuyProcess1 extends Process {
 	 * @param itemName Name of the Item
 	 * @return price of the Item
 	 */
-	private int fetchDetails(String itemName) {
+	private int fetchDetails(String itemName) 
+        {
 		// Some dummy code
 		// Method Implementation ...
 		int price = 20;
