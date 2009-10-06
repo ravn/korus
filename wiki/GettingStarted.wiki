@@ -50,6 +50,7 @@ The binary distribution of  consists of the following directory layout:
    |              +--- jar        // Compiled Jar
    |              +--- javadoc    // Java Documentation
    |              +--- src        // Source Files
+   |              +--- examples   // Example codes
    |              +--- properties // Property Files
    |
    +--- Support  // Contains the supporting files
@@ -176,12 +177,12 @@ Example: KORUS_HOME=Product/korus
 == 3. Using Korus ==
 Korus can be used in following ways:
 
-  # *Asynchronous & distributed programming model.*
-     Details can be found [http://code.google.com/p/korus/wiki/AsynchronousDistributedProgrammingModel here]<br/>
+  # *Asynchronous & distributed programming mode.*
+     Details can be found [http://code.google.com/p/korus/wiki/AsynchronousDistributedProgrammingMode here]<br/>
   # *Parallel programming constructs.*<br/>
-    * [http://code.google.com/p/korus/wiki/ParallelFor parallel_for]<br/>
-    * [http://code.google.com/p/korus/wiki/Pipeline pipeline]<br/><br/>
-  # *External language connectivity.*
+    * `parallel_for` : A parallel version of a for loop, more details can be found [http://code.google.com/p/korus/wiki/ParallelFor here]<br/>
+    * `pipeline` : It allows you to model your sequential independent task in parallel, more details can be found [http://code.google.com/p/korus/wiki/Pipeline here]<br/><br/>
+  # *Cross language connector.*
      Details can be found [here]<br/>
   # *In Web application execution environment.*
      Details can be found [http://code.google.com/p/korus/wiki/WebApplicationExecution here]
