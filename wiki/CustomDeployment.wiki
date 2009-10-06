@@ -1,8 +1,0 @@
-= Korus Custom Deployment in an HTTP Environment=
-
-[http://img178.imageshack.us/img178/5665/koruscustom.jpg]
-
-Here a Sample Scenario has been shown of how Korus can be used in an HTTP environment. 
-Korus Processes are Replicated and Deployed on three nodes which are managed by a Distribution Manager. A Web Server is placed in front of the Distribution Manager to accept HTTP Requests.
-
-Thus, whenever a request is received by a Webserver it passes it to the Distribution. The Distribution manager chooses the best available node for processing the request. The request is either processed entirely on a Node or partially in parts by different nodes and response is sent back to the Webserver.
