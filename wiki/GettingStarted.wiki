@@ -176,11 +176,12 @@ Example: KORUS_HOME=Product/korus
 == 3. Using Korus ==
 Korus can be used in following 4 ways.
 
-  # Asynchronous & distributed programming model.
-    * Details can be found [http://code.google.com/p/korus/wiki/AsynchronousDistributedProgrammingModel here]
-  # Parallel programming constructs.
-    * [http://code.google.com/p/korus/wiki/ParallelFor `parallel_for`]  
-    * [http://code.google.com/p/korus/wiki/Pipeline `pipeline`]
-  # External language connectivity.
-  # In Web application execution environment.
-    * Details can be found [http://code.google.com/p/korus/wiki/WebApplicationExecution here]
+  # *Asynchronous & distributed programming model.*
+     Details can be found [http://code.google.com/p/korus/wiki/AsynchronousDistributedProgrammingModel here]<br/>
+  # *Parallel programming constructs.*<br/>
+    * [http://code.google.com/p/korus/wiki/ParallelFor `parallel_for`]<br/>
+    * [http://code.google.com/p/korus/wiki/Pipeline `pipeline`]<br/><br/>
+  # *External language connectivity.*
+     Details can be found [here]<br/>
+  # *In Web application execution environment.*
+     Details can be found [http://code.google.com/p/korus/wiki/WebApplicationExecution here]
