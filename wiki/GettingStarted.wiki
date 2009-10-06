@@ -30,9 +30,12 @@ These are detailed set of instructions as well as internal aspects. It is recomm
 
 == 1. Getting Korus ==
 
-The latest stable version of Korus is available from the Korus web page http://code.google.com/p/korus/source/checkout 
+To get the latest version of korus do a regular svn checkout.
+{{{
+  $ svn checkout http://korus.googlecode.com/svn/trunk/ <your_directory_name>
+}}}
 
-For the current version of Korus, you will also need a JDK installed on your system, version 1.5 or later required. 
+You will also need a JDK installed on your system, version 1.5 or later required. 
 
 The svn trunk consists of the following directory layout:
 {{{
