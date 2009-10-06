@@ -176,5 +176,5 @@ Korus can be used in following ways:
     * `pipeline` : It allows you to model your sequential independent task in parallel, more details can be found [http://code.google.com/p/korus/wiki/Pipeline here]<br/><br/>
   # *Cross language Adapter.*
      Details can be found [http://code.google.com/p/korus/wiki/CrossLanguageAdapter here]<br/>
-  # *In Web application execution environment.*
+  # *Web application execution environment.*
      Details can be found [http://code.google.com/p/korus/wiki/WebApplicationExecution here]
