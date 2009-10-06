@@ -13,11 +13,11 @@ Pipelining is very useful when the output of one task serves as an input to the 
 
 In normal circumstances this will be performed sequentially. Lets understand this better with the help of a graphics.
 
-[http://code.google.com/ http://korus.googlecode.com/files/pipeline_seq.JPG]
+[http://korus.googlecode.com/svn/trunk/Support/images/pipeline_seq.JPG]
 
 As we can see that at any given time only one core is utilized properly and rest of the CPUs are idle. The performance of such programs can be substantially improved by using a Pipeline. The functionality of a Pipeline is illustrated below.
 
-[http://code.google.com/ http://korus.googlecode.com/files/pipeline_parallel.JPG]
+[http://korus.googlecode.com/svn/trunk/Support/images/pipeline_parallel.JPG]
 
 Each pipelined operation is termed as a Task. A task is nothing but performing the entire operation into chunks. For example, instead of reading a complete file and then applying transformation to it. We will read a chunk of data and then apply transformation to that chunk and similarly write that chunk back to the disk. Once a chunk is been processed, its placed into an intermediate queue so that it can be now accessed by the consecutive tasks.
 
