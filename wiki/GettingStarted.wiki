@@ -174,7 +174,7 @@ Example: KORUS_HOME=Product/korus
 ----
 
 == 3. Using Korus ==
-Korus can be used in following 4 ways.
+Korus can be used in following ways.
 
   # *Asynchronous & distributed programming model.*
      Details can be found [http://code.google.com/p/korus/wiki/AsynchronousDistributedProgrammingModel here]<br/>
