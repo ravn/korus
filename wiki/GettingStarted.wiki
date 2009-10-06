@@ -1,5 +1,4 @@
 #labels Featured
-This page provides you a step-by-step to get started with Korus
 
   # ==== [http://code.google.com/p/korus/wiki/GettingStarted#OS_Platform OS Platform] ====
   # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Prerequisites Prerequisites] ====
