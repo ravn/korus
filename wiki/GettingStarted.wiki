@@ -179,8 +179,8 @@ Korus can be used in following ways:
   # *Asynchronous & distributed programming model.*
      Details can be found [http://code.google.com/p/korus/wiki/AsynchronousDistributedProgrammingModel here]<br/>
   # *Parallel programming constructs.*<br/>
-    * [http://code.google.com/p/korus/wiki/ParallelFor `parallel_for`]<br/>
-    * [http://code.google.com/p/korus/wiki/Pipeline `pipeline`]<br/><br/>
+    * [http://code.google.com/p/korus/wiki/ParallelFor parallel_for]<br/>
+    * [http://code.google.com/p/korus/wiki/Pipeline pipeline]<br/><br/>
   # *External language connectivity.*
      Details can be found [here]<br/>
   # *In Web application execution environment.*
