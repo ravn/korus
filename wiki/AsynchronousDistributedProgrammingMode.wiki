@@ -3,7 +3,7 @@ Korus can be used for Asynchronous & Distributed Programming as below
 
 The structure below shows, how a use case will look when it is broken up into processes. Suppose we have a Buy UseCase in which a number of tasks are performed one after the other serially. Typically, we will use methods to maintain modularity. These methods can very well be candidates for processes. Therfore, a big UseCase now becomes a set of smaller processes. Here, we can see BuyProcess1, BuyProcess2 and BuyProcess3 which are nothing but pieces of the bigger BuyProcess.
 
-[http://img41.imageshack.us/img41/4347/packagekorus.jpg]
+[http://korus.googlecode.com/svn/trunk/Support/images/korus_code_structure.JPG]
 
 === Sample Implementation ===
 
