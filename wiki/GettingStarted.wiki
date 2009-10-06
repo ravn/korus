@@ -1,5 +1,4 @@
 #labels Featured
-
   # ==== [http://code.google.com/p/korus/wiki/GettingStarted#OS_Platform OS Platform] ====
   # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Prerequisites Prerequisites] ====
   # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Getting_Started_Quickly Getting Started Quickly] ====
@@ -24,7 +23,7 @@ This will contain
   # run.bat (Windows environment)
   # run.sh (linux/unix environment)
 
-To test run the batch file _run.bat_ or _run.sh_
+Execute the file _run.bat_ or _run.sh_ depending on your OS
 
 == Getting Started in Detail ==
 
