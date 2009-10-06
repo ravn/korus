@@ -1,5 +1,5 @@
 ==Introduction ==
-Cross Language Adapter is a communication bridge between other languages and Korus Runtime. Using Cross Language Adapters a Korus run-time can be utilized for execution purpose from other languages also. There is an in-built support in Korus run-time which let it to take processing request from other languages and give response back. 
+Cross Language Adapter is a communication bridge between other languages and Korus Runtime. Using Cross Language Adapters a Korus Runtime can be utilized for execution purpose from other languages also. 
 
 Currently only Erlang Adapter is supported.
 
@@ -8,34 +8,35 @@ Currently only Erlang Adapter is supported.
 Below is an example to show how Erlang Adapter can be used.
 
 ===Sample Implementation===
-This example will send the request message containing details of an item to Korus node and it will process the request and responds back to the erlang client.
+This example will send a request containing details of an item to BuyProcess1 of Korus Runtime listening at localhost. Korus Runtime will process the request and responds back to the erlang client.
 
-Here is the erlang code to use Korus for execution purpose
+Here is the erlang code to use Korus Runtime for execution purpose
 {{{
 -module(test).
 -export([go/0,callback/0]).
 
 go()->
-        % Address of the Korus Run-time node
+        %% Address of the Korus Run-time node %%
         Host = "localhost",
 	Pid = spawn(test,callback, []),	
 	register(callback, Pid),
-        % Connect to the Korus node
+        %% Connect to the Korus node %%
 	korusAdapter:connect(Host),
 
 	D = dict:new(),
 	D1 = dict:append("itemName", "phone", D),
-        % Send the request to the Korus node
-	KorusAdapter:send("buyProcess1",D1),
+        %% Send the request to the Korus node %%
+	korusAdapter:send("buyProcess1",D1),
 	ok.	
 	
 callback()->
 	receive
 		{response,ResponseObj} ->
 			unregister(callback),
+                        %% fetch data from Response Object %%
 			D = dict:fetch(response,ResponseObj),
-			io:format("Response Data ~p",[D]),
-                        % Disconnect when task is complete
+			io:format("Response from Korus Node: ~p",[D]),
+                        %% Disconnect when task is complete %%
 			korusAdapter:disconnect()
 	end,
 	callback().
