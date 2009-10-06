@@ -35,9 +35,7 @@ To get the latest version of korus do a regular svn checkout.
   $ svn checkout http://korus.googlecode.com/svn/trunk/ <your_directory_name>
 }}}
 
-You will also need a JDK installed on your system, version 1.5 or later required. 
-
-The svn trunk consists of the following directory layout:
+You will also need a JDK installed on your system, version 1.5 or later required. The svn trunk consists of the following directory layout:
 {{{
 
    +--- Plan
