@@ -26,7 +26,7 @@ This will contain
 Execute the file _run.bat_ or _run.sh_ depending on your OS
 
 == Getting Started in Detail ==
-these are detail set of instructions. It is recommended to go through this before writing "real" programs with korus.
+These are detailed set of instructions as well as internal aspects. It is recommended to go through this before writing "real" programs with korus.
 
 == 1. Getting Korus ==
 
