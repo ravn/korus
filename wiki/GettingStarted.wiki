@@ -175,6 +175,6 @@ Korus can be used in following ways:
     * `parallel_for` : A parallel version of a for loop, more details can be found [http://code.google.com/p/korus/wiki/ParallelFor here]<br/>
     * `pipeline` : It allows you to model your sequential independent task in parallel, more details can be found [http://code.google.com/p/korus/wiki/Pipeline here]<br/><br/>
   # *Cross language connector.*
-     Details can be found [here]<br/>
+     Details can be found [http://code.google.com/p/korus/wiki/CrossLanguageAdapter here]<br/>
   # *In Web application execution environment.*
      Details can be found [http://code.google.com/p/korus/wiki/WebApplicationExecution here]
