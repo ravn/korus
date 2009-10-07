@@ -32,17 +32,17 @@ Describes the performance benchmarks below for the tests executed using Korus in
  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Factorial_Program Factorial Program] ====
  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Area_Under_Curve Area Under Curve] ====
 
-===1. Factorial Program===
+===Factorial Program===
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
-===1.1 Testing `ParallelFor` Construct Performance on Dual Core Machine===
+===1 Testing `ParallelFor` Construct Performance on Dual Core Machine===
 
-====1.1.1 Program to Calculate Factorial Program using standard java `for` loop====
+====1.1 Program to Calculate Factorial Program using standard java `for` loop====
 
 ||S.No.||Time in milliseconds||
 ||1.||13050||
 
-====1.1.2 Program to Calculate Parallel Factorial Program using `parallel_for` construct of Korus Library====
+====1.2 Program to Calculate Parallel Factorial Program using `parallel_for` construct of Korus Library====
 
 ||S.No.||Grain Size||Time in milliseconds||
 ||1.||40000||13019||
@@ -52,14 +52,14 @@ Java code to calculate factorial of a large number (40000!). Compared the serial
 ||5.||2500||3626||
 ||6.||1000||3423||
 
-===1.2 Testing `ParallelFor` Construct Performance on Quad Core Machine===
+===2 Testing `ParallelFor` Construct Performance on Quad Core Machine===
 
-====1.2.1 Program to Calculate Factorial Program using standard java `for` loop ====
+====2.1 Program to Calculate Factorial Program using standard java `for` loop ====
 
 ||S.No.||Time in milliseconds||
 ||1.||8688||
 
-====1.2.2 Program to Calculate Parallel Factorial Program using `parallel_for` construct of Korus Library====
+====2.2 Program to Calculate Parallel Factorial Program using `parallel_for` construct of Korus Library====
 
 ||S.No.||Grain Size||Time in milliseconds||
 ||1.||40000||8688||
@@ -72,7 +72,7 @@ Java code to calculate factorial of a large number (40000!). Compared the serial
 
 ----
 
-===2. Area Under Curve===
+===Area Under Curve===
 
 The trapezoidal rule is a numerical integration method to be used to approximate the integral or the area under a curve. This is often useful when an exact integral does not exist, can not easily be obtained, or is mathematically too time consuming for repetitious automated calculations.
 
@@ -85,14 +85,14 @@ Consider the function f(x). We want to calculate the area under the curve over t
          a
 }}}
 
-===2.1 Results on Dual Core Machine===
+===1 Results on Dual Core Machine===
 
-====2.1.1 Program to Calculate Area under Curve using standard java `for` loop====
+====1.1 Program to Calculate Area under Curve using standard java `for` loop====
 
 ||S.No|| Time in milliseconds||
 ||1.||17323||
 
-====2.1.2 Program to Calculate Area under Curve using `parallel_for` construct of Korus Library====
+====1.2 Program to Calculate Area under Curve using `parallel_for` construct of Korus Library====
 
 ||S.No.||Grain Size||Time in milliseconds||
 ||1.||1000000000||17363||
@@ -102,14 +102,14 @@ Consider the function f(x). We want to calculate the area under the curve over t
 ||5.||62500000||7736|| 
 
 
-===2.2 Results on Quad Core Machine===
+===2 Results on Quad Core Machine===
 
-====2.2.1 Program to Calculate Area under Curve using standard java `for` loop====
+====2.1 Program to Calculate Area under Curve using standard java `for` loop====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||26735||
 
-====2.2.2 Program to Calculate Area under Curve using `parallel_for` construct of Korus Library====
+====2.2 Program to Calculate Area under Curve using `parallel_for` construct of Korus Library====
 
 ||S.No.||Grain Size||Time in milliseconds||
 ||1.||1000000000||26728||
@@ -120,7 +120,7 @@ Consider the function f(x). We want to calculate the area under the curve over t
 
 ----
 
-===3. Spearman's rank correlation coefficient===
+===Spearman's rank correlation coefficient===
 
 Spearman's rank correlation coefficient measure of the strength of the associations between two variables, without making any assumptions about the frequency distribution of the variables.
 
@@ -136,14 +136,14 @@ where:
 
     n = the number of values in each data set (same for both sets). 
 
-===3.1 Results on Dual Core Machine===
+===1 Results on Dual Core Machine===
 
-==== 3.1.1 Program to Spearman's rank correlation coefficient using standard java `for` loop (Data Size - 10000000) ====
+==== 1.1 Program to Spearman's rank correlation coefficient using standard java `for` loop (Data Size - 10000000) ====
 
 || S.No || Time in milliseconds ||
 ||1.||2982||
 
-====3.1.2 Program to Spearman's rank correlation coefficient using `parallel_for` construct of Korus Library (Data Size - 10000000)====
+====1.2 Program to Spearman's rank correlation coefficient using `parallel_for` construct of Korus Library (Data Size - 10000000)====
 
 ||S.No||Grain Size|| Time in milliseconds||
 ||1.||10000000||2985||
@@ -151,14 +151,14 @@ where:
 ||3.||2500000||1579||
 
 
-===3.2 Results on Quad Core Machine===
+===2 Results on Quad Core Machine===
 
-====3.2.1 Program to Spearman's rank correlation coefficient using standard java `for` loop(Data Size - 10000000)====
+====2.1 Program to Spearman's rank correlation coefficient using standard java `for` loop(Data Size - 10000000)====
 
 ||S.No|| Time in milliseconds||
 ||1.||2593||
 
-====3.2.2 Program to Spearman's rank correlation coefficient using `parallel_for` construct of Korus Library (Data Size - 10000000)====
+====2.2 Program to Spearman's rank correlation coefficient using `parallel_for` construct of Korus Library (Data Size - 10000000)====
 
 ||S.No||Grain Size|| Time in milliseconds||
 ||1.||10000000||2446||
@@ -169,7 +169,7 @@ where:
 
 =`Pipeline`=
 
-===4. Parallel Text Transformer Program===
+===Parallel Text Transformer Program===
 
 This involved writing an application which reads a Text file, transforms and writes it into another file. A serial as well as a parallel version were written. The parallel version utilized 3 cores for each of the reading, transforming and writing tasks. The parallel version was written using Korus.
 
@@ -178,13 +178,13 @@ This involved writing an application which reads a Text file, transforms and wri
 *Response Time: * The time in which the execution class gets the control back.
 In Serial version of the program the execution class halts until the task is completed, while in Parallel version using Korus `pipeline` construct control gets back to the execution class with in very minimal time while the task is getting completed in back ground.
 
-===4.1 Results on Dual Core Machine===
+===1 Results on Dual Core Machine===
 *Testing Pipeline Construct – File Size 9.3MB (approx)*
 ||S.No.||Program||Execution Time||Response Time||
 ||1.||SerialReadTransformWrite||1720ms||1720ms||
 ||2.||ParallelReadTransformWrite||1625ms||47ms^*^||
 
-===4.2 Results on Quad Core Machine===
+===2 Results on Quad Core Machine===
 *Testing Pipeline Construct – File Size 9.3MB (approx)*
 ||S.No.||Program||Execution Time||Response Time||
 ||1.||SerialReadTransformWrite||1032ms||1032ms||
