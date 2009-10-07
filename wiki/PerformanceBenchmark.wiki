@@ -17,7 +17,8 @@
 
 
 
-=Performance Benchmark of Korus Constructs= 
+=Performance Benchmark of Korus Constructs=
+= `ParallelFor` =
 ==1. Factorial Program==
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
@@ -155,6 +156,7 @@ where:
 
 ----
 
+=`Pipeline`=
 
 ==4. Parallel Text Transformer Program==
 
