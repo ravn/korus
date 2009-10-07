@@ -1,7 +1,5 @@
 #summary Describes the Best Practices and Guidelines for Korus
 
-=== Guidelines and Best Practices ===
-
   * Problem definition must be Breakable i.e. big enough to break it into small Processes.
 
   * Processes should not be too big in execution otherwise it would end up being a sequential program.
