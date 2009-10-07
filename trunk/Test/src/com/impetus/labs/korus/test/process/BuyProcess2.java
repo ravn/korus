@@ -10,13 +10,12 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *  
+ *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 package com.impetus.labs.korus.test.process;
 
-import com.impetus.labs.korus.core.KorusRuntime;
 import com.impetus.labs.korus.core.Message;
 import com.impetus.labs.korus.core.Process;
 
@@ -28,7 +27,6 @@ import com.impetus.labs.korus.core.Process;
 public class BuyProcess2 extends Process {
 
 	// Overide the service Method
-
 	public void service(Message requestMessage) {
 
 		System.out.println("Inside Process2");

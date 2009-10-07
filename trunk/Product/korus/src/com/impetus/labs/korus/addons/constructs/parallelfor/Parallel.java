@@ -1,19 +1,10 @@
-/*******************************************************************************
- * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
- * This file is part of Korus.
- * Korus is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 3 as published
- * by the Free Software Foundation (http://www.gnu.org/licenses/gpl.html)
+/**
+ * Parallel.java
  * 
- * Korus is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *  
- * You should have received a copy of the GNU General Public License
- * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
- ******************************************************************************/
+ * Copyright 2009 Impetus Infotech India Pvt. Ltd. . All Rights Reserved.
+ *
+ * This software is proprietary information of Impetus Infotech, India.
+ */
 package com.impetus.labs.korus.addons.constructs.parallelfor;
 
 import java.lang.reflect.Constructor;
@@ -21,8 +12,8 @@ import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import com.impetus.labs.korus.core.KorusRuntime;
 import com.impetus.labs.korus.core.Process;
+import com.impetus.labs.korus.core.KorusRuntime;
 import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 import com.impetus.labs.korus.util.BlockedRange;
 /**

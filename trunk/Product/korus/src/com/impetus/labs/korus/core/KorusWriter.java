@@ -10,16 +10,17 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *  
+ *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
+
 package com.impetus.labs.korus.core;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-
 /**
  * KorusWriter is used to write data over
  * Socket channel. It is involved in inter-node communication.
@@ -30,16 +31,26 @@ public class KorusWriter implements Runnable
 	{
 		while (true)
 		{
+			BufferedWriter bufferedWriter = null;
+			SerializableMessage requestMessage = getRequestMessage();
+			String data = requestMessage.getData();
+			String nodeName = requestMessage.getNodeName();
 			try
 			{
-				SerializableMessage requestMessage = getRequestMessage();
-				String data = requestMessage.getData();
-				String nodeName = requestMessage.getNodeName();
-				BufferedWriter bufferedWriter = KorusRuntime
-						.getConnectedNodesMap().get(nodeName);
-				bufferedWriter.write(data);
-				bufferedWriter.flush();
 
+				bufferedWriter = KorusRuntime.getConnectedNodesMap().get(
+						nodeName);
+				if (bufferedWriter != null)
+				{
+					bufferedWriter.write(data);
+					bufferedWriter.flush();
+				}
+
+			} catch (IOException e)
+			{
+				KorusRuntime.getConnectedNodesMap().remove(nodeName);
+				System.out.println("Connection removed");
+				// e.printStackTrace();
 			} catch (Exception e)
 			{
 				e.printStackTrace();
@@ -50,6 +61,7 @@ public class KorusWriter implements Runnable
 
 	/**
 	 * Get the requestMessage from the requestMessageQueue
+	 * 
 	 * @return the requestMessage
 	 */
 	private static SerializableMessage getRequestMessage()

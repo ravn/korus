@@ -10,17 +10,17 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *  
+ *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
+
 package com.impetus.labs.korus.util;
 
 import java.util.Iterator;
 import java.util.Set;
 
 import com.impetus.labs.korus.core.Message;
-
 /**
  * StrinUtil is a Utility class for String formatting operations * 
  */

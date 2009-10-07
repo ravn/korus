@@ -10,7 +10,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *  
+ *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
@@ -49,7 +49,7 @@ public class BuyProcess1 extends Process {
 		
 		// Send Message Asynchronously to the next Process on Remote Node
 		// Set only String Objects in the Message in case of Remote Calls
-		//KorusRuntime.send("hostname", "buyProcess2", requestMessage)
+		//KorusRuntime.send("IP-Address", "buyProcess2", requestMessage)
 	}
 
 	/**

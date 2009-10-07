@@ -10,10 +10,11 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *  
+ *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
+
 package com.impetus.labs.korus.core;
 
 import java.io.BufferedWriter;
@@ -32,19 +33,20 @@ import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 import com.impetus.labs.korus.util.StringUtil;
 
 /**
- * KorusRuntime is used to initialize Korus Runtime which includes 
- * initializing Executers, Schedulers and also managing communication between Processes 
- * and Nodes.
+ * KorusRuntime is used to initialize Korus Runtime which includes initializing
+ * Executers, Schedulers and also managing communication between Processes and
+ * Nodes.
  */
-
 public class KorusRuntime
 {
-	private static int PORT = 7935; 
-	
+	private static int JAVA_PORT = 7935;
+
+	private static int ERLANG_PORT = 7936;
+
 	private static boolean isWebRequest = false;
 
 	private static boolean isDistributed = false;
-	
+
 	private static int numberOfNewRequestExecuters = 0;
 
 	private static int numberOfNewRequestSchedulers = 0;
@@ -135,7 +137,6 @@ public class KorusRuntime
 		}
 	}
 
-		
 	/**
 	 * Get the next executer from the coreExecuterList.
 	 * 
@@ -291,19 +292,59 @@ public class KorusRuntime
 	 */
 	public static void send(String nodeName, String processName, Message msg)
 	{
-		if(isDistributed)
+		send(nodeName, processName, msg, JAVA_PORT);
+	}
+
+	/**
+	 * Method to send response data to erlangNode
+	 * 
+	 * @param nodeName
+	 *            The name of the node from which a request to process has been
+	 *            sent to korus
+	 * @param processName
+	 *            Name of the process at erlang node which will collect the
+	 *            response
+	 * @param msg
+	 *            A hashmap containing the parameters for the process.
+	 */
+	public static void sendToErlang(String nodeName, String processName,
+			Message msg)
+	{
+		send(nodeName, processName, msg, ERLANG_PORT);
+	}
+
+	/**
+	 * Send data to the node.
+	 * 
+	 * @param nodeName
+	 *            The name of the node from which a request to process has been
+	 *            sent to korus
+	 * @param processName
+	 *            Name of the process at erlang node which will collect the
+	 *            response
+	 * @param msg
+	 *            A hashmap containing the parameters for the process
+	 * @param port
+	 *            Port to connect with.
+	 */
+	private static void send(String nodeName, String processName, Message msg,
+			int port)
+	{
+		if (isDistributed)
 		{
 			if (connectedNodesMap.get(nodeName) == null)
-				connect(nodeName);
+				connect(nodeName, port);
 			msg.put("action", processName);
 			String request = StringUtil.messageToString(msg);
-			SerializableMessage message = new SerializableMessage(nodeName, request);
+			SerializableMessage message = new SerializableMessage(nodeName,
+					request);
 			KorusWriter.setRequestMessage(message);
-		}
-		else
-			System.out.println("KorusRuntime is not initalized in DISTRIBUTED_MODE to enable it, set DISTRIBUTED_MODE=true in properties file");
+		} else
+			System.out
+					.println("KorusRuntime is not initalized in DISTRIBUTED_MODE to enable it, set DISTRIBUTED_MODE=true in properties file");
+
 	}
-	
+
 	/**
 	 * Get the Process from registeredProcessMap if registered.
 	 * 
@@ -344,17 +385,20 @@ public class KorusRuntime
 	 * 
 	 * @param ipAddress
 	 *            ipAddress of the remoteNode
+	 * @param port
+	 *            port to be used for connection.
 	 */
-	private static void connect(String ipAddress)
+	private static void connect(String ipAddress, int port)
 	{
 		BufferedWriter bufferedWriter = null;
 		Socket clientSocket = null;
 		try
 		{
-			// connect to the Socket 
-			clientSocket = new Socket(ipAddress, PORT);
+			// connect to the Socket
+			clientSocket = new Socket(ipAddress, port);
 			bufferedWriter = new BufferedWriter(new OutputStreamWriter(
 					clientSocket.getOutputStream()));
+			connectedNodesMap.put(ipAddress, bufferedWriter);
 		} catch (UnknownHostException e)
 		{
 			e.printStackTrace();
@@ -362,34 +406,27 @@ public class KorusRuntime
 		{
 			e.printStackTrace();
 		}
-		connectedNodesMap.put(ipAddress, bufferedWriter);
+
 	}
-	
+
 	/**
 	 * Get the connectedNodesMap
-	 * @return a hashmap containing the bufferedWriter of connected nodes. 
+	 * 
+	 * @return a hashmap containing the bufferedWriter of connected nodes.
 	 */
 	public static HashMap<String, BufferedWriter> getConnectedNodesMap()
 	{
 		return connectedNodesMap;
 	}
-	
+
 	/**
 	 * Get the Port
+	 * 
 	 * @return the port
 	 */
 	public static int getPort()
 	{
-		return PORT;
-	}
-
-	/**
-	 * Set the port  
-	 * @param port the port to set
-	 */
-	public static void setPort(int port)
-	{
-		PORT = port;
+		return JAVA_PORT;
 	}
 
 	/**
@@ -407,10 +444,12 @@ public class KorusRuntime
 		{
 			String korusHome = System.getenv("KORUS_HOME");
 
-			File propertiesFile = new File(korusHome+ "/properties/korus.properties");
+			File propertiesFile = new File(korusHome
+					+ "/properties/korus.properties");
 
 			Properties properties = new Properties();
-			FileInputStream fileInputStream = new FileInputStream(propertiesFile);
+			FileInputStream fileInputStream = new FileInputStream(
+					propertiesFile);
 			properties.load(fileInputStream);
 
 			// Check for Kind of request if WEB_REQUEST='true'
@@ -505,7 +544,7 @@ public class KorusRuntime
 						.getProperty("DISTRIBUTED_MODE"));
 			} else
 				throw new KeyNotFoundException("DISTRIBUTED_MODE");
-			
+
 		}
 
 		catch (NumberFormatException e)
@@ -517,12 +556,11 @@ public class KorusRuntime
 
 		catch (IOException e)
 		{
-			System.out.println("Properties File not found!\nStarting with default configuration");
-			//throw new KorusException(
-			//		"Properties File not found!\nStarting with default configuration");
+			System.out.println(e.getMessage());
+			throw new KorusException(
+					"Properties File not found!\nStarting with default configuration");
 
 		}
 	}
 
-	
 }
