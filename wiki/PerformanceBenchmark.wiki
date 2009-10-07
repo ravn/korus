@@ -21,7 +21,7 @@
 ==1. Factorial Program==
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
-===1.1 Testing ParallelFor Construct Performance on Dual Core Machine===
+===1.1 Testing `ParallelFor` Construct Performance on Dual Core Machine===
 
 ====1.1.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
 
@@ -38,7 +38,7 @@ Java code to calculate factorial of a large number (40000!). Compared the serial
 ||5.||2500||16||3626||
 ||6.||1000||40||3423||
 
-===1.2 Testing ParallelFor Construct Performance on Quad Core Machine===
+===1.2 Testing `ParallelFor` Construct Performance on Quad Core Machine===
 
 ====1.2.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
 
@@ -114,7 +114,7 @@ In principle, ρ is simply a special case of the Pearson product-moment coeffici
 
 Therefore ρ is given by:
 
-	[http://code.google.com/ http://korus.googlecode.com/files/rho.JPG]
+	[http://korus.googlecode.com/svn/trunk/Support/images/rho.JPG]
 
 where:
 
