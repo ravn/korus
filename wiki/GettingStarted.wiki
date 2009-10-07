@@ -155,7 +155,7 @@ Compile it using the java compile commands and you can start using it in your Pr
 Or else you can also use java command-line options
 *Example:* java -cp '/home/user/svn_repo/korus0.1/Test/bin:/home/user/svn_repo/korus0.1/Product/korus/jar/korus.jar' com.impetus.labs.korus.test.pipeline.PipelineTest
 
-_More detailed inline documentation of java classes can be found Product --> korus --> javadoc._
+*More detailed inline documentation of java classes can be found in Product --> korus --> javadoc or [http://korus.googlecode.com/svn/trunk/Product/korus/javadoc/index.html here]*
 ----
 
 == 2. Configuring Korus ==
