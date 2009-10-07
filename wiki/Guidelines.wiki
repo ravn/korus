@@ -1,3 +1,19 @@
 #summary Describes the Best Practices and Guidelines for Korus
 
 === Guidelines and Best Practices ===
+
+1. Problem definition must be Breakable i.e. big enough to break it into small Processes.
+
+2. Processes should not be too big in execution otherwise it would end up being a sequential program.
+
+3. Avoid too small Processes. Ideally execution time of a Process should be more than execution time taken by Korus Runtime to manage a process.
+
+4. Run independent Processes of a use case in Parallel.
+
+5. For CPU Intensive Processes adjust Number of Executers in properties file to optimize performance.
+
+6. Number of Schedulers can also be adjusted depending upon the amount of message or request in runtime.
+
+7. Avoid coding blocking Processes.
+
+8. Send small messages in Remote Process Call.
