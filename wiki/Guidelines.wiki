@@ -1,13 +1,5 @@
 #summary Describes the Best Practices and Guidelines for Korus
 
-= Introduction =
-
-Add your content here.
+= Guidelines and Best Practices =
 
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
