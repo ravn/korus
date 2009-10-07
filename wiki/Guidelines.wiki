@@ -12,8 +12,8 @@
 
 5. For CPU Intensive Processes adjust Number of Executers in properties file to optimize performance.
 
-6. Number of Schedulers can also be adjusted depending upon the amount of message or request in runtime.
+6. Number of Schedulers can also be adjusted depending upon the amount of message or request in Korus Runtime.
 
-7. Avoid coding blocking Processes.
+7. Do not write blocking code in Processes.
 
 8. Send small messages in Remote Process Call.
