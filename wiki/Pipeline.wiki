@@ -177,3 +177,5 @@ pipeline.getResult();
 }}}
 
 Note: In the above example we have used some sample files to read and transform which are read from the _files_ folder. The result is also written in the same folder.
+
+_*See the performance benchmark of the test [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Pipeline here]*_
