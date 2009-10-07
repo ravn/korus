@@ -25,17 +25,18 @@ Describes the performance benchmarks below for the tests executed using Korus in
 ----
 
 ==Performance Benchmark of Korus Constructs==
- # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#ParallelFor ParallelFor] ====
- # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Pipeline Pipeline] ====
+ * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#ParallelFor ParallelFor] ====
+ * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Pipeline Pipeline] ====
 
 = `ParallelFor` =
  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Factorial_Program Factorial Program] ====
  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Area_Under_Curve Area Under Curve] ====
+ # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Spearman's_rank_correlation_coefficient Spearman's rank correlation coefficient] ====
 
 ===Factorial Program===
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
-===1 Testing `ParallelFor` Construct Performance on Dual Core Machine===
+===1. Testing `ParallelFor` Construct Performance on Dual Core Machine===
 
 ====1.1 Program to Calculate Factorial Program using standard java `for` loop====
 
@@ -52,7 +53,7 @@ Java code to calculate factorial of a large number (40000!). Compared the serial
 ||5.||2500||3626||
 ||6.||1000||3423||
 
-===2 Testing `ParallelFor` Construct Performance on Quad Core Machine===
+===2. Testing `ParallelFor` Construct Performance on Quad Core Machine===
 
 ====2.1 Program to Calculate Factorial Program using standard java `for` loop ====
 
@@ -85,7 +86,7 @@ Consider the function f(x). We want to calculate the area under the curve over t
          a
 }}}
 
-===1 Results on Dual Core Machine===
+===1. Results on Dual Core Machine===
 
 ====1.1 Program to Calculate Area under Curve using standard java `for` loop====
 
@@ -102,7 +103,7 @@ Consider the function f(x). We want to calculate the area under the curve over t
 ||5.||62500000||7736|| 
 
 
-===2 Results on Quad Core Machine===
+===2. Results on Quad Core Machine===
 
 ====2.1 Program to Calculate Area under Curve using standard java `for` loop====
 
@@ -136,7 +137,7 @@ where:
 
     n = the number of values in each data set (same for both sets). 
 
-===1 Results on Dual Core Machine===
+===1. Results on Dual Core Machine===
 
 ==== 1.1 Program to Spearman's rank correlation coefficient using standard java `for` loop (Data Size - 10000000) ====
 
@@ -151,7 +152,7 @@ where:
 ||3.||2500000||1579||
 
 
-===2 Results on Quad Core Machine===
+===2. Results on Quad Core Machine===
 
 ====2.1 Program to Spearman's rank correlation coefficient using standard java `for` loop(Data Size - 10000000)====
 
@@ -168,6 +169,7 @@ where:
 ----
 
 =`Pipeline`=
+ # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Parallel_Text_Transformer_Program Parallel Text Transformer Program] ====
 
 ===Parallel Text Transformer Program===
 
@@ -178,13 +180,13 @@ This involved writing an application which reads a Text file, transforms and wri
 *Response Time: * The time in which the execution class gets the control back.
 In Serial version of the program the execution class halts until the task is completed, while in Parallel version using Korus `pipeline` construct control gets back to the execution class with in very minimal time while the task is getting completed in back ground.
 
-===1 Results on Dual Core Machine===
+===1. Results on Dual Core Machine===
 *Testing Pipeline Construct – File Size 9.3MB (approx)*
 ||S.No.||Program||Execution Time||Response Time||
 ||1.||SerialReadTransformWrite||1720ms||1720ms||
 ||2.||ParallelReadTransformWrite||1625ms||47ms^*^||
 
-===2 Results on Quad Core Machine===
+===2. Results on Quad Core Machine===
 *Testing Pipeline Construct – File Size 9.3MB (approx)*
 ||S.No.||Program||Execution Time||Response Time||
 ||1.||SerialReadTransformWrite||1032ms||1032ms||
