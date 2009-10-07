@@ -30,7 +30,7 @@ public class StringUtil
 	/**
 	 * Method to convert the message hashmap to request string.
 	 * 
-	 * @param Message
+	 * @param message
 	 *            A hashmap containing the parameters for the process
 	 * @return the final request String to be sent
 	 */
