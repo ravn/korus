@@ -1,12 +1,12 @@
 ==Performance Benchmark of Korus in Web Application Execution Scenario==
 
-== 1. Traditional Application (3 node Tomcat cluster)==
+=== 1. Traditional Application (3 node Tomcat cluster)===
 
 ||Users||	Number of Requests||	Average Response Time (in milliseconds)||
 ||400||	100000||	1073||
 ||800||	94000||	2201||
 
-== 2. Using Korus (custom Korus grid deployment) ==
+=== 2. Using Korus (custom Korus grid deployment) ===
 
 ||Users||	Number of Requests||	Average Response Time (in milliseconds)||
 ||400||	127000||	651 ||
@@ -18,9 +18,9 @@
 
 ----
 
-=Performance Benchmark of Korus Constructs=
+==Performance Benchmark of Korus Constructs==
 = `ParallelFor` =
-==1. Factorial Program==
+===1. Factorial Program===
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
 ===1.1 Testing `ParallelFor` Construct Performance on Dual Core Machine===
@@ -60,7 +60,7 @@ Java code to calculate factorial of a large number (40000!). Compared the serial
 
 ----
 
-==2. Area Under Curve==
+===2. Area Under Curve===
 
 The trapezoidal rule is a numerical integration method to be used to approximate the integral or the area under a curve. This is often useful when an exact integral does not exist, can not easily be obtained, or is mathematically too time consuming for repetitious automated calculations.
 
@@ -108,7 +108,7 @@ Consider the function f(x). We want to calculate the area under the curve over t
 
 ----
 
-==3. Spearman's rank correlation coefficient==
+===3. Spearman's rank correlation coefficient===
 
 Spearman's rank correlation coefficient measure of the strength of the associations between two variables, without making any assumptions about the frequency distribution of the variables.
 
@@ -159,7 +159,7 @@ where:
 
 =`Pipeline`=
 
-==4. Parallel Text Transformer Program==
+===4. Parallel Text Transformer Program===
 
 This involved writing an application which reads a Text file, transforms and writes it into another file. A serial as well as a parallel version were written. The parallel version utilized 3 cores for each of the reading, transforming and writing tasks. The parallel version was written using Korus.
 ===4.1 Results on Dual Core Machine===
