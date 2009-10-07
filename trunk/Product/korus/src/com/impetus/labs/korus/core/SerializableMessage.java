@@ -16,6 +16,10 @@
  ******************************************************************************/
 package com.impetus.labs.korus.core;
 
+/**
+ * SerializableMessage is used in inter-node communication, it contains data
+ * and address of remote node.
+ */
 public class SerializableMessage {
 	
 	/**

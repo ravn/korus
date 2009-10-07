@@ -20,6 +20,10 @@ import java.io.BufferedWriter;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * KorusWriter is used to write data over
+ * Socket channel. It is involved in inter-node communication.
+ */
 public class KorusWriter implements Runnable
 {
 	public void run()

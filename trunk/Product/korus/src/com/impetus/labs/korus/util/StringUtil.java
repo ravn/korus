@@ -21,6 +21,9 @@ import java.util.Set;
 
 import com.impetus.labs.korus.core.Message;
 
+/**
+ * StrinUtil is a Utility class for String formatting operations * 
+ */
 public class StringUtil
 {
 

@@ -31,6 +31,12 @@ import com.impetus.labs.korus.exception.KorusException;
 import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 import com.impetus.labs.korus.util.StringUtil;
 
+/**
+ * KorusRuntime is used to initialize Korus Runtime which includes 
+ * initializing Executers, Schedulers and also managing communication between Processes 
+ * and Nodes.
+ */
+
 public class KorusRuntime
 {
 	private static int PORT = 7935; 

@@ -28,6 +28,11 @@ import java.nio.charset.CharsetDecoder;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * KorusReader is used to read data from
+ * Socket channel and Send data to appropriate Process.
+ * It is involved in inter-node communication.
+ */
 public class KorusReader implements Runnable
 {
 	public void run()
