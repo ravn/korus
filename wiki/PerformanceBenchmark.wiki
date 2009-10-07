@@ -1,7 +1,14 @@
 Describes the performance benchmarks below for the tests executed using Korus in Web Application Execution Environment and using Korus Constructs i.e. `parallel_for` & `pipeline`. 
 
-  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Performance_Benchmark_of_Korus_in_Web_Application_Execution_Environment Performance Benchmark of Korus in Web Application Execution Environment] ====
-  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Performance_Benchmark_of_Korus_Constructs Performance Benchmark of Korus Constructs] ====
+  * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Performance_Benchmark_of_Korus_in_Web_Application_Execution_Environment Performance Benchmark of Korus in Web Application Execution Environment] ====
+  * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Performance_Benchmark_of_Korus_Constructs Performance Benchmark of Korus Constructs] ====
+    * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#ParallelFor ParallelFor] ====
+      * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Factorial_Program Factorial Program] ====
+      * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Area_Under_Curve Area Under Curve] ====
+      * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Spearman's_rank_correlation_coefficient Spearman's rank correlation coefficient] ====
+    * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Pipeline Pipeline] ====
+      * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Parallel_Text_Transformer_Program Parallel Text Transformer Program] ====
+
 
 
 ==Performance Benchmark of Korus in Web Application Execution Environment==
@@ -25,13 +32,8 @@ Describes the performance benchmarks below for the tests executed using Korus in
 ----
 
 ==Performance Benchmark of Korus Constructs==
- * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#ParallelFor ParallelFor] ====
- * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Pipeline Pipeline] ====
-
+ 
 = `ParallelFor` =
- # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Factorial_Program Factorial Program] ====
- # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Area_Under_Curve Area Under Curve] ====
- # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Spearman's_rank_correlation_coefficient Spearman's rank correlation coefficient] ====
 
 ===Factorial Program===
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
@@ -169,8 +171,7 @@ where:
 ----
 
 =`Pipeline`=
- # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Parallel_Text_Transformer_Program Parallel Text Transformer Program] ====
-
+ 
 ===Parallel Text Transformer Program===
 
 This involved writing an application which reads a Text file, transforms and writes it into another file. A serial as well as a parallel version were written. The parallel version utilized 3 cores for each of the reading, transforming and writing tasks. The parallel version was written using Korus.
