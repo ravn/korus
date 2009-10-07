@@ -1,5 +1,9 @@
 Describes the performance benchmarks below for the tests executed using Korus in Web Application Execution Environment and using Korus Constructs i.e. `parallel_for` & `pipeline`. 
 
+  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Performance_Benchmark_of_Korus_in_Web_Application_Execution_Environment Performance Benchmark of Korus in Web Application Execution Environment] ====
+  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Performance_Benchmark_of_Korus_Constructs Performance Benchmark of Korus Constructs] ====
+
+
 ==Performance Benchmark of Korus in Web Application Execution Environment==
 
 === 1. Traditional Application (3 node Tomcat cluster)===
@@ -21,7 +25,12 @@ Describes the performance benchmarks below for the tests executed using Korus in
 ----
 
 ==Performance Benchmark of Korus Constructs==
+ # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#ParallelFor ParallelFor] ====
+
+ # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Pipeline Pipeline] ====
+
 = `ParallelFor` =
+ # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Factorial_Program Factorial Program] ====
 ===1. Factorial Program===
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
