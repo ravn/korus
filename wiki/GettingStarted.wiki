@@ -44,15 +44,17 @@ You will also need a JDK installed on your system, version 1.5 or later required
    +--- Product // contains API Files
    |      |
    |      +--- korus
-   |              |
-   |              +--- bin        // Compiled Code
-   |              +--- build      // Build Scripts
-   |              +--- dst        
-   |              +--- jar        // Compiled Jar
-   |              +--- javadoc    // Java Documentation
-   |              +--- src        // Source Files
-   |              +--- examples   // Example codes
-   |              +--- properties // Property Files
+   |      |       |
+   |      |       +--- bin        // Compiled Code
+   |      |       +--- build      // Build Scripts
+   |      |       +--- dst        
+   |      |       +--- jar        // Compiled Jar
+   |      |       +--- javadoc    // Java Documentation
+   |      |       +--- src        // Source Files
+   |      |       +--- examples   // Example codes
+   |      |       +--- properties // Property Files
+   |      |
+   |      +--- Adapter // adapter codes for other languages.
    |
    +--- Support  // Contains the supporting files
    |      |
