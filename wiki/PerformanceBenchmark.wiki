@@ -11,7 +11,7 @@ Describes the performance benchmarks below for the tests executed using Korus in
 
 
 
-==Performance Benchmark of Korus in Web Application Execution Environment==
+== Performance Benchmark of Korus in Web Application Execution Environment ==
 
 === 1. Traditional Application (3 node Tomcat cluster)===
 
