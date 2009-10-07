@@ -1,6 +1,10 @@
-= Korus Deployment in an Web Application Execution Environment =
+== Korus Deployment in Web Application Execution Environment ==
+
+We have experimented the same concept and used it as an execution engine for a web application and the performance benchmarks can be found [here]. Right now its not in stage to share. We are working on it and will be updating more details very soon.
 
 [http://korus.googlecode.com/svn/trunk/Support/images/customDeployment.jpg]
+
+*Figure: Korus Custom deployment in web application scenario. 
 
 Here a Sample Scenario has been shown of how Korus can be used in an HTTP environment. 
 Korus Processes are Replicated and Deployed on three nodes which are managed by a Distribution Manager. A Web Server is placed in front of the Distribution Manager to accept HTTP Requests.
