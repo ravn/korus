@@ -167,14 +167,14 @@ Example: KORUS_HOME=Product/korus
 ----
 
 == 3. Using Korus ==
-Korus can be used in following ways:
+This section explains various ways in which the Korus framework can be used. All of them are explained by means of examples.
 
-  # *Asynchronous & distributed programming mode.*
+  # *Korus core API's*
      Details can be found [http://code.google.com/p/korus/wiki/AsynchronousDistributedProgrammingMode here]<br/>
   # *Parallel programming constructs.*<br/>
     * `parallel_for` : A parallel version of a for loop, more details can be found [http://code.google.com/p/korus/wiki/ParallelFor here]<br/>
     * `pipeline` : It allows you to model your sequential independent task in parallel, more details can be found [http://code.google.com/p/korus/wiki/Pipeline here]<br/><br/>
-  # *Cross language Adapter.*
+  # *Cross language adapter. Calling Korus from another language environment*
      Details can be found [http://code.google.com/p/korus/wiki/CrossLanguageAdapter here]<br/>
-  # *Web application execution environment.*
+  # *How to create a web application using korus*
      Details can be found [http://code.google.com/p/korus/wiki/WebApplicationExecution here]
