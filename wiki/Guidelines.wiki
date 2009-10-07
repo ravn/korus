@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Describes the Best Practices and Guidelines for Korus
 
 = Introduction =
 
