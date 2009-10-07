@@ -1,4 +1,6 @@
-==Performance Benchmark of Korus in Web Application Execution Scenario==
+Describes the performance benchmarks below for the tests executed using Korus in Web Application Execution Environment and using Korus Constructs i.e. `parallel_for` & `pipeline`. 
+
+==Performance Benchmark of Korus in Web Application Execution Environment==
 
 === 1. Traditional Application (3 node Tomcat cluster)===
 
@@ -25,37 +27,37 @@ Java code to calculate factorial of a large number (40000!). Compared the serial
 
 ===1.1 Testing `ParallelFor` Construct Performance on Dual Core Machine===
 
-====1.1.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
+====1.1.1 Program to Calculate Factorial Program using standard java `for` loop====
 
-||S.No.||No. of Threads||Time in milliseconds||
-||1.||1||13050||
+||S.No.||Time in milliseconds||
+||1.||13050||
 
-====1.1.2 Program to Calculate Parallel Factorial Program using Korus Library====
+====1.1.2 Program to Calculate Parallel Factorial Program using `parallel_for` construct of Korus Library====
 
-||S.No.||Grain Size||No. of Processes||Time in milliseconds||
-||1.||40000||1||13019||
-||2.||20000||2||7690||
-||3.||10000||4||5126||
-||4.||5000||8||4059||
-||5.||2500||16||3626||
-||6.||1000||40||3423||
+||S.No.||Grain Size||Time in milliseconds||
+||1.||40000||13019||
+||2.||20000||7690||
+||3.||10000||5126||
+||4.||5000||4059||
+||5.||2500||3626||
+||6.||1000||3423||
 
 ===1.2 Testing `ParallelFor` Construct Performance on Quad Core Machine===
 
-====1.2.1 Program to Calculate Factorial Program using Serial Single Thread Execution====
+====1.2.1 Program to Calculate Factorial Program using standard java `for` loop ====
 
-||S.No.||No. of Threads||Time in milliseconds||
-||1.||1||8688||
+||S.No.||Time in milliseconds||
+||1.||8688||
 
-====1.2.2 Program to Calculate Parallel Factorial Program using Korus Library====
+====1.2.2 Program to Calculate Parallel Factorial Program using `parallel_for` construct of Korus Library====
 
-||S.No.||Grain Size||No. of Processes||Time in milliseconds||
-||1.||40000||1||8688||
-||2.||20000||2||4765||	
-||3.||10000||4||3101|| 
-||4.||5000||8||2797||
-||5.||2500||16||2578||
-||6.||1000||40||2516|| 
+||S.No.||Grain Size||Time in milliseconds||
+||1.||40000||8688||
+||2.||20000||4765||	
+||3.||10000||3101|| 
+||4.||5000||2797||
+||5.||2500||2578||
+||6.||1000||2516|| 
 
 
 ----
@@ -75,36 +77,36 @@ Consider the function f(x). We want to calculate the area under the curve over t
 
 ===2.1 Results on Dual Core Machine===
 
-====2.1.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
+====2.1.1 Program to Calculate Area under Curve using standard java `for` loop====
 
-||S.No||Number of Threads|| Time in milliseconds||
-||1.||1||17323||
+||S.No|| Time in milliseconds||
+||1.||17323||
 
-====2.1.2 Program to Calculate Area under Curve using Korus Library====
+====2.1.2 Program to Calculate Area under Curve using `parallel_for` construct of Korus Library====
 
-||S.No||Number of Processes|| Time in milliseconds||
-||1.||1||17363||
-||2.||2||8870||
-||3.||4||8074||
-||4.||8||7861||
-||5.||16||7736||
+||S.No.||Grain Size||Time in milliseconds||
+||1.||1000000000||17363||
+||2.||500000000||8870||	
+||3.||250000000||8074|| 
+||4.||125000000||7861||
+||5.||62500000||7736|| 
 
 
 ===2.2 Results on Quad Core Machine===
 
-====2.2.1 Program to Calculate Area under Curve using Serial Single Thread Execution====
+====2.2.1 Program to Calculate Area under Curve using standard java `for` loop====
 
 ||S.No||Number of Threads|| Time in milliseconds||
 ||1.||1||26735||
 
-====2.2.2 Program to Calculate Area under Curve using Korus Library====
+====2.2.2 Program to Calculate Area under Curve using `parallel_for` construct of Korus Library====
 
-||S.No||Number of Processes|| Time in milliseconds||
-||1.||1||26728||
-||2.||2||13562||
-||3.||4||7266||
-||4.||8||7172||
-||5.||16||7125||
+||S.No.||Grain Size||Time in milliseconds||
+||1.||1000000000||26728||
+||2.||500000000||13562||	
+||3.||250000000||7266|| 
+||4.||125000000||7172||
+||5.||62500000||7125|| 
 
 ----
 
@@ -126,34 +128,32 @@ where:
 
 ===3.1 Results on Dual Core Machine===
 
-==== 3.1.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 10000000) ====
+==== 3.1.1 Program to Spearman's rank correlation coefficient using standard java `for` loop (Data Size - 10000000) ====
 
-|| S.No || Number of Threads || Time in milliseconds ||
-||1.||1||2982||
+|| S.No || Time in milliseconds ||
+||1.||2982||
 
-====3.1.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 10000000)====
+====3.1.2 Program to Spearman's rank correlation coefficient using `parallel_for` construct of Korus Library (Data Size - 10000000)====
 
-||S.No||Number of Processes|| Time in milliseconds||
-||1.||1||2985||
-||2.||2||1626||
-||3.||4||1579||
+||S.No||Grain Size|| Time in milliseconds||
+||1.||10000000||2985||
+||2.||5000000||1626||
+||3.||2500000||1579||
 
 
 ===3.2 Results on Quad Core Machine===
 
-====3.2.1 Program to Spearman's rank correlation coefficient using Serial Single Thread Execution (Data Size - 10000000)====
+====3.2.1 Program to Spearman's rank correlation coefficient using standard java `for` loop(Data Size - 10000000)====
 
-||S.No||Number of Threads|| Time in milliseconds||
-||1.||1||2593||
+||S.No|| Time in milliseconds||
+||1.||2593||
 
-====3.2.2 Program to Spearman's rank correlation coefficient using Korus Library (Data Size - 10000000)====
+====3.2.2 Program to Spearman's rank correlation coefficient using `parallel_for` construct of Korus Library (Data Size - 10000000)====
 
-||S.No||Number of Processes|| Time in milliseconds||
-||1.||1||2446||
-||2.||2||1341||
-||3.||4||798||
-
-
+||S.No||Grain Size|| Time in milliseconds||
+||1.||10000000||2446||
+||2.||5000000||1341||
+||3.||2500000||798||
 
 ----
 
@@ -162,6 +162,12 @@ where:
 ===4. Parallel Text Transformer Program===
 
 This involved writing an application which reads a Text file, transforms and writes it into another file. A serial as well as a parallel version were written. The parallel version utilized 3 cores for each of the reading, transforming and writing tasks. The parallel version was written using Korus.
+
+^*^ _*Time denoted here is the response time and not the execution time.*_
+
+*Response Time: * The time in which the execution class gets the control back.
+In Serial version of the program the execution class halts untill the task is complete, while in Parallel version using Korus `pipeline` construct control gets back to the execution class with in no time while the task is getting completed in back ground.
+
 ===4.1 Results on Dual Core Machine===
 *Testing Pipeline Construct – File Size 9.3MB (approx)*
 ||S.No.||Program||Execution Time||Response Time||
@@ -174,5 +180,3 @@ This involved writing an application which reads a Text file, transforms and wri
 ||1.||SerialReadTransformWrite||1032ms||1032ms||
 ||2.||ParallelReadTransformWrite||1025ms||32ms^*^||
 
-
-^*^ _Time denoted here is the response time and not the execution time._
