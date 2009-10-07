@@ -26,11 +26,12 @@ Describes the performance benchmarks below for the tests executed using Korus in
 
 ==Performance Benchmark of Korus Constructs==
  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#ParallelFor ParallelFor] ====
-
  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Pipeline Pipeline] ====
 
 = `ParallelFor` =
  # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Factorial_Program Factorial Program] ====
+ # ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Area_Under_Curve Area Under Curve] ====
+
 ===1. Factorial Program===
 Java code to calculate factorial of a large number (40000!). Compared the serial as well as parallel version.
 
