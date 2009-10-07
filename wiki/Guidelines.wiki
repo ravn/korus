@@ -1,5 +1,3 @@
 #summary Describes the Best Practices and Guidelines for Korus
 
-= Guidelines and Best Practices =
-
-
+=== Guidelines and Best Practices ===
