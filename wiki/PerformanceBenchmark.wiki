@@ -1,7 +1,7 @@
 Describes the performance benchmarks below for the tests executed using Korus in Web Application Execution Environment and using Korus Constructs i.e. `parallel_for` & `pipeline`. 
 
   * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Korus_in_Web_Application_Execution_Environment Korus in Web Application Execution Environment] ====
-  * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Performance_Benchmark_of_Korus_Constructs Performance Benchmark of Korus Constructs] ====
+  * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Korus_Constructs Korus Constructs] ====
     * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#ParallelFor ParallelFor] ====
       * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Factorial_Program Factorial Program] ====
       * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Area_Under_Curve Area Under Curve] ====
@@ -31,7 +31,7 @@ Describes the performance benchmarks below for the tests executed using Korus in
 
 ----
 
-==Performance Benchmark of Korus Constructs==
+==Korus Constructs==
  
 = `ParallelFor` =
 
