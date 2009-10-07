@@ -1,6 +1,6 @@
 == Korus Deployment in Web Application Execution Environment ==
 
-We have experimented the concept to use Korus as an execution engine for a web application and the performance benchmarks can be found [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Performance_Benchmark_of_Korus_in_Web_Application_Execution_Scenario here]. Right now its not in stage to share. We are working on it and will be updating more details very soon.
+We have experimented the concept to use Korus as an execution engine for a web application and the performance benchmarks can be found [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Performance_Benchmark_of_Korus_in_Web_Application_Execution_Environment here]. Right now its not in stage to share. We are working on it and will be updating more details very soon.
 
 
 [http://korus.googlecode.com/svn/trunk/Support/images/customDeployment.jpg]
