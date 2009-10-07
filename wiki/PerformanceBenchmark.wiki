@@ -166,7 +166,7 @@ This involved writing an application which reads a Text file, transforms and wri
 ^*^ _*Time denoted here is the response time and not the execution time.*_
 
 *Response Time: * The time in which the execution class gets the control back.
-In Serial version of the program the execution class halts untill the task is complete, while in Parallel version using Korus `pipeline` construct control gets back to the execution class with in no time while the task is getting completed in back ground.
+In Serial version of the program the execution class halts until the task is completed, while in Parallel version using Korus `pipeline` construct control gets back to the execution class with in very minimal time while the task is getting completed in back ground.
 
 ===4.1 Results on Dual Core Machine===
 *Testing Pipeline Construct – File Size 9.3MB (approx)*
@@ -179,4 +179,3 @@ In Serial version of the program the execution class halts untill the task is co
 ||S.No.||Program||Execution Time||Response Time||
 ||1.||SerialReadTransformWrite||1032ms||1032ms||
 ||2.||ParallelReadTransformWrite||1025ms||32ms^*^||
-
