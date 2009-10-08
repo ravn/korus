@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -14,8 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-
 package com.impetus.labs.korus.test.factorial;
+
+import java.math.BigInteger;
+
+import junit.framework.TestCase;
 
 import com.impetus.labs.korus.addons.constructs.parallelfor.Parallel;
 import com.impetus.labs.korus.util.BlockedRange;
@@ -23,23 +26,23 @@ import com.impetus.labs.korus.util.BlockedRange;
 /**
  * Test Class to run ParallelFactorial.
  * 
- *
+ * 
  */
-public class ParallelFactorialTest
+public class ParallelFactorialTest extends TestCase
 {
 
-	public static void main(String[] args)
+	public void testParallelFatorial()
 	{
 		long initialTime, finalTime;
 		initialTime = System.currentTimeMillis();
 
 		// Create an object of the construct to be used
 		Parallel parallel = new Parallel();
-
+		int number = 40000;
 		// Specify begin, end and grainSize according to the machine
 		int begin = 1;
-		int end = 40000;
-		int grainSize = 250;
+		int end = number;
+		int grainSize = 20000;
 
 		BlockedRange range = new BlockedRange(begin, end, grainSize);
 
@@ -55,11 +58,20 @@ public class ParallelFactorialTest
 		finalTime = System.currentTimeMillis();
 		System.out.println("Total Time Taken by ParallelFactorialTest : "
 				+ (finalTime - initialTime));
-		
 
-		// ShutDown when task done.
-		parallel.cleanup();
+		assertTrue(obj instanceof BigInteger);
+		assertEquals(factorial(number), obj);
 
 	}
 
+	public BigInteger factorial(int number)
+	{
+		BigInteger factorial = BigInteger.ONE;
+
+		for (int i = 1; i <= number; i++)
+		{
+			factorial = factorial.multiply(BigInteger.valueOf(i));
+		}
+		return factorial;
+	}
 }

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -10,11 +10,10 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *  
+ *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-
 package com.impetus.labs.korus.test;
 
 import java.util.Iterator;
@@ -36,7 +35,8 @@ public class SummationTask extends ParallelTask
 	 * Constructor of SummationTask which initializes the constructor of
 	 * parallelTask with the given parallel object and blockedRange.
 	 * 
-	 * @param parallel Parallel Construct Object
+	 * @param parallel
+	 *            Parallel Construct Object
 	 * 
 	 * @param range
 	 *            Specified blockedRange.
@@ -68,7 +68,8 @@ public class SummationTask extends ParallelTask
 	 * final result which will be the cumulative result of all the
 	 * intermediateResults from resultList.
 	 * 
-	 * @param intermediateResults List containing the intermediate Results
+	 * @param intermediateResults
+	 *            List containing the intermediate Results
 	 * @return Object finalResult object.
 	 */
 	public Object summarize(List<Object> intermediateResults)

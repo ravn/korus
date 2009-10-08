@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -10,11 +10,10 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *  
+ *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-
 package com.impetus.labs.korus.test.pipeline;
 
 import com.impetus.labs.korus.addons.constructs.pipeline.Pipeline;
@@ -52,7 +51,7 @@ public class PipelineTest
 		// Execute the Pipeline
 		pipeline.execute();
 
-		// To wait till execution lasts. Skip this line pipeline.cleanUp() 
+		// To wait till execution lasts. Skip this line pipeline.cleanUp()
 		// if you do not want to
 		// wait for the execution of pipeline to finish.
 		pipeline.getResult();
@@ -60,12 +59,10 @@ public class PipelineTest
 		finalTime = System.currentTimeMillis();
 		System.out.println("Time Taken by ParallelRTW: "
 				+ (finalTime - initialTime));
-		
-		//shutdown when task is over
+
+		// shutdown when task is over
 		pipeline.cleanUp();
 
 	}
-
-
 
 }

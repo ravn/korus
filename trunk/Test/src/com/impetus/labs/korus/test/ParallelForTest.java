@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -10,12 +10,13 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *  
+ *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-
 package com.impetus.labs.korus.test;
+
+import junit.framework.TestCase;
 
 import com.impetus.labs.korus.addons.constructs.parallelfor.Parallel;
 import com.impetus.labs.korus.util.BlockedRange;
@@ -25,32 +26,13 @@ import com.impetus.labs.korus.util.BlockedRange;
  * parallelFor and multipleParallelFor.
  * 
  */
-public class ParallelForTest
+public class ParallelForTest extends TestCase
 {
-	public static boolean isTestSingleParallelForDone= false;
-	public static boolean isTestMultipleParallelForDone= false;
-	
-	public static void main(String[] args)
-	{
-		
-		ParallelForTest pft = new ParallelForTest();
-
-		pft.testSingleParallelFor();
-		pft.testMultipleParallelFor();
-		
-		// shutdown the execution when done.
-		if(isTestSingleParallelForDone&&isTestMultipleParallelForDone)
-		{
-			System.exit(0);
-		}
-		
-	}
-
 	/**
 	 * Test the single parallelFor working if test pass represent parallelFor
 	 * working correctly.
 	 */
-	public boolean testSingleParallelFor()
+	public void testSingleParallelFor()
 	{
 
 		int start = 1;
@@ -62,24 +44,17 @@ public class ParallelForTest
 		SummationTask task = new SummationTask(parallel, range);
 		parallel.parallelFor(task);
 		Object obj = parallel.getResult();
-		if ((obj instanceof Integer) && ((Integer) obj).intValue() == 55)
-		{
-			System.out.println("testSingleParallelFor() is successful.");
-		} else
-			System.out.println("testSingleParallelFor() failed");
-		
-		return isTestSingleParallelForDone=true;
+		assertTrue(obj instanceof Integer);
+		assertEquals(55, ((Integer) obj).intValue());
+
 	}
 
 	/**
 	 * Test the multiple parallelFor working if test pass represent more than
 	 * one parallelFor working correctly.
 	 */
-	public boolean testMultipleParallelFor()
+	public void testMultipleParallelFor()
 	{
-		boolean isLoop1Passed = false;
-		boolean isLoop2Passed = false;
-
 		int start1 = 1;
 		int end1 = 10;
 		int grainSize1 = 5;
@@ -100,22 +75,13 @@ public class ParallelForTest
 		parallel2.parallelFor(task2);
 
 		Object obj1 = parallel1.getResult();
-		if ((obj1 instanceof Integer) && ((Integer) obj1).intValue() == 55)
-		{
-			isLoop1Passed = true;
-		}
-		Object obj2 = parallel2.getResult();
-		if ((obj2 instanceof Integer) && ((Integer) obj2).intValue() == 78)
-		{
-			isLoop2Passed = true;
-		}
-		if (isLoop1Passed && isLoop2Passed)
-		{
-			System.out.println("testMultipleParallelFor() is successful.");
-		} else
-			System.out.println("testMultipleParallelFor() failed");
+		assertTrue(obj1 instanceof Integer);
+		assertEquals(55, ((Integer) obj1).intValue());
 
-		return isTestMultipleParallelForDone=true;
+		Object obj2 = parallel2.getResult();
+		assertTrue(obj2 instanceof Integer);
+		assertEquals(78, ((Integer) obj2).intValue());
+
 	}
-	
+
 }
