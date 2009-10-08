@@ -1,3 +1,21 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Korus - http://code.google.com/p/korus
+ % Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
+ % This file is part of Korus.
+ % Korus is free software: you can redistribute it and/or modify
+ % it under the terms of the GNU General Public License version 3 as published
+ % by the Free Software Foundation (http://www.gnu.org/licenses/gpl.html)
+ % 
+ % Korus is distributed in the hope that it will be useful,
+ % but WITHOUT ANY WARRANTY; without even the implied warranty of
+ % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ % GNU General Public License for more details.
+ %    
+ % You should have received a copy of the GNU General Public License
+ % along with Korus.  If not, see <http://www.gnu.org/licenses/>.
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 -module(korusAdapter).
 -export([connect/1,fetchData/1,listen/1,connectKorus/2,sendData/1,disconnect/0,socketManager/2,send/2,loop/4]).
 
@@ -115,8 +133,6 @@ sendData(Socket)->
    	        end, Hash),
 		
 			RequestObject = lists:concat([FormattedTotalParams,LengthOfAction,action,LengthOfActionName,Action,QueryString]),	
-			io:format("~nRequestObject ~p ~n", [RequestObject ]),
-		
 			gen_tcp:send(Socket, RequestObject)
 	end,
 	sendData(Socket).
