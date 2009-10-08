@@ -10,7 +10,7 @@ Below is an example to show how Erlang Adapter can be used.
 ===Sample Implementation===
 This example will send a request containing details of an item to BuyProcess1 of Korus Runtime listening at localhost. Korus Runtime will process the request and responds back to the erlang client.
 
-Download complete source code of sample from here<todo link> 
+Download complete source code of sample from [http://korus.googlecode.com/svn/trunk/Product/korus/example/ErlangAdapter.zip here]
 
 Here is the erlang code to use Korus Runtime for execution purpose
 {{{
