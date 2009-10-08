@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -17,15 +17,15 @@
 package com.impetus.labs.korus.exception;
 
 /**
- * KorusException is a custom exception class which 
- * throws an exception when any conflicts occur. 
+ * KorusException is a custom exception class which throws an exception when any
+ * conflicts occur.
  * 
  */
 public class KorusException extends Exception
 {
 	/**
-	 * Constructor for creating new KorusException displays the
-	 * exceptionString on the console.
+	 * Constructor for creating new KorusException displays the exceptionString
+	 * on the console.
 	 * 
 	 * @param ExceptionString
 	 *            String to be shown to the programmer as a error message.
@@ -36,15 +36,16 @@ public class KorusException extends Exception
 		super(ExceptionString);
 		this.ExceptionString = ExceptionString;
 	}
-	
+
 	/**
-	 * To String implementation of KorusException 
+	 * To String implementation of KorusException
+	 * 
 	 * @return String stating the Exception
 	 */
 	public String toString()
 	{
 		return this.ExceptionString;
 	}
-	
+
 	private String ExceptionString = "";
 }

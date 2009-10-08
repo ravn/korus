@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-
 package com.impetus.labs.korus.core;
 
 import java.io.BufferedWriter;
@@ -39,9 +38,9 @@ import com.impetus.labs.korus.util.StringUtil;
  */
 public class KorusRuntime
 {
-	private static int JAVA_PORT = 7935;
+	private static final int JAVA_PORT = 7935;
 
-	private static int ERLANG_PORT = 7936;
+	private static final int ERLANG_PORT = 7936;
 
 	private static boolean isWebRequest = false;
 
@@ -305,7 +304,7 @@ public class KorusRuntime
 	 *            Name of the process at erlang node which will collect the
 	 *            response
 	 * @param msg
-	 *            A hashmap containing the parameters for the process.
+	 *            A hashmap containing the parameters for the process
 	 */
 	public static void sendToErlang(String nodeName, String processName,
 			Message msg)
@@ -333,16 +332,19 @@ public class KorusRuntime
 		if (isDistributed)
 		{
 			if (connectedNodesMap.get(nodeName) == null)
+			{
 				connect(nodeName, port);
+			}
 			msg.put("action", processName);
 			String request = StringUtil.messageToString(msg);
 			SerializableMessage message = new SerializableMessage(nodeName,
 					request);
 			KorusWriter.setRequestMessage(message);
 		} else
+		{
 			System.out
 					.println("KorusRuntime is not initalized in DISTRIBUTED_MODE to enable it, set DISTRIBUTED_MODE=true in properties file");
-
+		}
 	}
 
 	/**
@@ -373,9 +375,14 @@ public class KorusRuntime
 			throws ProcessAlreadyExistsException
 	{
 		if (registeredProcessMap.get(processName) == null)
+		{
 			registeredProcessMap.put(processName, process);
+		}
+
 		else
+		{
 			throw new ProcessAlreadyExistsException(processName);
+		}
 
 	}
 
@@ -476,8 +483,10 @@ public class KorusRuntime
 											+ "setting it to default value 1");
 						}
 					} else
+					{
 						throw new KeyNotFoundException(
 								"NUMBER_OF_NEW_REQUEST_EXECUTERS");
+					}
 
 					if (properties
 							.containsKey("NUMBER_OF_NEW_REQUEST_SCHEDULERS"))
@@ -493,8 +502,10 @@ public class KorusRuntime
 											+ "setting it to default value 1");
 						}
 					} else
+					{
 						throw new KeyNotFoundException(
 								"NUMBER_OF_NEW_REQUEST_SCHEDULERS");
+					}
 				}
 			}
 
@@ -514,8 +525,9 @@ public class KorusRuntime
 									+ "setting it to default value 1");
 				}
 			} else
+			{
 				throw new KeyNotFoundException("NUMBER_OF_CORE_SCHEDULERS");
-
+			}
 			// Check for NUMBER_OF_CORE_EXECUTERS if not found or incorrect
 			// initialization start with default value equals to the number Of
 			// CPUCores
@@ -533,8 +545,9 @@ public class KorusRuntime
 
 				}
 			} else
+			{
 				throw new KeyNotFoundException("NUMBER_OF_CORE_EXECUTERS");
-
+			}
 			// check if DISTRIBUTED_MODE is 'true'
 			// else initialize with false
 
@@ -543,22 +556,21 @@ public class KorusRuntime
 				isDistributed = Boolean.parseBoolean(properties
 						.getProperty("DISTRIBUTED_MODE"));
 			} else
+			{
 				throw new KeyNotFoundException("DISTRIBUTED_MODE");
-
+			}
 		}
 
 		catch (NumberFormatException e)
 		{
-			System.out.println(e.getMessage());
 			throw new KorusException(
 					"Properties File Format error!\nDefine parameters(Case-sensitive) in (KEY=VALUE)format where KEY is a 'String' and VALUE is an 'integer'");
 		}
 
 		catch (IOException e)
 		{
-			System.out.println(e.getMessage());
-			throw new KorusException(
-					"Properties File not found!\nStarting with default configuration");
+			System.out
+					.println("Properties File not found!\nStarting with default configuration");
 
 		}
 	}

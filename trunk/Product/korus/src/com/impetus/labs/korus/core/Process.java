@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -14,23 +14,24 @@
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-
 package com.impetus.labs.korus.core;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * Process is a Lightweight alternative to Thread. Asynchronously executable
- * tasks can be made processes and can execute independently of of each
- * other. 
- *
+ * tasks can be made processes and can execute independently of of each other.
+ * 
  */
 public abstract class Process
 {
 	/**
 	 * The service method should be implemented by all the classes inheriting
 	 * the properties of a Process class
-	 * @param msg Message Object to be passed to this Process
+	 * 
+	 * @param msg
+	 *            Message Object to be passed to this Process
 	 */
 	public abstract void service(Message msg);
 
@@ -66,8 +67,8 @@ public abstract class Process
 	 * Sets message to the process' messageQueue.
 	 * 
 	 * @param message
-	 *            Message to be passed between the processes contains ('KEY','VALUE')
-	 *            pairs.
+	 *            Message to be passed between the processes contains
+	 *            ('KEY','VALUE') pairs.
 	 */
 
 	public void putMessage(Message message)
@@ -75,7 +76,9 @@ public abstract class Process
 		try
 		{
 			if (message != null)
+			{
 				this.messageQueue.put(message);
+			}
 		} catch (InterruptedException e)
 		{
 			e.printStackTrace();

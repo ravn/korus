@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -14,48 +14,59 @@
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-
 package com.impetus.labs.korus.core;
+
 /**
- * SerializableMessage is used in inter-node communication, it contains data
- * and address of remote node.
+ * SerializableMessage is used in inter-node communication, it contains data and
+ * address of remote node.
  */
-public class SerializableMessage {
-	
+public class SerializableMessage
+{
+
 	/**
 	 * @param data
 	 * @param nodeName
 	 */
-	public SerializableMessage(String nodeName, String data) {
+	public SerializableMessage(String nodeName, String data)
+	{
 		this.nodeName = nodeName;
 		this.data = data;
 	}
-	
+
 	/**
 	 * @return the data
 	 */
-	public String getData() {
+	public String getData()
+	{
 		return data;
 	}
+
 	/**
-	 * @param data the data to set
+	 * @param data
+	 *            the data to set
 	 */
-	public void setData(String data) {
+	public void setData(String data)
+	{
 		this.data = data;
 	}
+
 	/**
 	 * @return the nodeName
 	 */
-	public String getNodeName() {
+	public String getNodeName()
+	{
 		return nodeName;
 	}
+
 	/**
-	 * @param nodeName the nodeName to set
+	 * @param nodeName
+	 *            the nodeName to set
 	 */
-	public void setNodeName(String nodeName) {
+	public void setNodeName(String nodeName)
+	{
 		this.nodeName = nodeName;
 	}
-	
+
 	private String data = null;
 	private String nodeName = null;
 

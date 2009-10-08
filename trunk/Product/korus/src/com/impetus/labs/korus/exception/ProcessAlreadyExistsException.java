@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -17,8 +17,8 @@
 package com.impetus.labs.korus.exception;
 
 /**
- * ProcessAlreadyExistsException is a custom exception class which 
- * throws an exception when name conflicts occur in the process registration. 
+ * ProcessAlreadyExistsException is a custom exception class which throws an
+ * exception when name conflicts occur in the process registration.
  * 
  */
 public class ProcessAlreadyExistsException extends KorusException
@@ -36,15 +36,17 @@ public class ProcessAlreadyExistsException extends KorusException
 		super(duplicateProcessName);
 		this.duplicateProcessName = duplicateProcessName;
 	}
-	
+
 	/**
-	 * To String implementation of ProcessAlreadyExistsException 
+	 * To String implementation of ProcessAlreadyExistsException
+	 * 
 	 * @return String stating the Exception
 	 */
 	public String toString()
 	{
-		return "Process already Registered with name: " + this.duplicateProcessName;
+		return "Process already Registered with name: "
+				+ this.duplicateProcessName;
 	}
-	
+
 	private String duplicateProcessName = "";
 }

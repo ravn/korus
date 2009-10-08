@@ -1,10 +1,20 @@
-/**
- * Parallel.java
+/*******************************************************************************
+ * Korus - http://code.google.com/p/korus
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com)
+ * This file is part of Korus.
+ * Korus is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as published
+ * by the Free Software Foundation (http://www.gnu.org/licenses/gpl.html)
  * 
- * Copyright 2009 Impetus Infotech India Pvt. Ltd. . All Rights Reserved.
- *
- * This software is proprietary information of Impetus Infotech, India.
- */
+ * Korus is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *    
+ * You should have received a copy of the GNU General Public License
+ * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
+
 package com.impetus.labs.korus.addons.constructs.parallelfor;
 
 import java.lang.reflect.Constructor;
@@ -12,13 +22,14 @@ import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import com.impetus.labs.korus.core.Process;
 import com.impetus.labs.korus.core.KorusRuntime;
+import com.impetus.labs.korus.core.Process;
 import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 import com.impetus.labs.korus.util.BlockedRange;
+
 /**
- * Parallel Construct parallelFor is implemented inside this class.
- * Similar constructs can be implemented by creating classes like these.
+ * Parallel Construct parallelFor is implemented inside this class. Similar
+ * constructs can be implemented by creating classes like these.
  * 
  */
 public class Parallel
@@ -37,10 +48,12 @@ public class Parallel
 		if (process == null)
 		{
 			// Register Process with the name "ParallelTask"
-			try {
+			try
+			{
 				KorusRuntime.registerProcess("_~_~_Parallel_~_Task_~_~_",
 						parallelTask);
-			} catch (ProcessAlreadyExistsException e) {
+			} catch (ProcessAlreadyExistsException e)
+			{
 				e.printStackTrace();
 			}
 		}
@@ -129,8 +142,10 @@ public class Parallel
 	 * Add the intermediateResults to resultList and set the result to the
 	 * resultQueue when all parts done.
 	 * 
-	 * @param parallelTask  A sub-part of a task which has been executed.
-	 * @param result Result of the sub-part execution.
+	 * @param parallelTask
+	 *            A sub-part of a task which has been executed.
+	 * @param result
+	 *            Result of the sub-part execution.
 	 */
 
 	public synchronized void setResult(ParallelTask parallelTask, Object result)
@@ -160,9 +175,9 @@ public class Parallel
 	 * @param newRange
 	 *            BlockedRange to initialize the constructor of the class
 	 * @param parallel
-	 * @return the created Object of the class. 
+	 * @return the created Object of the class.
 	 */
-	
+
 	private static Object createObject(String className, BlockedRange newRange,
 			Parallel parallel)
 	{

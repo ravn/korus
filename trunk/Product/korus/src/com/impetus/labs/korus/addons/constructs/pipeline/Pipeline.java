@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-
 package com.impetus.labs.korus.addons.constructs.pipeline;
 
 import java.util.ArrayList;
@@ -27,34 +26,44 @@ import com.impetus.labs.korus.core.Scheduler;
 import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 
 /**
- * This is the implementation of the Pipeline Construct.
- * Methods used by a Pipeline are written inside this class.
+ * This is the implementation of the Pipeline Construct. Methods used by a
+ * Pipeline are written inside this class.
  * 
  */
-public class Pipeline {
+public class Pipeline
+{
 
 	/**
-	 * constructor with parameter String identify 
+	 * constructor with parameter String identify
+	 * 
 	 * @param identity
 	 */
 
-	public Pipeline(String identity) {
+	public Pipeline(String identity)
+	{
 		this.identity = identity;
 	}
 
 	/**
 	 * Adds a Pipeline Task to the Pipeline Queue
-	 * @param name Name of the Pipeline task
-	 * @param pipelineTask Object of the PipelineTask
+	 * 
+	 * @param name
+	 *            Name of the Pipeline task
+	 * @param pipelineTask
+	 *            Object of the PipelineTask
 	 */
-	public void add(String name, PipelineTask pipelineTask) {
+	public void add(String name, PipelineTask pipelineTask)
+	{
 		// 1. Select process from registered process list
 		Process process = KorusRuntime.getRegisteredProcess(name);
-		if (process == null) {
+		if (process == null)
+		{
 			// Register Process with the name ParallelTask
-			try {
+			try
+			{
 				KorusRuntime.registerProcess(name, pipelineTask);
-			} catch (ProcessAlreadyExistsException e) {
+			} catch (ProcessAlreadyExistsException e)
+			{
 				e.printStackTrace();
 			}
 		}
@@ -64,12 +73,16 @@ public class Pipeline {
 	/**
 	 * This method is used to join two Pipelined Tasks. It means, the order of
 	 * the pipelined tasks is decided using this method. The First argument is
-	 * the first pipelined tasks executed before the second argument or the 
+	 * the first pipelined tasks executed before the second argument or the
 	 * following pipeline Task.
-	 * @param pipelineTaskProd The producer pipelined Task
-	 * @param pipelineTaskCon The consumer pipelined Task
+	 * 
+	 * @param pipelineTaskProd
+	 *            The producer pipelined Task
+	 * @param pipelineTaskCon
+	 *            The consumer pipelined Task
 	 */
-	public void join(PipelineTask pipelineTaskProd, PipelineTask pipelineTaskCon) {
+	public void join(PipelineTask pipelineTaskProd, PipelineTask pipelineTaskCon)
+	{
 
 		// create new blocking queue
 		PipelineQueue<Object> blockingQueue = new PipelineQueue<Object>();
@@ -84,17 +97,20 @@ public class Pipeline {
 	}
 
 	/**
-	 * Starts the execution of the pipeline after the initialization and 
-	 * joining of the tasks are done.
-	 *
+	 * Starts the execution of the pipeline after the initialization and joining
+	 * of the tasks are done.
+	 * 
 	 */
-	public void execute() {
+	public void execute()
+	{
 		PipelineQueue<Object> blockingQueue = new PipelineQueue<Object>();
-		lastTask = ((PipelineTask) pipelineTaskList.get(pipelineTaskList.size() - 1));
+		lastTask = ((PipelineTask) pipelineTaskList
+				.get(pipelineTaskList.size() - 1));
 
 		lastTask.setOutputQueue(blockingQueue);
 
-		for (Iterator iter = pipelineTaskList.iterator(); iter.hasNext();) {
+		for (Iterator iter = pipelineTaskList.iterator(); iter.hasNext();)
+		{
 			PipelineTask pipelineTask = (PipelineTask) iter.next();
 
 			// Message put to prevent from the null check in executer
@@ -109,22 +125,26 @@ public class Pipeline {
 
 	/**
 	 * Returns the result of the execution
+	 * 
 	 * @return An Object representing the result of the execution of the
-	 * Pipeline
+	 *         Pipeline
 	 */
-	public Object getResult() {
+	public Object getResult()
+	{
 		Object finalResult = null;
 
-		try {
+		try
+		{
 			lastTask.getOutputQueue().take();
-		} catch (InterruptedException e) {
+		} catch (InterruptedException e)
+		{
 
 			e.printStackTrace();
 		}
 
 		return finalResult;
 	}
-	
+
 	public void cleanUp()
 	{
 		System.exit(0);

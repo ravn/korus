@@ -1,10 +1,19 @@
-/**
- * ParallelTask.java
+/*******************************************************************************
+ * Korus - http://code.google.com/p/korus
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
+ * This file is part of Korus.
+ * Korus is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as published
+ * by the Free Software Foundation (http://www.gnu.org/licenses/gpl.html)
  * 
- * Copyright 2009 Impetus Infotech India Pvt. Ltd. . All Rights Reserved.
- *
- * This software is proprietary information of Impetus Infotech, India.
- */
+ * Korus is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *    
+ * You should have received a copy of the GNU General Public License
+ * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package com.impetus.labs.korus.addons.constructs.parallelfor;
 
 import java.util.List;
@@ -14,8 +23,8 @@ import com.impetus.labs.korus.core.Process;
 import com.impetus.labs.korus.util.BlockedRange;
 
 /**
- * ParallelTask is used to implement constructs like parallelFor etc.
- * It denotes a task which can be executed in Parallel.
+ * ParallelTask is used to implement constructs like parallelFor etc. It denotes
+ * a task which can be executed in Parallel.
  * 
  */
 public abstract class ParallelTask extends Process
@@ -33,7 +42,6 @@ public abstract class ParallelTask extends Process
 		this.parallel = parallel;
 		this.range = range;
 	}
-
 
 	/**
 	 * Override the service(Message) method of Process so that classes extending
@@ -92,9 +100,9 @@ public abstract class ParallelTask extends Process
 	 */
 	public boolean isSplittable()
 	{
-		boolean retVal = (this.range.getGrainSize() < (this.range.getEnd()
-				- this.range.getBegin() + 1));
-		return retVal;
+		return this.range.getGrainSize() < (this.range.getEnd()
+				- this.range.getBegin() + 1);
+
 	}
 
 	/**
@@ -114,19 +122,21 @@ public abstract class ParallelTask extends Process
 	/**
 	 * @return the parallel
 	 */
-	public Parallel getParallel() {
+	public Parallel getParallel()
+	{
 		return parallel;
 	}
 
-
 	/**
-	 * @param parallel the parallel to set
+	 * @param parallel
+	 *            the parallel to set
 	 */
-	public void setParallel(Parallel parallel) {
+	public void setParallel(Parallel parallel)
+	{
 		this.parallel = parallel;
 	}
-	
+
 	private BlockedRange range;
 	private Parallel parallel = null;
-	
+
 }
