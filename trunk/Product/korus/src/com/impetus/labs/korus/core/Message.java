@@ -21,7 +21,7 @@ import java.util.HashMap;
 /**
  * Message to be passed between the process contains ('KEY','VALUE') pairs.
  */
-public class Message extends HashMap
+public class Message extends HashMap<String,Object>
 {
 
 }
