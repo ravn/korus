@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<project name="Korus" default="usage" basedir=".">
+
+<property name="home" value="${basedir}/.."/>
+<property name="src" value="${home}/src"/>
+<property name="bin" value="${home}/bin"/>
+<property name="jar" value="${home}/jar"/>
+<property name="javadoc" value="${home}/javadoc"/>
+<property name="dst" value="${home}/dst"/>
+<property name="support" value="${home}/../../Support"/>
+<property name="test" value="${home}/../../Test"/>
+<property name="test.src" value="${test}/src"/>
+<property name="test.classes" value="${test}/bin"/>
+<property name="test.out" value="${test}/report"/>
+<property name="test.lib" value="${test}/lib"/>
+<property name="readme" value="../../../README"/>
+<property name="build" value="${home}/build"/>
+<property name="version" value="${VERSION}"/>
+
+
+<property name="cp.main" refid="cp.main">
+	<classpath id="cp.main">
+			<pathelement location="${bin}"/>
+	</classpath>
+</property>
+
+
+<property name="cp.test" refid="cp.test">
+	<classpath id="cp.test">
+			<pathelement location="${bin}"/>
+			<pathelement location="${test.classes}"/>
+			<fileset dir="${test.lib}" includes="**/*.jar"/>
+	</classpath>
+</property>
+
+<property name="cp.junit" refid="cp.junit">
+	<classpath id="cp.junit">
+			<fileset dir="${test.lib}" includes="**/*.jar"/>
+	</classpath>
+</property>
+
+
+<target name="init">
+	<mkdir dir="${bin}"/>
+	<mkdir dir="${jar}"/>
+	<mkdir dir="${javadoc}"/>
+	<mkdir dir="${dst}"/>
+	<mkdir dir="${test.classes}"/>
+	<mkdir dir="${test.out}"/>
+</target>
+
+<target name="clean">
+	<delete dir="${bin}"/>
+	<delete dir="${jar}"/>
+	<delete dir="${javadoc}"/>
+	<delete dir="${dst}"/>
+	<delete dir="${test.classes}"/>
+	<delete dir="${test.out}"/>
+</target>
+
+<target name="compile" depends="init" description="Compiles the java files">
+	<javac srcdir="${src}" destdir="${bin}" deprecation="off" debug="on" includeAntRuntime="no" includeJavaRuntime="no" classpathref="cp.main"/>
+</target>
+
+<target name="jar" depends="compile" description="Compiles and creates the jars">
+	<jar destfile="${jar}/korus.jar" basedir="${bin}"/>
+</target>
+
+<target name="javadoc" depends="init" description="Generates javadoc API for korus API">
+	<javadoc destdir="${javadoc}" author="true" version="true" use="true" windowtitle="korus API">
+		<packageset dir="${src}"/>
+    </javadoc>
+</target>
+
+<target name="dst" depends="clean,jar,javadoc" description="Creates the distributable zip">
+	<copy todir="${dst}" file="${readme}"/>
+	<copy todir="${dst}" file="../../../GPL_LICENSE.txt"/>
+    <copy todir="${dst}/src">
+		<fileset dir="${src}"/>
+	</copy> 
+    <copy todir="${dst}/build">
+		<fileset dir="${build}"/>
+	</copy> 
+
+    <copy todir="${dst}/bin">
+		<fileset file="${jar}/korus.jar"/>
+	</copy> 
+</target>
+
+<target name="package" depends="dst" description="Creates the deployable bits">
+	<zip destfile="${home}/octopus-src-${version}.zip" basedir="${dst}"/>
+</target>
+
+<target name="test_compile" depends="compile">
+	<javac srcdir="${test.src}" destdir="${test.classes}" classpathref="cp.test"/>
+</target>
+
+<target name="test_report">
+	<junitreport todir="${test.out}">
+			<fileset dir="${test.out}">
+					<include name="TEST-*.xml"/>
+			</fileset>
+	</junitreport>
+</target>
+
+<target name="test" depends="test_compile">
+	<delete quiet="true">
+		<fileset dir="${test.out}">
+			<include name="**/*"/>
+		</fileset>
+	</delete>	
+	<junit printsummary="yes" showoutput="yes" fork="yes" includeantruntime="no" dir="${test.out}">
+			<formatter type="xml"/>
+			<classpath refid="cp.junit"/>
+			<batchtest todir="${test.out}">
+				<fileset dir="${test.src}">
+						<include name="com/impetus/korus/test/*.java"/>
+				</fileset>
+			</batchtest>
+	</junit>
+	<antcall target="test_report"/>
+</target>
+
+
+<target name="usage" description="Prints the Usage information of this script">
+	<echo message="TOBEDONE"/>
+	
+</target>
+</project>
