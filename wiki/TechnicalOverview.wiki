@@ -40,4 +40,6 @@ The sub-tasks of a Standard Execution can be transformed into Korus Processes wh
 
 In the Figure above, you can see two Korus Nodes each of which is having an instance of a JVM and a Korus Runtime. Each run-time can execute Processes asynchronously. On top of Korus nodes we have a grid manager to manage a Korus grid. We can also create customized constructs as per our requirements using Korus.
 
+*Note - The GridManager is under construction right now. Not a part of the current stable build 1.0.0*
+
 Korus is built in Share Nothing Logical & Deployment Architecture. Inter-process communication is done through asynchronous message passing. Process can be created on any node used for the application deployment. Messages are passed using message queues of processes.
