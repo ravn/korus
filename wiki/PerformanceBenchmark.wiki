@@ -1,4 +1,7 @@
+*Beyond a quick overview of the numbers below, it is recommended to first have a look at the Getting Started Guide before for a more deeper understanding*
+
 Describes the performance benchmarks below for the tests executed using Korus in Web Application Execution Environment and using Korus Constructs i.e. `parallel_for` & `pipeline`. 
+
 
   * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Korus_in_Web_Application_Execution_Environment Korus in Web Application Execution Environment] ====
   * ==== [http://code.google.com/p/korus/wiki/PerformanceBenchmark#Korus_Constructs Korus Constructs] ====
