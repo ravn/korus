@@ -15,6 +15,7 @@ Describes the performance benchmarks below for the tests executed using Korus in
 
 
 == Korus in Web Application Execution Environment ==
+_Please have a look at the How to Use section in the Getting Started Guide for more details of the Web Application Execution. The source code for these is currently *not* provided with the svn trunk. It will be added soon._
 
 === 1. Traditional Application (3 node Tomcat cluster)===
 
@@ -35,6 +36,8 @@ Describes the performance benchmarks below for the tests executed using Korus in
 ----
 
 ==Korus Constructs==
+_Please have a look at the How to Use section in the Getting Started Guide for more details of Korus constructs. The source code for these are provided with the svn trunk._
+
  
 = `ParallelFor` =
 
