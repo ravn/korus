@@ -19,7 +19,7 @@ Here is the erlang code to use Korus Runtime for execution purpose
 
 go()->
         %% Address of the Korus Run-time node %%
-        Host = "localhost",
+        Host = "127.0.0.1",
 	Pid = spawn(test,callback, []),	
 	register(callback, Pid),
         %% Connect to the Korus node %%
@@ -159,7 +159,7 @@ public class BuyProcess2 extends Process
 		msg.put("response", itemRating);
            
                 // Code to send response back to Erlang node
-		KorusRuntime.sendToErlang("localhost", "callback", msg);
+		KorusRuntime.sendToErlang("127.0.0.1", "callback", msg);
 
 	}
 
