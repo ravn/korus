@@ -35,7 +35,7 @@ callback()->
 	receive
 		{response,ResponseObj} ->
 			unregister(callback),
-                        %% fetch data from Response Object %%
+                        %% fetch data from Hashmap returned from Korus %%
 			D = dict:fetch(response,ResponseObj),
 			io:format("Response from Korus Node: ~p",[D]),
                         %% Disconnect when task is complete %%
