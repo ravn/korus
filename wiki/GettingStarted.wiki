@@ -1,15 +1,13 @@
 #labels Featured
-  # ==== [http://code.google.com/p/korus/wiki/GettingStarted#OS_Platform OS Platform] ====
-  # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Prerequisites Prerequisites] ====
+  # ==== [http://code.google.com/p/korus/wiki/GettingStarted#OS_Platform_and_Prerequisites OS Platform and Prerequisites] ====
   # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Getting_Started_Quickly Getting Started Quickly] ====
   # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Getting_Started_in_Detail Getting Started in Detail] ====
   # ==== [http://code.google.com/p/korus/wiki/GettingStarted#Case_Study Case Study] ====
 
-== OS Platform ==
+== OS Platform and Prerequisites ==
 
 Korus is Tested on Windows XP and Linux Platforms. Since, it is a purely java based framework it should run on all the platforms supporting java.
 
-== Prerequisites ==
 JDK 1.5 and above
 
 == Getting Started Quickly ==
@@ -31,7 +29,15 @@ These are detailed set of instructions as well as internal aspects. It is recomm
 
 == 1. Getting Korus ==
 
-To get the latest version of Korus do a regular svn checkout.
+*Korus is currently version 1.0.0 *
+
+Use this command to check out the latest *Stable* source code of the Project:
+{{{
+  $ svn checkout http://korus.googlecode.com/svn/tags/1.0.0 <your_directory_name>
+}}}
+
+Use this command to anonymously check out the latest project source code:
+
 {{{
   $ svn checkout http://korus.googlecode.com/svn/trunk/ <your_directory_name>
 }}}
