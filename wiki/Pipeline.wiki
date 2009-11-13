@@ -32,7 +32,7 @@ public class ReadTask extends PipelineTask {
    public static final String END_OF_TASK = "~_~END_OF_Line~_~";
 
    // Override the service method present in PipelineTask
-   public void service(Message message) 
+   public void service() 
    {
       // Point the file to be read 
       File f = new File("../files/testFile.txt");
@@ -69,7 +69,7 @@ public class TransformTask extends PipelineTask {
    public static final String END_OF_TASK = "~_~END_OF_Line~_~";
    
    // Override the service method present in PipelineTask
-   public void service(Message message) 
+   public void service() 
    {
       // This task has both a preceding task and a succeeding task hence
       // it will have an inputQueue as well as an outputQueue. InputQueue
@@ -110,7 +110,7 @@ public class WriteTask extends PipelineTask {
 	public static final String END_OF_TASK = "~_~END_OF_Line~_~";
 
 	// Override the service method present in PipelineTask
-	public void service(Message message) {
+	public void service() {
 
 		// get the input and output Queues
 		PipelineQueue<Object> inputQ = this.getInputQueue();
