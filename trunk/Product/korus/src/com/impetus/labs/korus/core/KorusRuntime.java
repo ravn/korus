@@ -1,16 +1,14 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
  * by the Free Software Foundation (http://www.gnu.org/licenses/gpl.html)
- * 
  * Korus is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
@@ -26,7 +24,15 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Properties;
 
-import com.impetus.labs.korus.exception.KeyNotFoundException;
+import com.impetus.labs.korus.core.executer.Executer;
+import com.impetus.labs.korus.core.executer.RequestExecuter;
+import com.impetus.labs.korus.core.message.Message;
+import com.impetus.labs.korus.core.message.RawMessage;
+import com.impetus.labs.korus.core.message.SerializableMessage;
+import com.impetus.labs.korus.core.process.BaseProcess;
+import com.impetus.labs.korus.core.process.Process;
+import com.impetus.labs.korus.core.scheduler.RequestScheduler;
+import com.impetus.labs.korus.core.scheduler.Scheduler;
 import com.impetus.labs.korus.exception.KorusException;
 import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 import com.impetus.labs.korus.util.StringUtil;
@@ -46,9 +52,9 @@ public class KorusRuntime
 
 	private static boolean isDistributed = false;
 
-	private static int numberOfNewRequestExecuters = 0;
+	private static int numberOfRequestExecuters = 0;
 
-	private static int numberOfNewRequestSchedulers = 0;
+	private static int numberOfRequestSchedulers = 0;
 
 	private static int numberOfCoreSchedulers = 1;
 
@@ -56,15 +62,15 @@ public class KorusRuntime
 
 	private static int numberOfCPUCores = 0;
 
-	private static HashMap<String, Process> registeredProcessMap = new HashMap<String, Process>();
+	private static HashMap<String, BaseProcess> registeredProcessMap = new HashMap<String, BaseProcess>();
 
 	private static Executer[] coreExecuterList = null;
 
 	private static Scheduler[] coreSchedulerList = null;
 
-	private static NewRequestExecuter[] newRequestExecuterList = null;
+	private static RequestExecuter[] requestExecuterList = null;
 
-	private static NewRequestScheduler[] newRequestSchedulerList = null;
+	private static RequestScheduler[] requestSchedulerList = null;
 
 	private static int index = 0;
 
@@ -104,19 +110,20 @@ public class KorusRuntime
 		// Web request scenario handling
 		if (isWebRequest)
 		{
+				
 			// Start the newRequest Executers/Schedulers
-			newRequestExecuterList = new NewRequestExecuter[numberOfNewRequestExecuters];
-			for (int i = 0; i < newRequestExecuterList.length; i++)
+			requestExecuterList = new RequestExecuter[numberOfRequestExecuters];
+			for (int i = 0; i < requestExecuterList.length; i++)
 			{
-				newRequestExecuterList[i] = new NewRequestExecuter();
-				newRequestExecuterList[i].start();
+				requestExecuterList[i] = new RequestExecuter();
+				requestExecuterList[i].start();
 			}
 
-			newRequestSchedulerList = new NewRequestScheduler[numberOfNewRequestSchedulers];
-			for (int i = 0; i < newRequestSchedulerList.length; i++)
+			requestSchedulerList = new RequestScheduler[numberOfRequestSchedulers];
+			for (int i = 0; i < requestSchedulerList.length; i++)
 			{
-				newRequestSchedulerList[i] = new NewRequestScheduler();
-				newRequestSchedulerList[i].start();
+				requestSchedulerList[i] = new RequestScheduler();
+				requestSchedulerList[i].start();
 			}
 		}
 
@@ -161,77 +168,31 @@ public class KorusRuntime
 	}
 
 	/**
-	 * Get the next newRequestExecuter from the newRequestExecuterList.
+	 * Get the next requestExecuter from the requestExecuterList.
 	 * 
-	 * @return the next newRequestExecuter from the newRequestExecuterList.
+	 * @return the next requestExecuter from the requestExecuterList.
 	 */
-	public static NewRequestExecuter getNextNewRequestExecuter()
+	public static RequestExecuter getNextRequestExecuter()
 	{
-		NewRequestExecuter newRequestExecuter = newRequestExecuterList[index
-				% numberOfNewRequestExecuters];
+		RequestExecuter requestExecuter = requestExecuterList[index
+				% numberOfRequestExecuters];
 		index++;
-		return newRequestExecuter;
+		return requestExecuter;
 	}
 
 	/**
-	 * Get the next newRequestScheduler from the newRequestSchedulerList.
+	 * Get the next requestScheduler from the requestSchedulerList.
 	 * 
-	 * @return the next newRequestScheduler from the newRequestSchedulerList.
+	 * @return the next requestScheduler from the requestSchedulerList.
 	 */
-	public static NewRequestScheduler getNextNewRequestScheduler()
+	public static RequestScheduler getNextRequestScheduler()
 	{
-		NewRequestScheduler newRequestScheduler = newRequestSchedulerList[index
-				% numberOfNewRequestSchedulers];
+		RequestScheduler requestScheduler = requestSchedulerList[index
+				% numberOfRequestSchedulers];
 		index++;
-		return newRequestScheduler;
+		return requestScheduler;
 	}
 
-	/**
-	 * Start the Process with registeredProcessName to handle the new requests.
-	 * 
-	 * @param processName
-	 *            Name of the process by which it is registered in the
-	 *            registeredProcessMap.
-	 * @param message
-	 *            Message to be passed to the process contains ('KEY','VALUE')
-	 *            pairs.
-	 */
-
-	public static void start(String processName, Message message)
-	{
-		// 1. Select process from registered process list
-		Process process = getRegisteredProcess(processName);
-		if (process == null)
-		{
-			System.out.println("Message sent to an unregistered Process: "
-					+ processName);
-		} else
-		{
-			// 2. Put message in process's messageQueue
-			process.putMessage(message);
-			// 3. Put this Process in newRequestSchedulers processQueue
-			NewRequestScheduler.setProcess(process);
-		}
-
-	}
-
-	/**
-	 * Start the Process using processID to handle the new requests.
-	 * 
-	 * @param process
-	 *            process to which to be started.
-	 * @param message
-	 *            Message to be passed to the process contains ('KEY','VALUE')
-	 *            pairs.
-	 */
-
-	public static void start(Process process, Message message)
-	{
-		// 1. Put message in process's messageQueue
-		process.putMessage(message);
-		// 2. Put this Process in newRequestSchedulers processQueue
-		NewRequestScheduler.setProcess(process);
-	}
 
 	/**
 	 * Send message to a registered process.
@@ -246,7 +207,7 @@ public class KorusRuntime
 	public synchronized static void send(String processName, Message message)
 	{
 		// 1. Select process from registered process list
-		Process process = getRegisteredProcess(processName);
+		BaseProcess process = getRegisteredProcess(processName);
 		if (process == null)
 		{
 			System.out.println("Message sent to an unregistered Process: "
@@ -255,7 +216,7 @@ public class KorusRuntime
 		{
 			// 2. Put message in process's messageQueue
 			process.putMessage(message);
-			// 3. Put this Process in Schedulers processQueue
+			// 3. Put this Process in Scheduler's processQueue
 			Scheduler.setProcess(process);
 		}
 
@@ -286,12 +247,12 @@ public class KorusRuntime
 	 *            to which request to be sent
 	 * @param processName
 	 *            process name of the remote node to be called
-	 * @param msg
-	 *            A hashmap containing the parameters for the process
+	 * @param message
+	 *           Message containing the parameters for the process
 	 */
-	public static void send(String nodeName, String processName, Message msg)
+	public static void send(String nodeName, String processName, Message message)
 	{
-		send(nodeName, processName, msg, JAVA_PORT);
+		send(nodeName, processName, message, JAVA_PORT);
 	}
 
 	/**
@@ -299,34 +260,35 @@ public class KorusRuntime
 	 * 
 	 * @param nodeName
 	 *            The name of the node from which a request to process has been
-	 *            sent to korus
+	 *            sent to Korus
 	 * @param processName
 	 *            Name of the process at erlang node which will collect the
 	 *            response
-	 * @param msg
-	 *            A hashmap containing the parameters for the process
+	 * @param message
+	 *            Message containing the parameters for the process
 	 */
-	public static void sendToErlang(String nodeName, String processName,
-			Message msg)
+	public static void sendToErlang(String nodeName, String processName,Message message)
 	{
-		send(nodeName, processName, msg, ERLANG_PORT);
+		send(nodeName, processName, message, ERLANG_PORT);
 	}
+	
+		
 
 	/**
 	 * Send data to the node.
 	 * 
 	 * @param nodeName
 	 *            The name of the node from which a request to process has been
-	 *            sent to korus
+	 *            sent to Korus
 	 * @param processName
 	 *            Name of the process at erlang node which will collect the
 	 *            response
-	 * @param msg
-	 *            A hashmap containing the parameters for the process
+	 * @param rawMessage
+	 *            Message containing the parameters for the process
 	 * @param port
 	 *            Port to connect with.
 	 */
-	private static void send(String nodeName, String processName, Message msg,
+	public static void send(String nodeName, String processName, RawMessage rawMessage,
 			int port)
 	{
 		if (isDistributed)
@@ -335,17 +297,19 @@ public class KorusRuntime
 			{
 				connect(nodeName, port);
 			}
-			msg.put("action", processName);
-			String request = StringUtil.messageToString(msg);
-			SerializableMessage message = new SerializableMessage(nodeName,
-					request);
+			rawMessage.put("action", processName);
+			String request = StringUtil.messageToString(rawMessage);
+			SerializableMessage message = new SerializableMessage(nodeName,request);
 			KorusWriter.setRequestMessage(message);
-		} else
+		} 
+		else
 		{
 			System.out
 					.println("KorusRuntime is not initalized in DISTRIBUTED_MODE to enable it, set DISTRIBUTED_MODE=true in properties file");
 		}
 	}
+	
+
 
 	/**
 	 * Get the Process from registeredProcessMap if registered.
@@ -356,7 +320,7 @@ public class KorusRuntime
 	 * @return the Process from registeredProcessMap if registered else returns
 	 *         null.
 	 */
-	public static Process getRegisteredProcess(String processName)
+	public static BaseProcess getRegisteredProcess(String processName)
 	{
 		return registeredProcessMap.get(processName);
 	}
@@ -371,24 +335,19 @@ public class KorusRuntime
 	 *            The process which is to be registered with a unique name.
 	 * @throws ProcessAlreadyExistsException
 	 */
-	public static void registerProcess(String processName, Process process)
+	public static void registerProcess(String processName, BaseProcess process)
 			throws ProcessAlreadyExistsException
 	{
 		if (registeredProcessMap.get(processName) == null)
-		{
 			registeredProcessMap.put(processName, process);
-		}
-
 		else
-		{
 			throw new ProcessAlreadyExistsException(processName);
-		}
 
 	}
 
 	/**
 	 * Method to connect to the given ipAddress and put the bufferedWriter in
-	 * the hashmap to reuse the connection.
+	 * the Hashmap to reuse the connection.
 	 * 
 	 * @param ipAddress
 	 *            ipAddress of the remoteNode
@@ -419,7 +378,7 @@ public class KorusRuntime
 	/**
 	 * Get the connectedNodesMap
 	 * 
-	 * @return a hashmap containing the bufferedWriter of connected nodes.
+	 * @return A Hashmap containing the bufferedWriter of connected nodes.
 	 */
 	public static HashMap<String, BufferedWriter> getConnectedNodesMap()
 	{
@@ -427,25 +386,29 @@ public class KorusRuntime
 	}
 
 	/**
-	 * Get the Port
-	 * 
-	 * @return the port
+	 * @return the JAVA_PORT
 	 */
-	public static int getPort()
+	public static int getJavaPort()
 	{
 		return JAVA_PORT;
+	}
+	
+	/**
+	 * @return the ERLANG_PORT
+	 */
+	public static int getErlangPort()
+	{
+		return ERLANG_PORT;
 	}
 
 	/**
 	 * Method to read the properties file to initialize the configuration
 	 * parameters.
 	 * 
-	 * @throws KeyNotFoundException
 	 * @throws KorusException
 	 */
 
-	public static void readPropertiesFile() throws KeyNotFoundException,
-			KorusException
+	public static void readPropertiesFile() throws KorusException
 	{
 		try
 		{
@@ -458,7 +421,18 @@ public class KorusRuntime
 			FileInputStream fileInputStream = new FileInputStream(
 					propertiesFile);
 			properties.load(fileInputStream);
-
+			
+			// check if DISTRIBUTED_MODE is 'true'
+			// else initialize with false
+			if (properties.containsKey("DISTRIBUTED_MODE"))
+			{
+				isDistributed = Boolean.parseBoolean(properties
+						.getProperty("DISTRIBUTED_MODE"));
+			} else
+			{
+				keyNotFound("DISTRIBUTED_MODE");
+			}
+			
 			// Check for Kind of request if WEB_REQUEST='true'
 			// and if KEYS not found or incorrect initialization
 			// Initialize the advance processing parameters with default value 1
@@ -469,46 +443,42 @@ public class KorusRuntime
 						.getProperty("WEB_REQUEST"));
 				if (isWebRequest)
 				{
-					if (properties
-							.containsKey("NUMBER_OF_NEW_REQUEST_EXECUTERS"))
+					if (properties.containsKey("NUMBER_OF_REQUEST_EXECUTERS"))
 					{
-						numberOfNewRequestExecuters = Integer
-								.parseInt(properties
-										.getProperty("NUMBER_OF_NEW_REQUEST_EXECUTERS"));
-						if (numberOfNewRequestExecuters <= 0)
+						numberOfRequestExecuters = Integer.parseInt(properties
+								.getProperty("NUMBER_OF_REQUEST_EXECUTERS"));
+						if (numberOfRequestExecuters <= 0)
 						{
-							numberOfNewRequestExecuters = 1;
-							throw new KorusException(
-									"The value of parameter NUMBER_OF_NEW_REQUEST_EXECUTERS must be greater than 0\n"
+							numberOfRequestExecuters = 1;
+							System.out.println(
+									"The value of parameter NUMBER_OF_REQUEST_EXECUTERS in properties file must be greater than 0\n"
 											+ "setting it to default value 1");
 						}
 					} else
 					{
-						throw new KeyNotFoundException(
-								"NUMBER_OF_NEW_REQUEST_EXECUTERS");
-					}
 
-					if (properties
-							.containsKey("NUMBER_OF_NEW_REQUEST_SCHEDULERS"))
+						keyNotFound("NUMBER_OF_REQUEST_EXECUTERS");
+					}
+					if (properties.containsKey("NUMBER_OF_REQUEST_SCHEDULERS"))
 					{
-						numberOfNewRequestSchedulers = Integer
-								.parseInt(properties
-										.getProperty("NUMBER_OF_NEW_REQUEST_SCHEDULERS"));
-						if (numberOfNewRequestSchedulers <= 0)
+						numberOfRequestSchedulers = Integer.parseInt(properties
+								.getProperty("NUMBER_OF_REQUEST_SCHEDULERS"));
+						if (numberOfRequestSchedulers <= 0)
 						{
-							numberOfNewRequestSchedulers = 1;
-							throw new KorusException(
-									"The value of parameter NUMBER_OF_NEW_REQUEST_SCHEDULERS must be greater than 0\n"
+							numberOfRequestSchedulers = 1;
+							System.out.println(
+									"The value of parameter NUMBER_OF_REQUEST_SCHEDULERS in properties file must be greater than 0\n"
 											+ "setting it to default value 1");
 						}
 					} else
 					{
-						throw new KeyNotFoundException(
-								"NUMBER_OF_NEW_REQUEST_SCHEDULERS");
+						keyNotFound("NUMBER_OF_REQUEST_SCHEDULERS");
 					}
 				}
+			} else
+			{
+				keyNotFound("WEB_REQUEST");
 			}
-
 			// Check for NUMBER_OF_CORE_SCHEDULERS if not found or incorrect
 			// initialization start with default value 1.
 
@@ -520,13 +490,12 @@ public class KorusRuntime
 				if (numberOfCoreSchedulers <= 0)
 				{
 					numberOfCoreSchedulers = 1;
-					throw new KorusException(
-							"The value of parameter NUMBER_OF_CORE_SCHEDULERS must be greater than 0\n"
+					System.out.println("The value of parameter NUMBER_OF_CORE_SCHEDULERS in properties file must be greater than 0\n"
 									+ "setting it to default value 1");
 				}
 			} else
 			{
-				throw new KeyNotFoundException("NUMBER_OF_CORE_SCHEDULERS");
+				keyNotFound("NUMBER_OF_CORE_SCHEDULERS");
 			}
 			// Check for NUMBER_OF_CORE_EXECUTERS if not found or incorrect
 			// initialization start with default value equals to the number Of
@@ -539,26 +508,17 @@ public class KorusRuntime
 				if (numberOfCoreExecuters <= 0)
 				{
 					numberOfCoreExecuters = numberOfCPUCores;
-					throw new KorusException(
-							"The value of parameter NUMBER_OF_CORE_EXECUTERS must be greater than 0\n"
+					System.out.println("The value of parameter NUMBER_OF_CORE_EXECUTERS in properties file must be greater than 0\n"
 									+ "setting it to default value equals to the number Of CPUCores");
 
 				}
 			} else
 			{
-				throw new KeyNotFoundException("NUMBER_OF_CORE_EXECUTERS");
+				keyNotFound("NUMBER_OF_CORE_EXECUTERS");
 			}
-			// check if DISTRIBUTED_MODE is 'true'
-			// else initialize with false
-
-			if (properties.containsKey("DISTRIBUTED_MODE"))
-			{
-				isDistributed = Boolean.parseBoolean(properties
-						.getProperty("DISTRIBUTED_MODE"));
-			} else
-			{
-				throw new KeyNotFoundException("DISTRIBUTED_MODE");
-			}
+			
+		
+		
 		}
 
 		catch (NumberFormatException e)
@@ -571,8 +531,36 @@ public class KorusRuntime
 		{
 			System.out
 					.println("Properties File not found!\nStarting with default configuration");
-
 		}
+		
+		System.out.println("WebReuqest Mode: " + isWebRequest);
+		System.out.println("Distributed Mode: " + isDistributed);
+		System.out
+				.println("NUMBER_OF_CORE_SCHEDULERS: " + numberOfCoreSchedulers);
+		System.out.println("NUMBER_OF_CORE_EXECUTERS: " + numberOfCoreExecuters);
+		System.out.println("NUMBER_OF_REQUEST_EXECUTERS: "
+				+ numberOfRequestExecuters);
+		System.out.println("NUMBER_OF_REQUEST_SCHEDULERS: "
+				+ numberOfRequestSchedulers);	
+
+		
+	}
+
+	/**
+	 * To load the static KorusRuntime 
+	 */
+	public static void load()
+	{
+		//load the static block
+	}
+	
+	
+	public static void keyNotFound(String key)
+	{
+		System.out
+				.println("Key: "
+						+ key
+						+ " is not defined in the PropertiesFile \nInitializing with default configuration.");
 	}
 
 }

@@ -1,21 +1,20 @@
 /*******************************************************************************
  * Korus - http://code.google.com/p/korus
- * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
+ * Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com)
  * This file is part of Korus.
  * Korus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
  * by the Free Software Foundation (http://www.gnu.org/licenses/gpl.html)
- * 
  * Korus is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *    
  * You should have received a copy of the GNU General Public License
  * along with Korus.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 package com.impetus.labs.korus.core;
 
+import java.net.InetAddress;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.SelectionKey;
@@ -27,9 +26,11 @@ import java.nio.charset.CharsetDecoder;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.impetus.labs.korus.core.message.Message;
 /**
- * KorusReader is used to read data from Socket channel and Send data to
- * appropriate Process. It is involved in inter-node communication.
+ * KorusReader is used to read data from
+ * Socket channel and Send data to appropriate Process.
+ * It is involved in inter-node communication.
  */
 public class KorusReader implements Runnable
 {
@@ -43,10 +44,10 @@ public class KorusReader implements Runnable
 					.open();
 			// nonblocking I/O
 			serverSocketChannel.configureBlocking(false);
-
+			// host-port 7935
 			serverSocketChannel.socket().bind(
-					new java.net.InetSocketAddress(KorusRuntime.getPort()));
-
+					new java.net.InetSocketAddress(InetAddress.getLocalHost()
+							.getHostAddress(), KorusRuntime.getJavaPort()));
 			// Create the selector
 			Selector selector = Selector.open();
 			// Recording server to selector (type OP_ACCEPT)
@@ -72,10 +73,10 @@ public class KorusReader implements Runnable
 					iter.remove();
 
 					// if isAccetable = true
-					// then a Client required a connection
+					// then a MemcacheClient required a connection
 					if (key.isAcceptable())
 					{
-						// get Client socket channel
+						// get MemcacheClient socket channel
 						SocketChannel client = serverSocketChannel.accept();
 						// Non Blocking I/O
 						client.configureBlocking(false);
@@ -88,14 +89,14 @@ public class KorusReader implements Runnable
 					// then the server is ready to read
 					if (key.isReadable())
 					{
-						Message requestMessage = new Message();
+						Message msg = new Message();
 						String keyName = null;
 						String valueData = null;
 
 						SocketChannel client = (SocketChannel) key.channel();
 						int BUFFER_SIZE = 2;
 						ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
-						// Read byte coming from the Client
+						// Read byte coming from the MemcacheClient
 						try
 						{
 							client.read(buffer);
@@ -147,15 +148,15 @@ public class KorusReader implements Runnable
 										.decode(valueNameBuffer);
 								valueData = valueNameCharBuffer.toString();
 
-								requestMessage.put(keyName, valueData);
+								msg.put(keyName, valueData);
 
 							}
-							// get the process name from the message.
-							String processName = (String) requestMessage
-									.get("action");
-							// send the message to the process
-							KorusRuntime.send(processName, requestMessage);
-						} catch (Exception e)
+							String processName = (String) msg.get("action");
+							
+							KorusRuntime.send(processName, msg);
+												
+						}
+						catch (Exception e)
 						{
 							String clientAddress = client.socket()
 									.getInetAddress().getHostAddress();
