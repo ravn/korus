@@ -13,6 +13,7 @@
 <property name="test.classes" value="${test}/bin"/>
 <property name="test.out" value="${test}/report"/>
 <property name="test.lib" value="${test}/lib"/>
+<property name="jarpath" value="${home}/lib/memcached-2.4.2.jar"/>
 <property name="readme" value="../../../README"/>
 <property name="build" value="${home}/build"/>
 <property name="version" value="${VERSION}"/>
@@ -59,7 +60,7 @@
 </target>
 
 <target name="compile" depends="init" description="Compiles the java files">
-	<javac srcdir="${src}" destdir="${bin}" deprecation="off" debug="on" includeAntRuntime="no" includeJavaRuntime="no" classpathref="cp.main"/>
+	<javac classpath="${jarpath}" srcdir="${src}" destdir="${bin}" deprecation="off" debug="on" includeAntRuntime="no" includeJavaRuntime="no" classpathref="cp.main"/>
 </target>
 
 <target name="jar" depends="compile" description="Compiles and creates the jars">
