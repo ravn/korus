@@ -37,8 +37,8 @@ public class TestProcess {
 	}
 	
 	Message msg = new Message();
-	String itemName = "Calculator";
-	msg.put("itemName", itemName);
+	String bookName = "Five Point Someone";
+	msg.put("bookName", bookName);
 	KorusRuntime.send("buyProcess1", msg);
 	
 	}
@@ -50,51 +50,60 @@ Create Two Processes Called BuyProcess1 and BuyProcess2. Below, is the Code for 
 
 {{{
 import com.impetus.labs.korus.core.KorusRuntime;
-import com.impetus.labs.korus.core.Message;
-import com.impetus.labs.korus.core.Process;
-
+import com.impetus.labs.korus.core.message.Message;
+import com.impetus.labs.korus.core.process.Process;
 
 // Import other necessary Business Logic Packages and Classes
 
 /**
  * BuyProcess1 Extends Abstract Process Class
  */
-public class BuyProcess1 extends Process {
+public class BuyProcess1 extends Process
+{
 
 	// Overide the service Method
-	
-	public void service(Message requestMessage) {
+
+	public void service(Message requestMessage)
+	{
 		// Get item name from the Message Object
-		String itemName = (String) requestMessage.get("itemName");
-		System.out.println("Name of the Item: " + itemName);
-		
+		String bookName = (String) requestMessage.get("bookName");
+		System.out.println("Inside Process1");
+		System.out.println("Name of the book: " + bookName);
+
 		// Rest of the Business Logic
-		int priceOfItem = fetchDetails(itemName);
+		String author = fetchDetails(bookName);
 
-		// Put the intermediate result in the Message Object for next 
+		// Put the intermediate result in the Message Object for next
 		// process
-		requestMessage.put("priceOfItem", priceOfItem);
+		requestMessage.put("author", author);
 
+		System.out.println("Passing Message to Process2...");
 		// Send Message Asynchronously to the next Process on Local Node
 		KorusRuntime.send("buyProcess2", requestMessage);
-		
+
 		// Send Message Asynchronously to the next Process on Remote Node
 		// Set only String Objects in the Message in case of Remote Calls
-		//KorusRuntime.send("hostname", "buyProcess2", requestMessage)
+		// KorusRuntime.send("IP-Address", "buyProcess2", requestMessage)
 	}
 
 	/**
-	 * Method to Fetch Details of an item. To keep it simple just returning
-	 * an integer called price
-	 * @param itemName Name of the Item
-	 * @return price of the Item
+	 * Method to Fetch Details of book. To keep it simple just returning an
+	 * String authorName.
+	 * 
+	 * @param bookName
+	 *            Name of the book
+	 * @return author of the book
 	 */
-	private int fetchDetails(String itemName) {
+	private String fetchDetails(String bookName)
+	{
+		String authorName = null;
 		// Some dummy code
 		// Method Implementation ...
-		int price = 20;
-		return price;
-		
+		if(bookName.equals("Five Point Someone"))
+		{
+			authorName = "Chetan Bhagat";
+		}
+		return authorName;
 
 	}
 }
@@ -102,30 +111,30 @@ public class BuyProcess1 extends Process {
 
 Code for BuyProcess2:
 {{{
-
-import com.impetus.labs.korus.core.KorusRuntime;
-import com.impetus.labs.korus.core.Message;
-import com.impetus.labs.korus.core.Process;
+import com.impetus.labs.korus.core.message.Message;
+import com.impetus.labs.korus.core.process.Process;
 
 // Import other necessary Business Logic Packages and Classes
 
 /**
  * BuyProcess2 Extends Abstract Process Class
  */
-public class BuyProcess2 extends Process {
+public class BuyProcess2 extends Process
+{
 
 	// Overide the service Method
+	public void service(Message requestMessage)
+	{
 
-	public void service(Message requestMessage) {
-		// Get item name from the Message Object
-		int priceOfItem = ((Integer) requestMessage.get("priceOfItem"))
-				.intValue();
-
+		System.out.println("Inside Process2");
+		// Get book and author name from the Message Object
+		String bookName = requestMessage.get("bookName");
+		String authorName = requestMessage.get("author");
 		// Rest of the Business Logic
-		String itemRating = rateItem(priceOfItem);
+		String bookRating = rateBook(bookName, authorName);
 
-		System.out.println("Rating of an Item: " + itemRating);
-		
+		System.out.println("Rating of an Book: " + bookRating);
+
 		// Forcefully Shutting the Korus Runtime if not needed
 		System.exit(0);
 
@@ -133,19 +142,24 @@ public class BuyProcess2 extends Process {
 
 	/**
 	 * Rates an item on basis of its cost
-	 * @param priceOfItem price of the Item to be rated
-	 * @return Rating of an Item
+	 * 
+	 * @param bookName
+	 *            name of the book to be rated
+	 * @param authorName
+	 *            name of the author of the book
+	 * @return Rating of an book
 	 */
-	private String rateItem(int priceOfItem) {
-		// Some dummy code
-		// Method Implementation ...
-		String itemRating = "";
-		if (priceOfItem > 50)
-			itemRating = "Item is Expensive";
-		else
-			itemRating = "Item is Affordable";
+	private String rateBook(String bookName, String authorName)
+	{
 
-		return itemRating;
+		String bookRating = "";
+		if (bookName.equals("Five Point Someone")
+				&& authorName.equals("Chetan Bhagat"))
+			bookRating = "India's best seller";
+		else
+			bookRating = "not known";
+
+		return bookRating;
 
 	}
 }
