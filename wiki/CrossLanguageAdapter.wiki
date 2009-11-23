@@ -18,16 +18,16 @@ Here is the erlang code to use Korus Runtime for execution purpose
 -export([go/0,callback/0]).
 
 go()->
-        %% Address of the Korus Run-time node %%
+    	%% Address of the Korus Run-time node %%
         Host = "127.0.0.1",
-	Pid = spawn(test,callback, []),	
-	register(callback, Pid),
+        Pid = spawn(test,callback, []), 
+        register(callback, Pid),
         %% Connect to the Korus node %%
-	korusAdapter:connect(Host),
+        korusAdapter:connect(Host),
 
-	D = dict:new(),
-	D1 = dict:append("itemName", "phone", D),
-        %% Send the request to the Korus node %%
+        D = dict:new(),
+	D1 = dict:append("bookName", "Five Point Someone", D),
+	%% Send the request to the Korus node %%
 	korusAdapter:send("buyProcess1",D1),
 	ok.	
 	
@@ -51,13 +51,15 @@ import com.impetus.labs.korus.core.KorusRuntime;
 import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 
 /**
- * Tests message Passing Between Processes and final response to erlang node
- *
+ * Tests message Passing Between Processes and send response back to erlang
+ * 
  */
 public class TestProcess
 {
+
 	public static void main(String args[])
 	{
+
 		// Create two Processes
 		BuyProcess1 buyProcess1 = new BuyProcess1();
 		BuyProcess2 buyProcess2 = new BuyProcess2();
@@ -71,59 +73,69 @@ public class TestProcess
 		{
 			e.printStackTrace();
 		}
-
 	}
 }
+
 
 }}}
 Sample code to create process BuyProcess1.java
 {{{
 import com.impetus.labs.korus.core.KorusRuntime;
-import com.impetus.labs.korus.core.Message;
-import com.impetus.labs.korus.core.Process;
-
+import com.impetus.labs.korus.core.message.Message;
+import com.impetus.labs.korus.core.process.Process;
 
 // Import other necessary Business Logic Packages and Classes
 
 /**
  * BuyProcess1 Extends Abstract Process Class
  */
-public class BuyProcess1 extends Process 
+public class BuyProcess1 extends Process
 {
 
 	// Overide the service Method
 
-	public void service(Message requestMessage) 
-        {
+	public void service(Message requestMessage)
+	{
 		// Get item name from the Message Object
-		String itemName = (String) requestMessage.get("itemName");
-		System.out.println("Name of the Item: " + itemName);
-		
-		// Rest of the Business Logic
-		int priceOfItem = fetchDetails(itemName);
+		String bookName = (String) requestMessage.get("bookName");
+		System.out.println("Inside Process1");
+		System.out.println("Name of the book: " + bookName);
 
-		// Put the intermediate result in the Message Object for next 
+		// Rest of the Business Logic
+		String author = fetchDetails(bookName);
+
+		// Put the intermediate result in the Message Object for next
 		// process
-		requestMessage.put("priceOfItem", priceOfItem);
+		requestMessage.put("author", author);
 
 		System.out.println("Passing Message to Process2...");
 		// Send Message Asynchronously to the next Process on Local Node
 		KorusRuntime.send("buyProcess2", requestMessage);
+
+		// Send Message Asynchronously to the next Process on Remote Node
+		// Set only String Objects in the Message in case of Remote Calls
+		// KorusRuntime.send("IP-Address", "buyProcess2", requestMessage)
 	}
 
 	/**
-	 * Method to Fetch Details of an item. To keep it simple just returning
-	 * an integer called price
-	 * @param itemName Name of the Item
-	 * @return price of the Item
+	 * Method to Fetch Details of book. To keep it simple just returning an
+	 * String authorName.
+	 * 
+	 * @param bookName
+	 *            Name of the book
+	 * @return author of the book
 	 */
-	private int fetchDetails(String itemName) 
-        {
+	private String fetchDetails(String bookName)
+	{
+		String authorName = null;
 		// Some dummy code
 		// Method Implementation ...
-		int price = 20;
-		return price;
-		
+		if(bookName.equals("Five Point Someone"))
+		{
+			authorName = "Chetan Bhagat";
+		}
+		return authorName;
+
 	}
 }
 
@@ -131,8 +143,8 @@ public class BuyProcess1 extends Process
 Sample code to create process BuyProcess2.java
 {{{
 import com.impetus.labs.korus.core.KorusRuntime;
-import com.impetus.labs.korus.core.Message;
-import com.impetus.labs.korus.core.Process;
+import com.impetus.labs.korus.core.message.Message;
+import com.impetus.labs.korus.core.process.Process;
 
 // Import other necessary Business Logic Packages and Classes
 
@@ -141,45 +153,43 @@ import com.impetus.labs.korus.core.Process;
  */
 public class BuyProcess2 extends Process
 {
-
 	// Overide the service Method
-	public void service(Message requestMessage)
+	public void service(Message message)
 	{
 
 		System.out.println("Inside Process2");
-		// Get item name from the Message Object
-		int priceOfItem = ((Integer) requestMessage.get("priceOfItem"))
-				.intValue();
-
+		// Get book and author name from the Message Object
+		String bookName = message.get("bookName");
+		String authorName = message.get("author");
 		// Rest of the Business Logic
-		String itemRating = rateItem(priceOfItem);
+		String bookRating = rateBook(bookName, authorName);
 
-		System.out.println("Rating of an Item: " + itemRating);
 		Message msg = new Message();
-		msg.put("response", itemRating);
-           
-                // Code to send response back to Erlang node
+		msg.put("response", bookRating);
+		// Send response back to erlang-node.
 		KorusRuntime.sendToErlang("127.0.0.1", "callback", msg);
-
 	}
 
 	/**
 	 * Rates an item on basis of its cost
-	 * @param priceOfItem price of the Item to be rated
-	 * @return Rating of an Item
+	 * 
+	 * @param bookName
+	 *            name of the book to be rated
+	 * @param authorName
+	 *            name of the author of the book
+	 * @return Rating of an book
 	 */
-	private String rateItem(int priceOfItem)
+	private String rateBook(String bookName, String authorName)
 	{
-		// Some dummy code
-		// Method Implementation ...
-		String itemRating = "";
-		if (priceOfItem > 50)
-			itemRating = "Item is Expensive";
+
+		String bookRating = "";
+		if (bookName.equals("Five Point Someone")
+				&& authorName.equals("Chetan Bhagat"))
+			bookRating = "Best seller in India";
 		else
-			itemRating = "Item is Affordable";
+			bookRating = "not known";
 
-		return itemRating;
-
+		return bookRating;
 	}
 }
 }}}
