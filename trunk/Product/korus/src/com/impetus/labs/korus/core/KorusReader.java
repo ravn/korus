@@ -14,7 +14,6 @@
  ******************************************************************************/
 package com.impetus.labs.korus.core;
 
-import java.net.InetAddress;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.SelectionKey;
@@ -46,8 +45,7 @@ public class KorusReader implements Runnable
 			serverSocketChannel.configureBlocking(false);
 			// host-port 7935
 			serverSocketChannel.socket().bind(
-					new java.net.InetSocketAddress(InetAddress.getLocalHost()
-							.getHostAddress(), KorusRuntime.getJavaPort()));
+				new java.net.InetSocketAddress(KorusRuntime.getJavaPort()));
 			// Create the selector
 			Selector selector = Selector.open();
 			// Recording server to selector (type OP_ACCEPT)
