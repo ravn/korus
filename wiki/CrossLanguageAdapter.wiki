@@ -111,10 +111,6 @@ public class BuyProcess1 extends Process
 		System.out.println("Passing Message to Process2...");
 		// Send Message Asynchronously to the next Process on Local Node
 		KorusRuntime.send("buyProcess2", requestMessage);
-
-		// Send Message Asynchronously to the next Process on Remote Node
-		// Set only String Objects in the Message in case of Remote Calls
-		// KorusRuntime.send("IP-Address", "buyProcess2", requestMessage)
 	}
 
 	/**
