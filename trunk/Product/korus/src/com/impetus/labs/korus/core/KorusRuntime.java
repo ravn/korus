@@ -532,9 +532,9 @@ public class KorusRuntime
 			System.out
 					.println("Properties File not found!\nStarting with default configuration");
 		}
-		
-		System.out.println("WebReuqest Mode: " + isWebRequest);
-		System.out.println("Distributed Mode: " + isDistributed);
+		System.out.println("Korus Runtime parameters");
+		System.out.println("WEB_REQUEST Mode: " + isWebRequest);
+		System.out.println("DISTRIBUTED Mode: " + isDistributed);
 		System.out
 				.println("NUMBER_OF_CORE_SCHEDULERS: " + numberOfCoreSchedulers);
 		System.out.println("NUMBER_OF_CORE_EXECUTERS: " + numberOfCoreExecuters);
