@@ -1,5 +1,9 @@
-
 = Context Store =
 
 A ContextStore lets you store key value pairs of string objects that are accessible across different nodes. It provides methods that binds string objects to there context and retrieving them using the name specified. If a String object of the same name is already bound to the context, the object is replaced.
 
+The process is illustrated with the help of a diagram below where a key value pair is being accessed across various nodes. 
+
+*Fig: Key Value Pair accessed across three nodes*<br/> <br/>
+
+[http://korus.googlecode.com/svn/trunk/Support/images/Context_Store.jpg]
