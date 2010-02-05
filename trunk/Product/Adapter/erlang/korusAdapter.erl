@@ -1,6 +1,6 @@
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Korus - http://code.google.com/p/korus
- % Copyright (C) 2009 Impetus Technologies, Inc.(http://www.impetus.com/)
+ % Copyright (C) 2010 Impetus Technologies, Inc.(http://www.impetus.com/)
  % This file is part of Korus.
  % Korus is free software: you can redistribute it and/or modify
  % it under the terms of the GNU General Public License version 3 as published
