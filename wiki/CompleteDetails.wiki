@@ -1,14 +1,14 @@
 #labels KorusDetails
   # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#What_is_Korus What is Korus] ====
   # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#Getting_Started Getting Started] ====
-  # ==== [http://code.google.com/p/korus#Background Background] ====
-  # ==== [http://code.google.com/p/korus#Technical_Overview Technical Overview] ====
-  # ==== [http://code.google.com/p/korus#What_can_I_do_with_Korus What can I do with Korus] ====
-  # ==== [http://code.google.com/p/korus#Guidelines_and_Best_Practices Guidelines and Best Practices] ====
-  # ==== [http://code.google.com/p/korus#Performance_Benchmarks Performance Benchmarks] ====
-  # ==== [http://code.google.com/p/korus#Short_Term_Roadmap Short Term Roadmap] ====
-  # ==== [http://code.google.com/p/korus#Contributing_To_Korus Contributing To Korus] ====
-  # ==== [http://code.google.com/p/korus#About_Us About Us] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#Background Background] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#Technical_Overview Technical Overview] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#What_can_I_do_with_Korus What can I do with Korus] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#Guidelines_and_Best_Practices Guidelines and Best Practices] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#Performance_Benchmarks Performance Benchmarks] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#Short_Term_Roadmap Short Term Roadmap] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#Contributing_To_Korus Contributing To Korus] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#About_Us About Us] ====
 
 
 
