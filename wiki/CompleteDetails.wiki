@@ -1,6 +1,6 @@
 #labels KorusDetails
-  # ==== [http://code.google.com/p/korus#What_is_Korus What is Korus] ====
-  # ==== [http://code.google.com/p/korus#Getting_Started Getting Started] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#What_is_Korus What is Korus] ====
+  # ==== [http://code.google.com/p/korus/wiki/CompleteDetails#Getting_Started Getting Started] ====
   # ==== [http://code.google.com/p/korus#Background Background] ====
   # ==== [http://code.google.com/p/korus#Technical_Overview Technical Overview] ====
   # ==== [http://code.google.com/p/korus#What_can_I_do_with_Korus What can I do with Korus] ====
