@@ -22,6 +22,7 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Properties;
 
 import com.impetus.labs.korus.core.executer.Executer;
@@ -36,7 +37,6 @@ import com.impetus.labs.korus.core.scheduler.Scheduler;
 import com.impetus.labs.korus.exception.KorusException;
 import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 import com.impetus.labs.korus.util.StringUtil;
-
 /**
  * KorusRuntime is used to initialize Korus Runtime which includes initializing
  * Executers, Schedulers and also managing communication between Processes and
@@ -62,7 +62,7 @@ public class KorusRuntime
 
 	private static int numberOfCPUCores = 0;
 
-	private static HashMap<String, BaseProcess> registeredProcessMap = new HashMap<String, BaseProcess>();
+	private static Hashtable<String, BaseProcess> registeredProcessCollection = new Hashtable<String, BaseProcess>();
 
 	private static Executer[] coreExecuterList = null;
 
@@ -356,7 +356,7 @@ public class KorusRuntime
 	 */
 	public static BaseProcess getRegisteredProcess(String processName)
 	{
-		return registeredProcessMap.get(processName);
+		return registeredProcessCollection.get(processName);
 	}
 
 	/**
@@ -372,8 +372,8 @@ public class KorusRuntime
 	public static void registerProcess(String processName, BaseProcess process)
 			throws ProcessAlreadyExistsException
 	{
-		if (registeredProcessMap.get(processName) == null)
-			registeredProcessMap.put(processName, process);
+		if (registeredProcessCollection.get(processName) == null)
+			registeredProcessCollection.put(processName, process);
 		else
 			throw new ProcessAlreadyExistsException(processName);
 
