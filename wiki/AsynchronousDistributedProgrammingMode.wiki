@@ -10,7 +10,7 @@ The structure below shows, how a use case will look when it is broken up into pr
 {{{
 
 import com.impetus.labs.korus.core.KorusRuntime;
-import com.impetus.labs.korus.core.Message;
+import com.impetus.labs.korus.core.message.Message;
 import com.impetus.labs.korus.exception.ProcessAlreadyExistsException;
 
 /**
