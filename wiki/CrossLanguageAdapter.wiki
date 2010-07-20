@@ -1,3 +1,4 @@
+
 ==Introduction ==
 Cross Language Adapter is a communication bridge between other languages and Korus Runtime. Using Cross Language Adapters a Korus Runtime can be utilized for execution purpose from other languages also. 
 
