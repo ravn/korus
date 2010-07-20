@@ -1,4 +1,5 @@
-Describes the usage and definition of `ParallelFor` construct
+Here's a brief overview on the usage and definition of `ParallelFor` construct
+
 ==Introduction ==
 `ParallelFor` is a parallel version of a for loop which executes the loop parallely and tries to utilize more number of cores for lower turnaround time. A `ParallelFor` loop takes in a range which determines the number of times the for loop needs to run and the grainsize (which determines the number of threads Korus will allocate).
 
